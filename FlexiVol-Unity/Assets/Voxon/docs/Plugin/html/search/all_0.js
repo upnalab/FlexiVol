@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['_5f_0',['_',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279ab14a7b8059d9c055954c92674ce60032',1,'Voxon._()'],['../namespace_voxon.html#adc82de725a588f928c78c8a216d4ff66ab14a7b8059d9c055954c92674ce60032',1,'Voxon._()'],['../namespace_voxon.html#a7a6c88b3b1bfefd81b79376e10f28c4aab14a7b8059d9c055954c92674ce60032',1,'Voxon._()'],['../namespace_voxon.html#a6ee29ee23df7a8b7fffbc94d15d4bbf9ab14a7b8059d9c055954c92674ce60032',1,'Voxon._()'],['../namespace_voxon.html#ab4ea12c100cff16094c522028389767fab14a7b8059d9c055954c92674ce60032',1,'Voxon._()']]],
+  ['_5f0_1',['_0',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279aa764b4bf13a360c7ac2a35ec4ca96c95',1,'Voxon']]],
+  ['_5f1_2',['_1',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279a5d98ec0427152056397e9e35f357be87',1,'Voxon']]],
+  ['_5f2_3',['_2',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279a26e3d8bac39f9313d584a6025bd7544d',1,'Voxon']]],
+  ['_5f3_4',['_3',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279af806252045a28179caaf0ec8f0b5f298',1,'Voxon']]],
+  ['_5f4_5',['_4',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279ab49511be6fca00a500dc7cd69ecc6c58',1,'Voxon']]],
+  ['_5f5_6',['_5',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279afc85e0e9e785e1ac37df34f744769c5f',1,'Voxon']]],
+  ['_5f6_7',['_6',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279adfbfc4a9ddfbf50d6b3349e7a97f0101',1,'Voxon']]],
+  ['_5f7_8',['_7',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279a56bb8449aba0e83c4cd30e57fab20c9d',1,'Voxon']]],
+  ['_5f8_9',['_8',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279add494b805517113d9d15b8adf0a09b5c',1,'Voxon']]],
+  ['_5f9_10',['_9',['../namespace_voxon.html#adb0a314f9bd2bc03f9129956018b8279a9748632a03a999f14fd0c94056c4aa24',1,'Voxon']]],
+  ['_5f_5fpad0_5f_5f_11',['__pad0__',['../licenses_8txt.html#a17361854dc75d49d6bc375861fd0f899',1,'licenses.txt']]],
+  ['_5fbasescale_12',['_BaseScale',['../class_camera_instant.html#acc1009731d984234f052dd67d0e2101d',1,'CameraInstant']]],
+  ['_5fcamera_13',['_camera',['../class_voxon_1_1_examples_1_1__13___texture_reflection_1_1_texture_reflection.html#a478e03bb5a6e831207cfaeae4777343d',1,'Voxon::Examples::_13_TextureReflection::TextureReflection']]],
+  ['_5fframe_14',['_Frame',['../class_camera_instant.html#a116c9f6d073c3e78eeed3ed73f52cb36',1,'CameraInstant']]],
+  ['_5flogger_5fmax_5flines_15',['_logger_max_lines',['../class_voxon_1_1_v_x_process.html#ad1858334dfad5b561ff63d74fcc96a7d',1,'Voxon::VXProcess']]],
+  ['_5fmodel_16',['_model',['../class_voxon_1_1_shadow_view.html#aa6e00d5250a73137705bbc65e63e6973',1,'Voxon::ShadowView']]],
+  ['_5fposition_17',['_Position',['../class_camera_instant.html#a7c92c3ebeba7307e5eb720e31fe866cb',1,'CameraInstant']]],
+  ['_5frotation_18',['_Rotation',['../class_camera_instant.html#af2500092c67f7ac3575dbca7608806a9',1,'CameraInstant']]],
+  ['_5ftargetplane_19',['_TargetPlane',['../class_i_n_d_e_v_e_l_o_p_m_e_n_t___canvas.html#a7676f9f78597c4026bc3865c9976bbba',1,'INDEVELOPMENT_Canvas']]],
+  ['_5fviewfinderdimensions_20',['_ViewFinderDimensions',['../class_camera_instant.html#a428e72838daec441dbb472a5093eb4b5',1,'CameraInstant']]]
+];

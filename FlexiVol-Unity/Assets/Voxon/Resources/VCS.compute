@@ -1,0 +1,38 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+
+struct poltex
+{
+	float3 pos;
+	float2 uvs;
+    int col;
+};
+
+RWStructuredBuffer<poltex> output;
+StructuredBuffer<float3> in_vertices;
+StructuredBuffer<float2> in_uvs;
+
+uniform float4x4 _combinedMatrix;
+
+static const uint numthreads = 256;
+
+[numthreads(numthreads,1,1)]
+void CSMain (in uint3 id : SV_DispatchThreadID)
+{
+	poltex v;
+	float4 in_v = float4(in_vertices[id.x], 1.0);
+	v.pos = mul(_combinedMatrix, in_v).xyz;
+
+	float t = v.pos.y;
+	v.pos.y = -v.pos.z;
+	v.pos.z = -t;
+
+	v.uvs = in_uvs[id.x];
+	v.col = 0x0;
+
+	output[id.x] = v;
+}

@@ -1,0 +1,595 @@
+fileFormatVersion: 2
+guid: 37377467ef1198c4681c07690859f7fc
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: a.001
+    100002: a.002
+    100004: a.003
+    100006: Cheek Bone.L
+    100008: Cheek Bone.L_end
+    100010: Cheek Bone.R
+    100012: Cheek Bone.R_end
+    100014: Cheek Low.L
+    100016: Cheek Low.L_end
+    100018: Cheek Low.R
+    100020: Cheek Low.R_end
+    100022: Cheek Side.L
+    100024: Cheek Side.L_end
+    100026: Cheek Side.R
+    100028: Cheek Side.R_end
+    100030: Cheek.L
+    100032: Cheek.L_end
+    100034: Cheek.R
+    100036: Cheek.R_end
+    100038: Chin
+    100040: Chin.L
+    100042: Chin.R
+    100044: Chin_end
+    100046: Controller.044
+    100048: DEF-Chin side.L
+    100050: DEF-Chin side.L_end
+    100052: DEF-Chin side.R
+    100054: DEF-Chin side.R_end
+    100056: DEF-Eye.L
+    100058: DEF-Eye.L_end
+    100060: DEF-Eye.R
+    100062: DEF-Eye.R_end
+    100064: DEF-Head
+    100066: DEF-Jaw
+    100068: DEF-LIP1.L
+    100070: DEF-LIP1.L_end
+    100072: DEF-LIP1.R
+    100074: DEF-LIP1.R_end
+    100076: DEF-LIP2.L
+    100078: DEF-LIP2.L_end
+    100080: DEF-LIP2.R
+    100082: DEF-LIP2.R_end
+    100084: DEF-LIP3.L
+    100086: DEF-LIP3.L_end
+    100088: DEF-LIP3.R
+    100090: DEF-LIP3.R_end
+    100092: DEF-LIP4.L
+    100094: DEF-LIP4.L_end
+    100096: DEF-LIP4.R
+    100098: DEF-LIP4.R_end
+    100100: DEF-LIP5.L
+    100102: DEF-LIP5.L_end
+    100104: DEF-LIP5.R
+    100106: DEF-LIP5.R_end
+    100108: DEF-LIP6.L
+    100110: DEF-LIP6.L_end
+    100112: DEF-LIP6.R
+    100114: DEF-LIP6.R_end
+    100116: DEF-Neck
+    100118: DEF-Nose Side.L
+    100120: DEF-Nose Side.L_end
+    100122: DEF-Nose Side.R
+    100124: DEF-Nose Side.R_end
+    100126: Ear.L
+    100128: Ear.R
+    100130: Ear1.L
+    100132: Ear1.L_end
+    100134: Ear1.R
+    100136: Ear1.R_end
+    100138: Ear2.L
+    100140: Ear2.L_end
+    100142: Ear2.R
+    100144: Ear2.R_end
+    100146: Ear3.L
+    100148: Ear3.L_end
+    100150: Ear3.R
+    100152: Ear3.R_end
+    100154: Ear4.L
+    100156: Ear4.L_end
+    100158: Ear4.R
+    100160: Ear4.R_end
+    100162: Eye.L
+    100164: Eye.L.001
+    100166: Eye.L.001_end
+    100168: Eye.R
+    100170: Eye.R.001
+    100172: Eye.R.001_end
+    100174: Eyebrow.L
+    100176: Eyebrow.R
+    100178: Eyebrow1.L
+    100180: Eyebrow1.L_end
+    100182: Eyebrow1.R
+    100184: Eyebrow1.R_end
+    100186: Eyebrow2.L
+    100188: Eyebrow2.L_end
+    100190: Eyebrow2.R
+    100192: Eyebrow2.R_end
+    100194: Eyebrow3.L
+    100196: Eyebrow3.L_end
+    100198: Eyebrow3.R
+    100200: Eyebrow3.R_end
+    100202: Eyebrow4.L
+    100204: Eyebrow4.L_end
+    100206: Eyebrow4.R
+    100208: Eyebrow4.R_end
+    100210: //RootNode
+    100212: Jaw
+    100214: Jaw Stretch
+    100216: Jaw_end
+    100218: Lip Corner.L
+    100220: Lip Corner.L_end
+    100222: Lip Corner.R
+    100224: Lip Corner.R_end
+    100226: Lip Lower
+    100228: Lip Lower 2.L
+    100230: Lip Lower 2.R
+    100232: Lip Side 1.L
+    100234: Lip Side 1.L_end
+    100236: Lip Side 1.R
+    100238: Lip Side 1.R_end
+    100240: Lip Side 2.L
+    100242: Lip Side 2.R
+    100244: Lip Side 3.L
+    100246: Lip Side 3.R
+    100248: Lip Upper 1
+    100250: Lip Upper 2.L
+    100252: Lip Upper 2.R
+    100254: Lips
+    100256: Lower Lid A 1.L
+    100258: Lower Lid A 1.L_end
+    100260: Lower Lid A 1.R
+    100262: Lower Lid A 1.R_end
+    100264: Lower Lid A 2.L
+    100266: Lower Lid A 2.L_end
+    100268: Lower Lid A 2.R
+    100270: Lower Lid A 2.R_end
+    100272: Lower Lid A 3.L
+    100274: Lower Lid A 3.L_end
+    100276: Lower Lid A 3.R
+    100278: Lower Lid A 3.R_end
+    100280: Lower Lid A 4.L
+    100282: Lower Lid A 4.L_end
+    100284: Lower Lid A 4.R
+    100286: Lower Lid A 4.R_end
+    100288: Lower Lid A 5.L
+    100290: Lower Lid A 5.L_end
+    100292: Lower Lid A 5.R
+    100294: Lower Lid A 5.R_end
+    100296: Lower Lid b 1.L
+    100298: Lower Lid b 1.L_end
+    100300: Lower Lid b 1.R
+    100302: Lower Lid b 1.R_end
+    100304: Lower Lid b 2.L
+    100306: Lower Lid b 2.L_end
+    100308: Lower Lid b 2.R
+    100310: Lower Lid b 2.R_end
+    100312: Lower Lid B 3.L
+    100314: Lower Lid B 3.L_end
+    100316: Lower Lid B 3.R
+    100318: Lower Lid B 3.R_end
+    100320: Lower Lid B 4.L
+    100322: Lower Lid B 4.L_end
+    100324: Lower Lid B 4.R
+    100326: Lower Lid B 4.R_end
+    100328: Lower Lid B 5.L
+    100330: Lower Lid B 5.L_end
+    100332: Lower Lid B 5.R
+    100334: Lower Lid B 5.R_end
+    100336: Lower Lid.L
+    100338: Lower Lid.L_end
+    100340: Lower Lid.R
+    100342: Lower Lid.R_end
+    100344: Lower Lips
+    100346: Lower Lips_end
+    100348: Lower Teeth
+    100350: Lower Teeth_end
+    100352: Master Face
+    100354: MCH-Jaw Stretch Target
+    100356: MCH-Jaw Stretch Target_end
+    100358: MCH-Lip Lower 2.L
+    100360: MCH-Lip Lower 2.R
+    100362: MCH-Lip Rotation Lower
+    100364: MCH-Lip Rotation Master
+    100366: MCH-Lip Rotation upper
+    100368: MCH-Lip Side 1.L
+    100370: MCH-Lip Side 1.R
+    100372: MCH-Lip Side 2.L
+    100374: MCH-Lip Side 2.R
+    100376: MCH-Lip Side 3.L
+    100378: MCH-Lip Side 3.R
+    100380: MCH-Lip Upper 2.L
+    100382: MCH-Lip Upper 2.R
+    100384: MCH-Lower Head
+    100386: MCH-Lower Head.002
+    100388: MCH-Lower Head.002_end
+    100390: MCH-Upper Head
+    100392: Nose Bridge
+    100394: Nose Bridge1
+    100396: Nose Bridge1_end
+    100398: Nose Bridge2
+    100400: Nose Bridge2_end
+    100402: Nose Bridge_end
+    100404: Nose Master
+    100406: Nose Side.L
+    100408: Nose Side.L_end
+    100410: Nose Side.R
+    100412: Nose Side.R_end
+    100414: Nose Tip
+    100416: Nose Tip.001
+    100418: Nose Tip_end
+    100420: Nose.L
+    100422: Nose.R
+    100424: Rig Facial
+    100426: Upper Lid A 1.L
+    100428: Upper Lid A 1.L_end
+    100430: Upper Lid A 1.R
+    100432: Upper Lid A 1.R_end
+    100434: Upper Lid A 2.L
+    100436: Upper Lid A 2.L_end
+    100438: Upper Lid A 2.R
+    100440: Upper Lid A 2.R_end
+    100442: Upper Lid A 3.L
+    100444: Upper Lid A 3.L_end
+    100446: Upper Lid A 3.R
+    100448: Upper Lid A 3.R_end
+    100450: Upper Lid B 1.L
+    100452: Upper Lid B 1.L_end
+    100454: Upper Lid B 1.R
+    100456: Upper Lid B 1.R_end
+    100458: Upper Lid B 2.L
+    100460: Upper Lid B 2.L_end
+    100462: Upper Lid B 2.R
+    100464: Upper Lid B 2.R_end
+    100466: Upper Lid B 3.L
+    100468: Upper Lid B 3.L_end
+    100470: Upper Lid B 3.R
+    100472: Upper Lid B 3.R_end
+    100474: Upper Lid.L
+    100476: Upper Lid.L_end
+    100478: Upper Lid.R
+    100480: Upper Lid.R_end
+    100482: Upper Lips
+    100484: Upper Lips_end
+    100486: Upper Teeth
+    100488: Upper Teeth_end
+    400000: a.001
+    400002: a.002
+    400004: a.003
+    400006: Cheek Bone.L
+    400008: Cheek Bone.L_end
+    400010: Cheek Bone.R
+    400012: Cheek Bone.R_end
+    400014: Cheek Low.L
+    400016: Cheek Low.L_end
+    400018: Cheek Low.R
+    400020: Cheek Low.R_end
+    400022: Cheek Side.L
+    400024: Cheek Side.L_end
+    400026: Cheek Side.R
+    400028: Cheek Side.R_end
+    400030: Cheek.L
+    400032: Cheek.L_end
+    400034: Cheek.R
+    400036: Cheek.R_end
+    400038: Chin
+    400040: Chin.L
+    400042: Chin.R
+    400044: Chin_end
+    400046: Controller.044
+    400048: DEF-Chin side.L
+    400050: DEF-Chin side.L_end
+    400052: DEF-Chin side.R
+    400054: DEF-Chin side.R_end
+    400056: DEF-Eye.L
+    400058: DEF-Eye.L_end
+    400060: DEF-Eye.R
+    400062: DEF-Eye.R_end
+    400064: DEF-Head
+    400066: DEF-Jaw
+    400068: DEF-LIP1.L
+    400070: DEF-LIP1.L_end
+    400072: DEF-LIP1.R
+    400074: DEF-LIP1.R_end
+    400076: DEF-LIP2.L
+    400078: DEF-LIP2.L_end
+    400080: DEF-LIP2.R
+    400082: DEF-LIP2.R_end
+    400084: DEF-LIP3.L
+    400086: DEF-LIP3.L_end
+    400088: DEF-LIP3.R
+    400090: DEF-LIP3.R_end
+    400092: DEF-LIP4.L
+    400094: DEF-LIP4.L_end
+    400096: DEF-LIP4.R
+    400098: DEF-LIP4.R_end
+    400100: DEF-LIP5.L
+    400102: DEF-LIP5.L_end
+    400104: DEF-LIP5.R
+    400106: DEF-LIP5.R_end
+    400108: DEF-LIP6.L
+    400110: DEF-LIP6.L_end
+    400112: DEF-LIP6.R
+    400114: DEF-LIP6.R_end
+    400116: DEF-Neck
+    400118: DEF-Nose Side.L
+    400120: DEF-Nose Side.L_end
+    400122: DEF-Nose Side.R
+    400124: DEF-Nose Side.R_end
+    400126: Ear.L
+    400128: Ear.R
+    400130: Ear1.L
+    400132: Ear1.L_end
+    400134: Ear1.R
+    400136: Ear1.R_end
+    400138: Ear2.L
+    400140: Ear2.L_end
+    400142: Ear2.R
+    400144: Ear2.R_end
+    400146: Ear3.L
+    400148: Ear3.L_end
+    400150: Ear3.R
+    400152: Ear3.R_end
+    400154: Ear4.L
+    400156: Ear4.L_end
+    400158: Ear4.R
+    400160: Ear4.R_end
+    400162: Eye.L
+    400164: Eye.L.001
+    400166: Eye.L.001_end
+    400168: Eye.R
+    400170: Eye.R.001
+    400172: Eye.R.001_end
+    400174: Eyebrow.L
+    400176: Eyebrow.R
+    400178: Eyebrow1.L
+    400180: Eyebrow1.L_end
+    400182: Eyebrow1.R
+    400184: Eyebrow1.R_end
+    400186: Eyebrow2.L
+    400188: Eyebrow2.L_end
+    400190: Eyebrow2.R
+    400192: Eyebrow2.R_end
+    400194: Eyebrow3.L
+    400196: Eyebrow3.L_end
+    400198: Eyebrow3.R
+    400200: Eyebrow3.R_end
+    400202: Eyebrow4.L
+    400204: Eyebrow4.L_end
+    400206: Eyebrow4.R
+    400208: Eyebrow4.R_end
+    400210: //RootNode
+    400212: Jaw
+    400214: Jaw Stretch
+    400216: Jaw_end
+    400218: Lip Corner.L
+    400220: Lip Corner.L_end
+    400222: Lip Corner.R
+    400224: Lip Corner.R_end
+    400226: Lip Lower
+    400228: Lip Lower 2.L
+    400230: Lip Lower 2.R
+    400232: Lip Side 1.L
+    400234: Lip Side 1.L_end
+    400236: Lip Side 1.R
+    400238: Lip Side 1.R_end
+    400240: Lip Side 2.L
+    400242: Lip Side 2.R
+    400244: Lip Side 3.L
+    400246: Lip Side 3.R
+    400248: Lip Upper 1
+    400250: Lip Upper 2.L
+    400252: Lip Upper 2.R
+    400254: Lips
+    400256: Lower Lid A 1.L
+    400258: Lower Lid A 1.L_end
+    400260: Lower Lid A 1.R
+    400262: Lower Lid A 1.R_end
+    400264: Lower Lid A 2.L
+    400266: Lower Lid A 2.L_end
+    400268: Lower Lid A 2.R
+    400270: Lower Lid A 2.R_end
+    400272: Lower Lid A 3.L
+    400274: Lower Lid A 3.L_end
+    400276: Lower Lid A 3.R
+    400278: Lower Lid A 3.R_end
+    400280: Lower Lid A 4.L
+    400282: Lower Lid A 4.L_end
+    400284: Lower Lid A 4.R
+    400286: Lower Lid A 4.R_end
+    400288: Lower Lid A 5.L
+    400290: Lower Lid A 5.L_end
+    400292: Lower Lid A 5.R
+    400294: Lower Lid A 5.R_end
+    400296: Lower Lid b 1.L
+    400298: Lower Lid b 1.L_end
+    400300: Lower Lid b 1.R
+    400302: Lower Lid b 1.R_end
+    400304: Lower Lid b 2.L
+    400306: Lower Lid b 2.L_end
+    400308: Lower Lid b 2.R
+    400310: Lower Lid b 2.R_end
+    400312: Lower Lid B 3.L
+    400314: Lower Lid B 3.L_end
+    400316: Lower Lid B 3.R
+    400318: Lower Lid B 3.R_end
+    400320: Lower Lid B 4.L
+    400322: Lower Lid B 4.L_end
+    400324: Lower Lid B 4.R
+    400326: Lower Lid B 4.R_end
+    400328: Lower Lid B 5.L
+    400330: Lower Lid B 5.L_end
+    400332: Lower Lid B 5.R
+    400334: Lower Lid B 5.R_end
+    400336: Lower Lid.L
+    400338: Lower Lid.L_end
+    400340: Lower Lid.R
+    400342: Lower Lid.R_end
+    400344: Lower Lips
+    400346: Lower Lips_end
+    400348: Lower Teeth
+    400350: Lower Teeth_end
+    400352: Master Face
+    400354: MCH-Jaw Stretch Target
+    400356: MCH-Jaw Stretch Target_end
+    400358: MCH-Lip Lower 2.L
+    400360: MCH-Lip Lower 2.R
+    400362: MCH-Lip Rotation Lower
+    400364: MCH-Lip Rotation Master
+    400366: MCH-Lip Rotation upper
+    400368: MCH-Lip Side 1.L
+    400370: MCH-Lip Side 1.R
+    400372: MCH-Lip Side 2.L
+    400374: MCH-Lip Side 2.R
+    400376: MCH-Lip Side 3.L
+    400378: MCH-Lip Side 3.R
+    400380: MCH-Lip Upper 2.L
+    400382: MCH-Lip Upper 2.R
+    400384: MCH-Lower Head
+    400386: MCH-Lower Head.002
+    400388: MCH-Lower Head.002_end
+    400390: MCH-Upper Head
+    400392: Nose Bridge
+    400394: Nose Bridge1
+    400396: Nose Bridge1_end
+    400398: Nose Bridge2
+    400400: Nose Bridge2_end
+    400402: Nose Bridge_end
+    400404: Nose Master
+    400406: Nose Side.L
+    400408: Nose Side.L_end
+    400410: Nose Side.R
+    400412: Nose Side.R_end
+    400414: Nose Tip
+    400416: Nose Tip.001
+    400418: Nose Tip_end
+    400420: Nose.L
+    400422: Nose.R
+    400424: Rig Facial
+    400426: Upper Lid A 1.L
+    400428: Upper Lid A 1.L_end
+    400430: Upper Lid A 1.R
+    400432: Upper Lid A 1.R_end
+    400434: Upper Lid A 2.L
+    400436: Upper Lid A 2.L_end
+    400438: Upper Lid A 2.R
+    400440: Upper Lid A 2.R_end
+    400442: Upper Lid A 3.L
+    400444: Upper Lid A 3.L_end
+    400446: Upper Lid A 3.R
+    400448: Upper Lid A 3.R_end
+    400450: Upper Lid B 1.L
+    400452: Upper Lid B 1.L_end
+    400454: Upper Lid B 1.R
+    400456: Upper Lid B 1.R_end
+    400458: Upper Lid B 2.L
+    400460: Upper Lid B 2.L_end
+    400462: Upper Lid B 2.R
+    400464: Upper Lid B 2.R_end
+    400466: Upper Lid B 3.L
+    400468: Upper Lid B 3.L_end
+    400470: Upper Lid B 3.R
+    400472: Upper Lid B 3.R_end
+    400474: Upper Lid.L
+    400476: Upper Lid.L_end
+    400478: Upper Lid.R
+    400480: Upper Lid.R_end
+    400482: Upper Lips
+    400484: Upper Lips_end
+    400486: Upper Teeth
+    400488: Upper Teeth_end
+    2100000: Material.001
+    2100002: SHADELESS
+    4300000: a.002
+    4300002: a.001
+    4300004: a.003
+    7400000: Rig Facial|BLockingAction
+    7400002: Rig Facial|CameraAction
+    7400004: Rig Facial|Corrective Eyes
+    7400006: Rig Facial|Corrective Mouth
+    9500000: //RootNode
+    13700000: a.001
+    13700002: a.002
+    13700004: a.003
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000002
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 0.1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.049999993
+    legStretch: 0.049999993
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
