@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18071395, g: 0.22622772, b: 0.30715054, a: 1}
+  m_IndirectSpecularColor: {r: 0.18071386, g: 0.22622398, b: 0.3071474, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5454,7 +5454,7 @@ MonoBehaviour:
   apply_vx_on_load: 1
   editorCamera: {fileID: 1623507213}
   fixedFrameRate: 1
-  TargetFrameRate: 12
+  TargetFrameRate: 2
   recordingPath: C:\Voxon\Media\MyCaptures\framedata
   recordOnLoad: 0
   recordingStyle: 1
@@ -5840,11 +5840,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filename: default.json
   keyboard:
-    buckets: ffffffffffffffffffffffff010000000500000009000000ffffffffffffffffffffffff03000000ffffffffffffffff08000000ffffffffffffffff0700000006000000
-    hashCodes: 92ab9755d18ba0277377124cf86f8906f919075ceab07d513234eb46f963bb071692154e045bdc6200000000000000000000000000000000000000000000000000000000
-    next: ffffffffffffffffffffffff00000000ffffffffffffffff04000000ffffffffffffffff0200000000000000000000000000000000000000000000000000000000000000
-    count: 10
-    version: 51
+    buckets: 0d000000ffffffffffffffff010000000500000009000000ffffffffffffffffffffffff03000000ffffffff0c000000080000000b000000ffffffff0a00000006000000
+    hashCodes: 92ab9755d18ba0277377124cf86f8906f919075ceab07d513234eb46f963bb071692154e045bdc62d807a91f2ff8b166f6d75c35fcd75c35000000000000000000000000
+    next: ffffffffffffffffffffffff00000000ffffffffffffffff04000000ffffffffffffffff0200000007000000ffffffffffffffffffffffff000000000000000000000000
+    count: 14
+    version: 151
     freeList: -1
     freeCount: 0
     keys:
@@ -5858,14 +5858,14 @@ MonoBehaviour:
     - RotRight
     - Hide
     - Action
+    - RotateUp
+    - RotateDown
+    - RotateSideL
+    - RotateSideR
     - 
     - 
     - 
-    - 
-    - 
-    - 
-    - 
-    values: 3900000001000000cb000000cd000000c8000000d00000001000000012000000230000001400000000000000000000000000000000000000000000000000000000000000
+    values: 3900000001000000cb000000cd000000c8000000d000000010000000120000002300000014000000110000001f0000001e00000020000000000000000000000000000000
   mouse:
     buckets: ffffffff01000000ffffffff
     hashCodes: 7377124cf86f890600000000
@@ -6109,6 +6109,7 @@ GameObject:
   - component: {fileID: 1623507215}
   - component: {fileID: 1623507213}
   - component: {fileID: 1623507214}
+  - component: {fileID: 1623507219}
   m_Layer: 0
   m_Name: _camera
   m_TagString: VoxieHide
@@ -6232,6 +6233,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1623507219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623507212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569e1b066479b1b42808d09d4ea7fd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1638057186
 GameObject:
   m_ObjectHideFlags: 0
