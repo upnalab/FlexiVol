@@ -40,11 +40,11 @@ public class MoveMe : MonoBehaviour
         }
         if(Voxon.Input.GetKey("Up"))
         {
-        	gameObject.transform.Rotate(new Vector3(0,0,0.5f));
+        	gameObject.transform.Translate(new Vector3(0,-0.05f,0));
         }
         if(Voxon.Input.GetKey("Down"))
         {
-        	gameObject.transform.Rotate(new Vector3(0,0,-0.5f));
+        	gameObject.transform.Translate(new Vector3(0,0.05f,0));
         }
     }
 }

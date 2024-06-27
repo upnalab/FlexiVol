@@ -306,8 +306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable: 1
   MeshPath: 
-  VoxonRenderStyle: 2
-  enableLit: 1
+  VoxonRenderStyle: 3
+  enableLit: 0
   enableOverSaturate: 0
   CanExpire: 0
   automaticallyExpire: 0
@@ -359,8 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable: 1
   MeshPath: 
-  VoxonRenderStyle: 2
-  enableLit: 1
+  VoxonRenderStyle: 3
+  enableLit: 0
   enableOverSaturate: 0
   CanExpire: 0
   automaticallyExpire: 0
@@ -5445,7 +5445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VXInterface: 1
   VXUReportingLevel: 3
-  guidelines: 0
+  guidelines: 1
   show_info: 0
   show_info_xPos: 20
   show_info_yPos: 350
@@ -5454,7 +5454,7 @@ MonoBehaviour:
   apply_vx_on_load: 1
   editorCamera: {fileID: 1623507213}
   fixedFrameRate: 1
-  TargetFrameRate: 2
+  TargetFrameRate: 15
   recordingPath: C:\Voxon\Media\MyCaptures\framedata
   recordOnLoad: 0
   recordingStyle: 1
@@ -5709,8 +5709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable: 1
   MeshPath: 
-  VoxonRenderStyle: 2
-  enableLit: 1
+  VoxonRenderStyle: 3
+  enableLit: 0
   enableOverSaturate: 0
   CanExpire: 0
   automaticallyExpire: 0
