@@ -32,6 +32,10 @@ public class ChangeCameraView : MonoBehaviour
     void Update()
     {
         float frameRate = 1.0f/Time.deltaTime;
+
+        // Framerate is 60fps, need to cut this into nbSlices (12 up 12 down or 24?) and then for each cut, calculate camera nearClipPlane
+        // for now the near clip plane is moving continuously, maybe it needs to be 12 or 24 given planes
+
         // Debug.Log(1.0f/Time.deltaTime);
         camera.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0))); //currentSlice/nbSlices *
         // StartCoroutine(SlicingCamera());
