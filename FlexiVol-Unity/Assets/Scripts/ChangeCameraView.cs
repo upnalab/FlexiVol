@@ -6,54 +6,113 @@ public class ChangeCameraView : MonoBehaviour
 {
 
 	public int frequency;
-	public int frequencyUnity = 60;
+	// public int frequencyUnity = 60;
 
 	public int nbSlices = 24;
+    public float currentSlice, orderSlices;
 	public float amplitude; // amplitude of the device, should convert into the depth of the camera
 	public float maxDistance, minDistance;
 	public Camera camera;
-	private float time0, timeStart, timeFinish;
-	private float factor;
 
-	private float meanMe, addToMean, meanTimeFrame;
+    public int oldCount, countMe, frame;
+    public bool startOver, frameAchieved;
+    public float time0;
 
     // Start is called before the first frame update
     void Start()
     {
         camera = this.GetComponent<Camera>();
+        maxDistance = this.transform.GetChild(0).gameObject.transform.localScale.z;
+        minDistance = 0;
         time0 = Time.time;
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-    	timeStart = Time.time;
-       
+        float frameRate = 1.0f/Time.deltaTime;
+        // Debug.Log(1.0f/Time.deltaTime);
+        camera.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0))); //currentSlice/nbSlices *
+        // StartCoroutine(SlicingCamera());
+        camera.farClipPlane = camera.nearClipPlane + maxDistance/nbSlices;
 
-    	// should do a coroutine so it's not per frame -> do it every second, 24 slices
-        camera.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Sin(2*Mathf.PI * frequency*frequencyUnity*nbSlices * (Time.time - time0)/1000);
-        camera.farClipPlane = camera.nearClipPlane + 0.05f;
+        currentSlice = Mathf.Round(camera.nearClipPlane/maxDistance * nbSlices);
+        Debug.Log(currentSlice);
+        // if(currentSlice == 23)
+        // {
+        //     countMe = countMe + 1;
+        // }
+        // StartCoroutine(HowManySweeps());
+        // if(orderSlices >= nbSlices*2)
+        // {
+        //     orderSlices = nbSlices*2;
+        // }
+        // if(orderSlices < 0)
+        // {
+        //     orderSlices = 0;
+        // }
+        
+
+        // if(camera.nearClipPlane > 0.9f)
+        // {
+        //     Debug.Log("bla");
+        //     countMe = countMe + 1;
+
+        // }
+        // if(countMe > 0)
+        // {
+        //     startOver = false;
+
+        //     StartCoroutine(HowManySweeps());
+        // }
+        // if(startOver)
+        // {
+        //     countMe = 0;
+        //     startOver = false;
+        // }
+
+        // frame = frame+1;
+        // if((frame % (1.0f/Time.deltaTime)) == 0)
+        // {
+        //     frameAchieved = true;
+        //     frame = 0;
+        // }
+        // else
+        // {
+        //     frameAchieved = false;
+        // }
+
+        // oldCount = countMe;
+    }
+
+
+    IEnumerator SlicingCamera()
+    {
+        // float frameRate = 1.0f/Time.deltaTime;
+    	yield return new WaitForEndOfFrame();//1/frequency/nbSlices);
+        // Debug.Log(frameRate/frequency);
+        orderSlices = (orderSlices+1)%(nbSlices*2);
+        if(orderSlices >= nbSlices)
+        {
+            currentSlice = (currentSlice-1)%nbSlices;
+
+        }
+        else
+        {
+            currentSlice = (currentSlice+1)%nbSlices;
+        }
 
     }
 
-    void LateUpdate()
+    IEnumerator HowManySweeps()
     {
-    	// timeFinish = Time.time;
-    	// addToMean = (timeFinish - timeFinish);
-    	// meanMe = meanMe + 1;
-
-    	// meanTimeFrame = meanTimeFrame + addToMean;
-    	// StartCoroutine(GetUnityFrameRate());
+        yield return new WaitForSecondsRealtime(1.0f);
+        Debug.Log(countMe);
+        // countMe = 0;
+        // startOver = true;
+        // frame = 0;
 
     }
 
-    // IEnumerator GetUnityFrameRate()
-    // {
-    // 	Debug.Log("Mean frameRate = " + meanTimeFrame/meanMe);
-    // 	factor = frequency / meanTimeFrame/meanMe;
-    // 	yield return new WaitForSeconds(1);
-    	
-    // 	meanMe = 0;
-    // 	meanTimeFrame = 0;
-    // }
 }
