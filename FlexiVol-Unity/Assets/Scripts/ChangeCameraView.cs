@@ -5,7 +5,8 @@ using UnityEngine;
 public class ChangeCameraView : MonoBehaviour
 {
 
-	public int frequency;
+	public float frequency;
+	public float phase;
 	// public int frequencyUnity = 60;
 
 	public int nbSlices = 24;
@@ -37,7 +38,7 @@ public class ChangeCameraView : MonoBehaviour
         // for now the near clip plane is moving continuously, maybe it needs to be 12 or 24 given planes
 
         // Debug.Log(1.0f/Time.deltaTime);
-        camera.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0))); //currentSlice/nbSlices *
+        camera.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase)); //currentSlice/nbSlices *
         // StartCoroutine(SlicingCamera());
         camera.farClipPlane = camera.nearClipPlane + maxDistance/nbSlices;
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18071386, g: 0.22622398, b: 0.3071474, a: 1}
+  m_IndirectSpecularColor: {r: 0.18071395, g: 0.22622772, b: 0.30715054, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enable: 1
   MeshPath: 
-  VoxonRenderStyle: 3
+  VoxonRenderStyle: 1
   enableLit: 0
   enableOverSaturate: 0
   CanExpire: 0
@@ -6109,13 +6109,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frequency: 12
-  frequencyUnity: 60
   nbSlices: 24
   currentSlice: 0
+  orderSlices: 0
   amplitude: 8
   maxDistance: 0.59999996
   minDistance: 1
   camera: {fileID: 0}
+  oldCount: 0
+  countMe: 0
+  frame: 0
+  startOver: 0
+  frameAchieved: 0
+  time0: 0
 --- !u!1 &1623507212
 GameObject:
   m_ObjectHideFlags: 0
