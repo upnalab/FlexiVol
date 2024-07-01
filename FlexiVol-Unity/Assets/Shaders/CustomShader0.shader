@@ -26,7 +26,9 @@ Shader "Custom/CustomShader0"
             half4 frag(v2f i) : SV_Target {
                 return half4(0,0,0,1);
             }
+            
             ENDCG
+
         }
     } 
 }
