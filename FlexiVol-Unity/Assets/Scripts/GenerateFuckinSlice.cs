@@ -11,8 +11,16 @@ public class GenerateFuckinSlice : MonoBehaviour
     private float time0;
     private float maxDistance, minDistance;
 
+    public GameObject cuttingPlane;
+
 
 //  I THINK WE NEED THE BITMAP WHATEVER STUFF TO CUT THE PLANES
+
+    // void Awake()
+    // {
+    //     cameraBack.clearFlags = CameraClearFlags.Nothing;
+
+    // }
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +28,8 @@ public class GenerateFuckinSlice : MonoBehaviour
         maxDistance = 1;
         minDistance = 0;
         time0 = Time.time;
+        // cameraBack.clearFlags = CameraClearFlags.Depth;
+
         // cameraBack.gameObject.transform.forward = -cameraFront.gameObject.transform.forward;
         // cameraBack.gameObject.transform.up = cameraFront.gameObject.transform.up;
     }
@@ -27,32 +37,28 @@ public class GenerateFuckinSlice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // for(int i = 0; i < nbSlices; i++)
+        // if(Input.GetKeyDown(KeyCode.K))
         // {
-        // 	// Debug.Log(i);
-        // 	if((i % 2) == 0)
-        // 	{
-        // 		Debug.Log("FRONT");
-        		// cameraFront.enabled = true;
+        //     // cameraBack.targetDisplay = 0;
+        //     if(cameraBack.clearFlags == CameraClearFlags.Depth)
+        //     {
+        //         cameraBack.clearFlags = CameraClearFlags.Nothing;
+        //     }
+        //     else
+        //     {
+        //         cameraBack.clearFlags = CameraClearFlags.Depth;
 
-        		// cameraBack.targetDisplay = 2;
-        		// cameraFront.targetDisplay = 1;
-        		// cameraBack.enabled = false;
-        		cameraFront.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))); //currentSlice/nbSlices *
-		        cameraFront.farClipPlane = cameraFront.nearClipPlane + maxDistance/nbSlices;
-        	// }
-        	// else
-        	// {
-        	// 	Debug.Log("BACK");
-        		// cameraBack.enabled = true;
-        		// cameraBack.targetDisplay = 1;
-        		// cameraFront.targetDisplay = 2;
+        //     }
+        // }
 
-        		// cameraFront.enabled = false;
-        		cameraBack.farClipPlane = maxDistance + (minDistance - maxDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))); //currentSlice/nbSlices *
-		        cameraBack.nearClipPlane = cameraBack.farClipPlane - maxDistance/nbSlices;
+        
+    		// cameraFront.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))); //currentSlice/nbSlices *
+	     //    cameraFront.farClipPlane = cameraFront.nearClipPlane + maxDistance/nbSlices;
+    	
+    		// cameraBack.farClipPlane = maxDistance + (minDistance - maxDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))); //currentSlice/nbSlices *
+	     //    cameraBack.nearClipPlane = cameraBack.farClipPlane - maxDistance/nbSlices;
 
-
+        cuttingPlane.transform.localPosition = new Vector3(cuttingPlane.transform.position.x, cuttingPlane.transform.position.y, minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))));
 
 		        // cameraBack.farClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase)); //currentSlice/nbSlices *
 		        // cameraBack.nearClipPlane = cameraBack.farClipPlane - maxDistance/nbSlices;
