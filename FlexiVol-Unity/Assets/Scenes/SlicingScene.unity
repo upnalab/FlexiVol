@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdb7f60da8bd1e46a92bc1794b8bb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 11
+  frequency: 0.5
   phase: 0
   cameraFront: {fileID: 1585140967}
   cameraBack: {fileID: 1396778059}
@@ -186,8 +186,6 @@ GameObject:
   - component: {fileID: 131147359}
   - component: {fileID: 131147358}
   - component: {fileID: 131147357}
-  - component: {fileID: 131147356}
-  - component: {fileID: 131147355}
   m_Layer: 1
   m_Name: OCube (1)
   m_TagString: Untagged
@@ -210,38 +208,6 @@ Transform:
   m_Father: {fileID: 1585140968}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -10621.079, y: -10589.242, z: -10619.358}
---- !u!114 &131147355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131147353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd59590c8481d34f88d24b95a5480fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &131147356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131147353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14207d7c7ba3eaa4fa69802bddfdfe86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enable: 1
-  MeshPath: 
-  VoxonRenderStyle: 3
-  enableLit: 0
-  enableOverSaturate: 0
-  CanExpire: 0
-  automaticallyExpire: 0
-  TimeToExpire: 2
 --- !u!114 &131147357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,7 +369,6 @@ GameObject:
   - component: {fileID: 588361887}
   - component: {fileID: 588361886}
   - component: {fileID: 588361890}
-  - component: {fileID: 588361891}
   m_Layer: 0
   m_Name: OCube
   m_TagString: Untagged
@@ -501,18 +466,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4e94ca0e32e5a41b1b76dbcfc30791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &588361891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 588361885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd59590c8481d34f88d24b95a5480fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &598734553
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +478,6 @@ GameObject:
   - component: {fileID: 598734558}
   - component: {fileID: 598734557}
   - component: {fileID: 598734556}
-  - component: {fileID: 598734554}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -533,18 +485,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &598734554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598734553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 395128a55fe13254d9c6c5435e4072e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &598734556
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -740,7 +680,6 @@ GameObject:
   - component: {fileID: 989562218}
   - component: {fileID: 989562217}
   - component: {fileID: 989562216}
-  - component: {fileID: 989562215}
   m_Layer: 1
   m_Name: NCube (1)
   m_TagString: Untagged
@@ -763,26 +702,6 @@ Transform:
   m_Father: {fileID: 1585140968}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &989562215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989562213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14207d7c7ba3eaa4fa69802bddfdfe86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enable: 1
-  MeshPath: 
-  VoxonRenderStyle: 3
-  enableLit: 0
-  enableOverSaturate: 0
-  CanExpire: 0
-  automaticallyExpire: 0
-  TimeToExpire: 2
 --- !u!114 &989562216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,11 +1207,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2661c21f4ef3745499af4daaedb44935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeImage: 64
   showMe: 0
   tex: {fileID: 8400000, guid: 40ef55718b42184408a00ac49172fd1d, type: 2}
   myTexture: {fileID: 0}
+  reMergedTexture: {fileID: 0}
   rawImage: {fileID: 170103680}
+  bitPlaneTextures: []
   texturedPlanes: []
+  bitplanes: []
 --- !u!224 &1286026272
 RectTransform:
   m_ObjectHideFlags: 0
