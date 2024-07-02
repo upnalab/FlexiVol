@@ -32,7 +32,7 @@ Shader "Custom/CustomShader1"
                 return o;
             }
             half4 frag(v2f i) : SV_Target {
-                return half4(0,0,1,0.0);
+                return half4(0,0,1,0);
             }
             ENDCG
         }
@@ -65,7 +65,7 @@ Shader "Custom/CustomShader1"
                 return o;
             }
             half4 frag(v2f i) : SV_Target {
-                return half4(1,0,0,1);
+                return half4(1,0.2,0.5,1);
             }
             ENDCG
         }
