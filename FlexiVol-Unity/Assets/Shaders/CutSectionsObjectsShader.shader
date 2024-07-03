@@ -1,4 +1,4 @@
-Shader "Custom/CustomShader1"
+Shader "Custom/CutSectionsObjectsShader"
 {
    SubShader {
         Tags {"Queue" = "Transparent"  "RenderType"="Transparent" }

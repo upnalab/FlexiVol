@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenerateFuckinSlice : MonoBehaviour
+public class GenerateSlice : MonoBehaviour
 {
 	public float frequency;
 	public int phase;
     public int cutSectionID;
-	public Camera cameraFront, cameraBack;
 	public float nbSlices = 12;
     private float time0, timeIndex, positionPlane;
     private float maxDistance, minDistance;
@@ -17,13 +16,6 @@ public class GenerateFuckinSlice : MonoBehaviour
     AudioSource audioSource;
     private int sampleRate = 1;
 
-//  I THINK WE NEED THE BITMAP WHATEVER STUFF TO CUT THE PLANES
-
-    // void Awake()
-    // {
-    //     cameraBack.clearFlags = CameraClearFlags.Nothing;
-
-    // }
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +28,9 @@ public class GenerateFuckinSlice : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 0; //force 2D sound
         audioSource.Stop(); //avoids audiosource from starting to play automatically
-        // cameraBack.clearFlags = CameraClearFlags.Depth;
+        
         audioSource.loop = true;
 
-        // cameraBack.gameObject.transform.forward = -cameraFront.gameObject.transform.forward;
-        // cameraBack.gameObject.transform.up = cameraFront.gameObject.transform.up;
     }
 
     // Update is called once per frame
@@ -59,26 +49,14 @@ public class GenerateFuckinSlice : MonoBehaviour
                 audioSource.Stop();
             }
         }
+
+
         timeIndex = Time.time - time0;
-    
         cuttingPlane.transform.localPosition = new Vector3(cuttingPlane.transform.position.x, cuttingPlane.transform.position.y, positionPlane);
 
         cutSectionID = (int)Mathf.Floor((positionPlane / maxDistance)*nbSlices);
-        
-    		// cameraFront.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))); //currentSlice/nbSlices *
-	     //    cameraFront.farClipPlane = cameraFront.nearClipPlane + maxDistance/nbSlices;
-    	
-    		// cameraBack.farClipPlane = maxDistance + (minDistance - maxDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))); //currentSlice/nbSlices *
-	     //    cameraBack.nearClipPlane = cameraBack.farClipPlane - maxDistance/nbSlices;
 
-        // cuttingPlane.transform.localPosition = new Vector3(cuttingPlane.transform.position.x, cuttingPlane.transform.position.y, minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))));
 
-		        // cameraBack.farClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase)); //currentSlice/nbSlices *
-		        // cameraBack.nearClipPlane = cameraBack.farClipPlane - maxDistance/nbSlices;
-        // 	}
-
-        // 	// Debug.Log("FRONT:" + cameraFront.nearClipPlane + "; BACK: " + cameraBack.nearClipPlane);
-        // }
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			phase = phase + 1;
@@ -93,7 +71,7 @@ public class GenerateFuckinSlice : MonoBehaviour
     {
         for(int i = 0; i < data.Length; i+= channels)
         {          
-            data[i] = CreateSine(timeIndex, frequency, sampleRate);           
+            data[i] = CreateSine(timeIndex, frequency, sampleRate, phase);           
             positionPlane = Mathf.Abs(CreateSine(timeIndex, frequency, sampleRate, phase));    
         }
 

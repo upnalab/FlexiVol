@@ -1,4 +1,4 @@
-Shader "Custom/CustomShader0"
+Shader "Custom/SlicingPlaneShader"
 {
     SubShader {
         Tags { "RenderType"="Opaque" "Queue"="Geometry"}

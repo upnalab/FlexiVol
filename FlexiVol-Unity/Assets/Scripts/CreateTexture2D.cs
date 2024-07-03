@@ -9,7 +9,7 @@ namespace OpenCvSharp.Demo
 
 	public class CreateTexture2D : MonoBehaviour
 	{
-		public int sizeImage = 64;
+		private int sizeImageH, sizeImageW;
 		public RenderTexture tex;
 		public Texture2D myTexture, reMergedTexture;
 		public RawImage rawImage;
@@ -25,13 +25,15 @@ namespace OpenCvSharp.Demo
 		}
 
 		private bitPlaneInfo[] bitplanes;
-		public GenerateFuckinSlice cuttingPlane;
+		public GenerateSlice cuttingPlane;
 
 
 	    // Start is called before the first frame update
 	    void Start()
 	    {
-	    	cuttingPlane = GameObject.FindObjectOfType<GenerateFuckinSlice>();
+	    	sizeImageH = this.tex.height;
+	    	sizeImageW = this.tex.width;
+	    	cuttingPlane = GameObject.FindObjectOfType<GenerateSlice>();
 	        testMatrix = new Mat[3];
 	        // texturedPlanes = new Texture2D[3]; // 0 is B, 1 is G, 2 is R
 
@@ -41,13 +43,13 @@ namespace OpenCvSharp.Demo
 	    	for(int j = 0; j < 8; j++)
 			{
 				bitplanes[j].bitplaneID = j;
-				bitplanes[j].pixels = new Color32[sizeImage*sizeImage];
+				bitplanes[j].pixels = new Color32[sizeImageW*sizeImageH];
 
 				bitplanes[j+8].bitplaneID = j+8;
-				bitplanes[j+8].pixels = new Color32[sizeImage*sizeImage];
+				bitplanes[j+8].pixels = new Color32[sizeImageW*sizeImageH];
 
 				bitplanes[j+16].bitplaneID = j+16;
-				bitplanes[j+16].pixels = new Color32[sizeImage*sizeImage];
+				bitplanes[j+16].pixels = new Color32[sizeImageW*sizeImageH];
 
 			}
 
@@ -74,7 +76,7 @@ namespace OpenCvSharp.Demo
 
 	    Texture2D toTexture2D(RenderTexture rTex)
 		{
-		    Texture2D tex = new Texture2D(64, 64, TextureFormat.RGB24, false);
+		    Texture2D tex = new Texture2D(sizeImageW, sizeImageH, TextureFormat.RGB24, false);
 		    // ReadPixels looks at the active RenderTexture.
 		    RenderTexture.active = rTex;
 		    tex.ReadPixels(new UnityEngine.Rect(0, 0, rTex.width, rTex.height), 0, 0);
@@ -115,7 +117,7 @@ namespace OpenCvSharp.Demo
 				reMergedTexture.Apply();
 				rawImage.texture = reMergedTexture;
 				yield return new WaitForEndOfFrame(); // HERE NEED TO WAIT ILL TIME
-				// yield return new WaitForSeconds(1/(cuttingPlane.frequency*cuttingPlane.nbSlices));
+				// yield return new WaitForSeconds(Time.deltaTime);
 				// Debug.Log(cuttingPlane.cutSectionID);
 				// yield return new WaitUntil(() => cuttingPlane.cutSectionID == j);
 				// Maybe make some kind of bool from the slicing plane
