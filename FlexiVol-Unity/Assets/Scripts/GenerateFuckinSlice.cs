@@ -6,6 +6,7 @@ public class GenerateFuckinSlice : MonoBehaviour
 {
 	public float frequency;
 	public int phase;
+    public int cutSectionID;
 	public Camera cameraFront, cameraBack;
 	public float nbSlices = 12;
     private float time0, timeIndex, positionPlane;
@@ -62,6 +63,7 @@ public class GenerateFuckinSlice : MonoBehaviour
     
         cuttingPlane.transform.localPosition = new Vector3(cuttingPlane.transform.position.x, cuttingPlane.transform.position.y, positionPlane);
 
+        cutSectionID = (int)Mathf.Floor((positionPlane / maxDistance)*nbSlices);
         
     		// cameraFront.nearClipPlane = minDistance + (maxDistance - minDistance) * Mathf.Abs(Mathf.Sin(2*Mathf.PI * frequency *  (Time.time - time0) + phase/(180*Mathf.PI))); //currentSlice/nbSlices *
 	     //    cameraFront.farClipPlane = cameraFront.nearClipPlane + maxDistance/nbSlices;

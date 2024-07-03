@@ -154,9 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frequency: 0.5
   phase: 0
+  cutSectionID: 0
   cameraFront: {fileID: 1585140967}
   cameraBack: {fileID: 1396778059}
-  nbSlices: 12
+  nbSlices: 24
   cuttingPlane: {fileID: 1196881329}
 --- !u!4 &7705296
 Transform:
@@ -1208,14 +1209,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sizeImage: 64
-  showMe: 0
   tex: {fileID: 8400000, guid: 40ef55718b42184408a00ac49172fd1d, type: 2}
   myTexture: {fileID: 0}
   reMergedTexture: {fileID: 0}
   rawImage: {fileID: 170103680}
-  bitPlaneTextures: []
-  texturedPlanes: []
-  bitplanes: []
+  cuttingPlane: {fileID: 0}
 --- !u!224 &1286026272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1223,14 +1221,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1286026263}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.082222044}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.563, y: -0.09058462}

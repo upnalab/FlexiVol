@@ -1,7 +1,7 @@
 Shader "Custom/CustomShader1"
 {
    SubShader {
-        Tags {"Queue" = "Transparent" "RenderType"="Transparent" }
+        Tags {"Queue" = "Transparent"  "RenderType"="Transparent" }
         Blend SrcAlpha OneMinusSrcAlpha
 
         Pass {
