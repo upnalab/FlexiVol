@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 7705296}
   - component: {fileID: 7705295}
   - component: {fileID: 7705297}
+  - component: {fileID: 7705298}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdb7f60da8bd1e46a92bc1794b8bb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 0.5
+  frequency: 11
   phase: 0
   cutSectionID: 0
   nbSlices: 24
@@ -190,6 +191,18 @@ MonoBehaviour:
   reMergedTexture: {fileID: 0}
   rawImage: {fileID: 170103680}
   cuttingPlane: {fileID: 0}
+--- !u!114 &7705298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7705294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f1e387bc9730449819818e642d56aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &131147353
 GameObject:
   m_ObjectHideFlags: 0

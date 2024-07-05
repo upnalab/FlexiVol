@@ -102,15 +102,23 @@ public class GenerateBitPlanes : MonoBehaviour
 		for(int j = 0; j < 24; j++)
 		{
 			bitPlaneTextures[j].SetPixels32(bitplanes[j].pixels, 0);
+			// Debug.Log(j + ";" + bitplanes[j].pixels[150]);
 			reMergedTexture = bitPlaneTextures[j];
 			reMergedTexture.Apply();
 			rawImage.texture = reMergedTexture;
-			yield return new WaitForEndOfFrame(); // HERE NEED TO WAIT ILL TIME
-		}
+			// bitPlaneTextures[2*j].SetPixels32(bitplanes[2*j].pixels, 0);
+			// reMergedTexture = bitPlaneTextures[2*j];
+			// reMergedTexture.Apply();
+			// rawImage.texture = reMergedTexture;
+			// yield return new WaitForEndOfFrame();
+			yield return new WaitForFixedUpdate();
 
+		}
+		// yield return new WaitForFixedUpdate();
 		// yield return new WaitForEndOfFrame();
 		float timeDebug = Time.time - timeEntering;
 		Debug.Log("BitPlanes: " + timeDebug);
+
 		// Probably need to launch it frequency per second -> not every frame ((1/Time.deltaTime)/11)
     	StartCoroutine(CalculateBitPlane());
 
