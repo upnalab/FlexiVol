@@ -61,6 +61,7 @@ public class GenerateBitPlanes : MonoBehaviour
         	StartCoroutine(CalculateBitPlane());
         }
         StartCoroutine(MeasureFrameRate());
+        
 
     }
 
@@ -110,8 +111,8 @@ public class GenerateBitPlanes : MonoBehaviour
 			// reMergedTexture = bitPlaneTextures[2*j];
 			// reMergedTexture.Apply();
 			// rawImage.texture = reMergedTexture;
-			// yield return new WaitForEndOfFrame();
-			yield return new WaitForFixedUpdate();
+			yield return new WaitForEndOfFrame();
+			// yield return new WaitForFixedUpdate();
 
 		}
 		// yield return new WaitForFixedUpdate();

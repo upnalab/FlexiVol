@@ -672,12 +672,12 @@ MonoBehaviour:
   show_info: 0
   show_info_xPos: 20
   show_info_yPos: 350
-  active: 1
+  active: 0
   bypassDraws: 0
   apply_vx_on_load: 1
   editorCamera: {fileID: 0}
   fixedFrameRate: 1
-  TargetFrameRate: 60
+  TargetFrameRate: 150
   recordingPath: C:\Voxon\Media\MyCaptures\framedata
   recordOnLoad: 0
   recordingStyle: 1
