@@ -1,8 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+
+namespace OpenCvSharp.Demo
+{
+	using UnityEngine;
+	using System.Collections;
+	using OpenCvSharp;
+	using System;
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
+	using UnityEngine.UI;
+	using UnityEditor.Scripting.Python;
 
 public class GenerateBitPlanes : MonoBehaviour
 {
@@ -58,7 +65,9 @@ public class GenerateBitPlanes : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-        	StartCoroutine(CalculateBitPlane());
+        	// StartCoroutine(CalculateBitPlane());
+        	StartCoroutine(CalculateGrayScale());
+        	StartCoroutine(RunPythonRoutineFile());
         }
         StartCoroutine(MeasureFrameRate());
         
@@ -75,6 +84,35 @@ public class GenerateBitPlanes : MonoBehaviour
 
 	    return tex;
 	}
+
+	IEnumerator CalculateGrayScale()
+	{
+		myTexture = toTexture2D(tex);
+		Mat mat = Unity.TextureToMat (myTexture);
+		Mat grayMat = new Mat ();
+		Cv2.CvtColor (mat, grayMat, ColorConversionCodes.BGR2GRAY); 
+		Texture2D texture = Unity.MatToTexture (grayMat);
+		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/TextureAsPNG.png");
+		rawImage.texture = texture;
+		yield return new WaitForEndOfFrame();
+
+		StartCoroutine(CalculateGrayScale());
+
+	}
+
+	public static void SaveTextureAsPNG(Texture2D _texture, string _fullPath)
+    {
+        byte[] _bytes =_texture.EncodeToPNG();
+        System.IO.File.WriteAllBytes(_fullPath, _bytes);
+        Debug.Log(_bytes.Length/1024  + "Kb was saved as: " + _fullPath);
+    }
+
+	IEnumerator RunPythonRoutineFile()
+    {
+    	PythonRunner.RunFile($"./Assets/Python/CreateBitPlanes.py");
+    	yield return new WaitForEndOfFrame();
+    	StartCoroutine(RunPythonRoutineFile());
+    }
 
 	IEnumerator MeasureFrameRate()
 	{
@@ -100,6 +138,7 @@ public class GenerateBitPlanes : MonoBehaviour
 				
 			}
 		}
+
 		for(int j = 0; j < 24; j++)
 		{
 			bitPlaneTextures[j].SetPixels32(bitplanes[j].pixels, 0);
@@ -125,4 +164,5 @@ public class GenerateBitPlanes : MonoBehaviour
 
 
 	}
+}
 }
