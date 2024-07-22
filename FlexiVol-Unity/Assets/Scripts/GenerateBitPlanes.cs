@@ -29,6 +29,7 @@ public class GenerateBitPlanes : MonoBehaviour
 	private bitPlaneInfo[] bitplanes;
 	public GenerateSlice cuttingPlane;
 	public int numberToRun = 0;
+	public bool lesgo;
 
 
     // Start is called before the first frame update
@@ -66,13 +67,31 @@ public class GenerateBitPlanes : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+        	numberToRun = 0;
+        	if(!lesgo)
+        	{
+        		lesgo = true;
+        	}
+        	else
+        	{
+        		lesgo = false;
+        	}
+        	// Calculate24PNG();
+			// StartCoroutine(Calculate24PNG());
+
         	// StartCoroutine(CalculateBitPlane());
-        	StartCoroutine(CalculateGrayScale());
-        	StartCoroutine(RunPythonRoutineFile());
+
+        	// StartCoroutine(CalculateGrayScale());
+        	// StartCoroutine(RunPythonRoutineFile());
         }
         StartCoroutine(MeasureFrameRate());
-        numberToRun = (numberToRun + 1)%2;
-        
+        if(lesgo && numberToRun < 24)
+        {
+        	StartCoroutine(Calculate24PNG());
+        	numberToRun = numberToRun + 1; 
+        }
+        // numberToRun = (numberToRun + 1)%2;    
+        // numberToRun = numberToRun + 1;    
 
     }
 
@@ -86,6 +105,26 @@ public class GenerateBitPlanes : MonoBehaviour
 
 	    return tex;
 	}
+
+
+	IEnumerator Calculate24PNG()
+	{
+		Texture2D texture = toTexture2D(tex);
+		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/TextureAsPNG-"+numberToRun+".png");
+		rawImage.texture = texture;
+		// yield return new WaitForEndOfFrame();
+		yield return new WaitUntil(() => (numberToRun == 24));
+		numberToRun = 0;
+		StartCoroutine(RunPythonFullImage());	
+		StartCoroutine(Calculate24PNG());
+
+	}
+
+	IEnumerator RunPythonFullImage()
+    {
+    	PythonRunner.RunFile($"./Assets/Python/CreateBitPlanes-all.py");
+    	yield return new WaitForEndOfFrame();
+    }
 
 	IEnumerator CalculateGrayScale()
 	{

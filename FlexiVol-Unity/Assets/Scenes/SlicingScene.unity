@@ -192,6 +192,7 @@ MonoBehaviour:
   rawImage: {fileID: 170103680}
   cuttingPlane: {fileID: 0}
   numberToRun: 0
+  lesgo: 0
 --- !u!114 &7705298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +401,7 @@ GameObject:
   - component: {fileID: 239633119}
   - component: {fileID: 239633118}
   - component: {fileID: 239633122}
+  - component: {fileID: 239633123}
   m_Layer: 0
   m_Name: Plane (1)
   m_TagString: Untagged
@@ -441,7 +443,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f656d96057c674c4bb5ae088dfccdd15, type: 2}
+  - {fileID: 2100000, guid: 95610ecfc4022cf49bbd4dbe00106046, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -498,15 +500,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239633117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d0eee2d65215cd4c88670d843c6b8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changedMaterials:
-  - {fileID: 2100000, guid: f656d96057c674c4bb5ae088dfccdd15, type: 2}
-  - {fileID: 2100000, guid: 545842e87229a414eaf762b48bc1d611, type: 2}
   numberMaterial: 0
+--- !u!114 &239633123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239633117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6271ba4815b30498f10cebf9018fca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MainTexture: 
 --- !u!1 &474486709
 GameObject:
   m_ObjectHideFlags: 0

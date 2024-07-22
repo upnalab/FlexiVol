@@ -15,7 +15,7 @@ nombre_archivo = f'./Assets/Shaders/Materials/TextureAsPNG1.png'
 for bitplane in range(24):
     # data = loadmat('./Assets/Shaders/Materials/New Render Texture.mat')
     imagen = Image.open(nombre_archivo)
-    imagen_blackandwhite = imagen.convert("P")
+    imagen_blackandwhite = imagen.convert("L")
     imagen.close()
     array_imagen = np.array(imagen_blackandwhite)
     # UnityEngine.Debug.Log(array_imagen[:,60])
@@ -23,6 +23,6 @@ for bitplane in range(24):
     # Escalar los valores de los píxeles a 0 o 255 y convertir a uint8
     array_imagen_binario = np.where(array_imagen < 10, np.uint8(0), np.uint8(255))
     image_array[:, :, bitplane // 8] |=  (array_imagen_binario & 1) << (bitplane % 8)
-    img = Image.fromarray(image_array)
-img.save('./Assets/Shaders/Materials/bitPlanedImage1.png')
+img = Image.fromarray(image_array)
+img.save('./Assets/Resources/bitPlanedImage1.png')
 # img
