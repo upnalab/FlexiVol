@@ -65,7 +65,7 @@ Shader "Custom/CutSectionsObjectsShader"
                 return o;
             }
             half4 frag(v2f i) : SV_Target {
-                return half4(0,0.5,1,1);
+                return half4(0.5,0.5,1,1);
             }
             ENDCG
         }
