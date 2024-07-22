@@ -193,6 +193,7 @@ MonoBehaviour:
   cuttingPlane: {fileID: 0}
   numberToRun: 0
   lesgo: 0
+  newPatternUpload: 0
 --- !u!114 &7705298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MainTexture: 
+  gameManager: {fileID: 7705297}
 --- !u!1 &474486709
 GameObject:
   m_ObjectHideFlags: 0

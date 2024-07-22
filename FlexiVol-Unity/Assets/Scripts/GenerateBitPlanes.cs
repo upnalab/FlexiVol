@@ -1,15 +1,15 @@
 
-namespace OpenCvSharp.Demo
-{
-	using UnityEngine;
-	using System.Collections;
-	using OpenCvSharp;
-	using System;
-	using System.Collections;
-	using System.Collections.Generic;
-	using UnityEngine;
-	using UnityEngine.UI;
-	using UnityEditor.Scripting.Python;
+// namespace OpenCvSharp.Demo
+// {
+using UnityEngine;
+using System.Collections;
+// using OpenCvSharp;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor.Scripting.Python;
 
 public class GenerateBitPlanes : MonoBehaviour
 {
@@ -29,7 +29,7 @@ public class GenerateBitPlanes : MonoBehaviour
 	private bitPlaneInfo[] bitplanes;
 	public GenerateSlice cuttingPlane;
 	public int numberToRun = 0;
-	public bool lesgo;
+	public bool lesgo, newPatternUpload;
 
 
     // Start is called before the first frame update
@@ -87,6 +87,7 @@ public class GenerateBitPlanes : MonoBehaviour
         StartCoroutine(MeasureFrameRate());
         if(lesgo && numberToRun < 24)
         {
+        	newPatternUpload = false;
         	StartCoroutine(Calculate24PNG());
         	numberToRun = numberToRun + 1; 
         }
@@ -123,6 +124,7 @@ public class GenerateBitPlanes : MonoBehaviour
 	IEnumerator RunPythonFullImage()
     {
     	PythonRunner.RunFile($"./Assets/Python/CreateBitPlanes-all.py");
+    	newPatternUpload = true;
     	yield return new WaitForEndOfFrame();
     }
 
@@ -221,4 +223,4 @@ public class GenerateBitPlanes : MonoBehaviour
 
 	}
 }
-}
+// }
