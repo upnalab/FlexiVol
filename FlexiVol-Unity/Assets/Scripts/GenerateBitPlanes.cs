@@ -28,6 +28,7 @@ public class GenerateBitPlanes : MonoBehaviour
 
 	private bitPlaneInfo[] bitplanes;
 	public GenerateSlice cuttingPlane;
+	public int numberToRun = 0;
 
 
     // Start is called before the first frame update
@@ -70,6 +71,7 @@ public class GenerateBitPlanes : MonoBehaviour
         	StartCoroutine(RunPythonRoutineFile());
         }
         StartCoroutine(MeasureFrameRate());
+        numberToRun = (numberToRun + 1)%2;
         
 
     }
@@ -87,12 +89,20 @@ public class GenerateBitPlanes : MonoBehaviour
 
 	IEnumerator CalculateGrayScale()
 	{
-		myTexture = toTexture2D(tex);
-		Mat mat = Unity.TextureToMat (myTexture);
-		Mat grayMat = new Mat ();
-		Cv2.CvtColor (mat, grayMat, ColorConversionCodes.BGR2GRAY); 
-		Texture2D texture = Unity.MatToTexture (grayMat);
-		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/TextureAsPNG.png");
+		// myTexture = toTexture2D(tex);
+		// Mat mat = Unity.TextureToMat (myTexture);
+		// Mat grayMat = new Mat ();
+		// Cv2.CvtColor (mat, grayMat, ColorConversionCodes.BGR2GRAY); 
+		// Texture2D texture = Unity.MatToTexture (grayMat);
+		Texture2D texture = toTexture2D(tex);
+		if(numberToRun == 0)
+		{
+			SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/TextureAsPNG1.png");
+		}
+		else
+		{
+			SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/TextureAsPNG0.png");
+		}
 		rawImage.texture = texture;
 		yield return new WaitForEndOfFrame();
 
@@ -109,7 +119,14 @@ public class GenerateBitPlanes : MonoBehaviour
 
 	IEnumerator RunPythonRoutineFile()
     {
-    	PythonRunner.RunFile($"./Assets/Python/CreateBitPlanes.py");
+    	if(numberToRun == 0)
+    	{
+	    	PythonRunner.RunFile($"./Assets/Python/CreateBitPlanes0.py");
+    	}
+    	else
+    	{
+	    	PythonRunner.RunFile($"./Assets/Python/CreateBitPlanes1.py");
+    	}
     	yield return new WaitForEndOfFrame();
     	StartCoroutine(RunPythonRoutineFile());
     }
