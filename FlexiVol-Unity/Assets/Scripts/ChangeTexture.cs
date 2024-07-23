@@ -16,7 +16,7 @@ public class ChangeTexture : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
     	// gameManager = GameObject.FindObjectOfType<GenerateBitPlanes>();
 

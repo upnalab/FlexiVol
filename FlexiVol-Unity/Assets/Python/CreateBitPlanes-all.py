@@ -10,7 +10,7 @@ image_array = np.zeros((256, 256, 3), dtype=np.uint8)
 # array_imagen = np.array(imagen)
 
 for bitplane in range(24):
-	nombre_archivo = f'./Assets/Shaders/Materials/TextureAsPNG-'+str(bitplane)+'.png'
+	nombre_archivo = f'./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-'+str(bitplane)+'.png'
 	imagen = Image.open(nombre_archivo)
 	imagen_blackandwhite = imagen.convert("L")
 	imagen.close()

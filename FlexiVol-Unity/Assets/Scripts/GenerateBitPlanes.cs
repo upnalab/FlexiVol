@@ -111,7 +111,7 @@ public class GenerateBitPlanes : MonoBehaviour
 	IEnumerator Calculate24PNG()
 	{
 		Texture2D texture = toTexture2D(tex);
-		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/TextureAsPNG-"+numberToRun+".png");
+		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-"+numberToRun+".png");
 		rawImage.texture = texture;
 		// yield return new WaitForEndOfFrame();
 		yield return new WaitUntil(() => (numberToRun == 24));
