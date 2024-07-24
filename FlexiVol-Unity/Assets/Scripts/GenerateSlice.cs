@@ -15,6 +15,7 @@ public class GenerateSlice : MonoBehaviour
 
     AudioSource audioSource;
     private int sampleRate = 1;
+    private float posX, posY;
 
 
     // Start is called before the first frame update
@@ -30,6 +31,8 @@ public class GenerateSlice : MonoBehaviour
         audioSource.Stop(); //avoids audiosource from starting to play automatically
         
         audioSource.loop = true;
+        posX = cuttingPlane.transform.position.x;
+        posY = cuttingPlane.transform.position.y;
 
     }
 
@@ -41,7 +44,7 @@ public class GenerateSlice : MonoBehaviour
         {
             if(!audioSource.isPlaying)
             {
-                time0 = Time.time;  //resets timer before playing sound
+                time0 = Time.unscaledTime;  //resets timer before playing sound
                 audioSource.Play();
             }
             else
@@ -51,8 +54,10 @@ public class GenerateSlice : MonoBehaviour
         }
 
 
-        timeIndex = Time.time - time0;
-        cuttingPlane.transform.localPosition = new Vector3(cuttingPlane.transform.position.x, cuttingPlane.transform.position.y, positionPlane);
+        timeIndex = Time.unscaledTime - time0;
+        // cuttingPlane.transform.localPosition = new Vector3(cuttingPlane.transform.position.x, cuttingPlane.transform.position.y, positionPlane);
+
+        cuttingPlane.transform.localPosition = new Vector3(posX, posY, positionPlane);
 
         cutSectionID = (int)Mathf.Floor((positionPlane / maxDistance)*nbSlices);
 
@@ -71,7 +76,7 @@ public class GenerateSlice : MonoBehaviour
     {
         for(int i = 0; i < data.Length; i+= channels)
         {          
-            data[i] = CreateSine(timeIndex, frequency, sampleRate, phase);           
+            data[i] = CreateSine(timeIndex, frequency, sampleRate);           
             positionPlane = Mathf.Abs(CreateSine(timeIndex, frequency, sampleRate, phase));    
         }
 

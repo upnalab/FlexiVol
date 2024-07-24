@@ -9,10 +9,13 @@ public class ChangeTexture : MonoBehaviour
 {
 	public string m_MainTexture;
 	public GenerateBitPlanes gameManager;
+	public InstantiateAllCutSections cutSections;
     // Start is called before the first frame update
     void Start()
     {
+
     	gameManager = GameObject.FindObjectOfType<GenerateBitPlanes>();
+    	cutSections = GameObject.FindObjectOfType<InstantiateAllCutSections>();
     }
 
     // Update is called once per frame
@@ -32,6 +35,17 @@ public class ChangeTexture : MonoBehaviour
 		// StartCoroutine(UpdateFkinMat());
 		
 		if(gameManager.newPatternUpload)
+		{
+			// Texture2D newMat = Instantiate(LoadImage("./Assets/Shaders/Materials/ReconstructedImage.bmp"));
+			// this.GetComponent<MeshRenderer>().material = Resources.Load("./Assets/Shaders/Materials/Materials/ReconstructedImage") as Material;
+	    	this.GetComponent<Renderer>().material.SetTexture(m_MainTexture, LoadImage("./Assets/Shaders/Materials/ReconstructedImage.bmp"));
+
+			AssetDatabase.Refresh();
+			// Destroy(newMat);
+		
+		}
+
+		if(cutSections.newPatternUpload)
 		{
 			// Texture2D newMat = Instantiate(LoadImage("./Assets/Shaders/Materials/ReconstructedImage.bmp"));
 			// this.GetComponent<MeshRenderer>().material = Resources.Load("./Assets/Shaders/Materials/Materials/ReconstructedImage") as Material;

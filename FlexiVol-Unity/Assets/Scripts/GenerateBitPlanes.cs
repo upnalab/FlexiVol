@@ -19,6 +19,9 @@ public class GenerateBitPlanes : MonoBehaviour
 	public RawImage rawImage;
 	private Texture2D[] bitPlaneTextures;
 
+	[Range(0f,100f)]
+	public float timeScaleChange;
+
 	[Serializable]
 	public struct bitPlaneInfo
 	{
@@ -31,6 +34,8 @@ public class GenerateBitPlanes : MonoBehaviour
 	public int numberToRun = 0;
 	public bool lesgo, newPatternUpload;
 
+	private float time0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,35 +44,37 @@ public class GenerateBitPlanes : MonoBehaviour
     	sizeImageW = this.tex.width;
     	cuttingPlane = this.GetComponent<GenerateSlice>();
 
-        bitplanes = new bitPlaneInfo[24];
-    	bitPlaneTextures = new Texture2D[24];
+  //       bitplanes = new bitPlaneInfo[24];
+  //   	bitPlaneTextures = new Texture2D[24];
 
-    	for(int j = 0; j < 8; j++)
-		{
-			bitplanes[j].bitplaneID = j;
-			bitplanes[j].pixels = new Color32[sizeImageW*sizeImageH];
+  //   	for(int j = 0; j < 8; j++)
+		// {
+		// 	bitplanes[j].bitplaneID = j;
+		// 	bitplanes[j].pixels = new Color32[sizeImageW*sizeImageH];
 
-			bitplanes[j+8].bitplaneID = j+8;
-			bitplanes[j+8].pixels = new Color32[sizeImageW*sizeImageH];
+		// 	bitplanes[j+8].bitplaneID = j+8;
+		// 	bitplanes[j+8].pixels = new Color32[sizeImageW*sizeImageH];
 
-			bitplanes[j+16].bitplaneID = j+16;
-			bitplanes[j+16].pixels = new Color32[sizeImageW*sizeImageH];
+		// 	bitplanes[j+16].bitplaneID = j+16;
+		// 	bitplanes[j+16].pixels = new Color32[sizeImageW*sizeImageH];
 
-		}
+		// }
 
-		myTexture = toTexture2D(tex);
-		for(int i = 0; i < 24; i++)
-		{
-			bitPlaneTextures[i] = myTexture;
+		// myTexture = toTexture2D(tex);
+		// for(int i = 0; i < 24; i++)
+		// {
+		// 	bitPlaneTextures[i] = myTexture;
 
-		}
+		// }
     }
 
     void Update()
     {
+    	Time.timeScale = timeScaleChange;
         if(Input.GetKeyDown(KeyCode.Space))
         {
-        	numberToRun = 0;
+        	// numberToRun = 0;
+        	newPatternUpload = false;
         	if(!lesgo)
         	{
         		lesgo = true;
@@ -84,16 +91,40 @@ public class GenerateBitPlanes : MonoBehaviour
         	// StartCoroutine(CalculateGrayScale());
         	// StartCoroutine(RunPythonRoutineFile());
         }
-        StartCoroutine(MeasureFrameRate());
-        if(lesgo && numberToRun < 24)
-        {
-        	newPatternUpload = false;
-        	StartCoroutine(Calculate24PNG());
-        	numberToRun = numberToRun + 1; 
-        }
-        // numberToRun = (numberToRun + 1)%2;    
-        // numberToRun = numberToRun + 1;    
+        // StartCoroutine(MeasureFrameRate());
+        // if(lesgo && numberToRun < 24)
+        // if(lesgo)
+        // {
+        // 	newPatternUpload = false;
+        // 	StartCoroutine(CalculateiPNG());
+        // 	// StartCoroutine(Calculate24PNG());
+        // 	// numberToRun = numberToRun + 1; 
+        // }
 
+        // if(lesgo && numberToRun < 24)
+        // {
+        // 	newPatternUpload = false;
+        // 	StartCoroutine(Calculate24PNG());
+        // 	// CalculateiPNG();
+
+        // }
+        if(lesgo)
+        {
+    		newPatternUpload = false;
+    		time0 = Time.unscaledTime;
+	        StartCoroutine(ChangeNumberToRun());
+	        // ChangeNumberToRun();
+        	lesgo = false;
+
+		}
+ 		if(numberToRun == 23)
+        {
+        	RunPythonFullImage();
+        	numberToRun = 0;
+        	lesgo = true;
+
+        }
+        
     }
 
     Texture2D toTexture2D(RenderTexture rTex)
@@ -102,30 +133,95 @@ public class GenerateBitPlanes : MonoBehaviour
 	    // ReadPixels looks at the active RenderTexture.
 	    RenderTexture.active = rTex;
 	    tex.ReadPixels(new UnityEngine.Rect(0, 0, rTex.width, rTex.height), 0, 0);
-	    tex.Apply();
+	    // tex.Apply();
 
 	    return tex;
 	}
 
+	IEnumerator ChangeNumberToRun()
+	{
+		for(int i = 0; i < 24; i++)
+		{
+			numberToRun = i;
+			CalculateiPNG();
+			yield return new WaitForFixedUpdate();
+		}
+	}
+	
+	// void ChangeNumberToRun()
+	// {
+	// 	for(int i = 0; i < 24; i++)
+	// 	{
+	// 		numberToRun = i;
+	// 		CalculateiPNG();
+	// 	}
+	// }
+
 
 	IEnumerator Calculate24PNG()
 	{
+		float time = Time.time;
 		Texture2D texture = toTexture2D(tex);
 		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-"+numberToRun+".png");
-		rawImage.texture = texture;
-		// yield return new WaitForEndOfFrame();
+		numberToRun = numberToRun + 1;
+		// rawImage.texture = texture;
 		yield return new WaitUntil(() => (numberToRun == 24));
+		Debug.Log(Time.time - time);
 		numberToRun = 0;
-		StartCoroutine(RunPythonFullImage());	
-		StartCoroutine(Calculate24PNG());
+		RunPythonFullImage();
+		// StartCoroutine(RunPythonFullImage());	
+		// StartCoroutine(Calculate24PNG());
 
 	}
 
-	IEnumerator RunPythonFullImage()
+	// IEnumerator CalculateiPNG()
+	// {
+	// 	float time = Time.time;
+ //    	for(int i = 0; i < 24; i++)
+	// 	{
+	// 		Texture2D texture = toTexture2D(tex);
+	// 		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-"+i+".png");
+	// 		// rawImage.texture = texture;
+	// 		yield return new WaitForFixedUpdate();
+	// 		numberToRun = i;
+
+	// 	}
+	// 	Debug.Log(Time.time - time);
+	// 	RunPythonFullImage();
+ //    	// yield return new WaitForEndOfFrame();
+
+	// }
+
+	// void CalculateiPNG()
+	// {
+	// 	float time = Time.time;
+ //    	for(int i = 0; i < 24; i++)
+	// 	{
+	// 		Texture2D texture = toTexture2D(tex);
+	// 		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-"+i+".png");
+	// 		numberToRun = i;
+
+	// 	}
+	// 	Debug.Log(Time.time - time);
+	// 	numberToRun = 0;
+	// 	RunPythonFullImage();
+	// }
+
+
+	void CalculateiPNG()
+	{
+		// float time = Time.time;
+    	Texture2D texture = toTexture2D(tex);
+		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-"+numberToRun+".png");
+		
+	}
+
+
+	void RunPythonFullImage()
     {
     	PythonRunner.RunFile($"./Assets/Python/CreateBitPlanes-all.py");
+    	Debug.Log(Time.unscaledTime - time0);
     	newPatternUpload = true;
-    	yield return new WaitForEndOfFrame();
     }
 
 	IEnumerator CalculateGrayScale()

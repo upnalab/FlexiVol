@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18071386, g: 0.22622398, b: 0.3071474, a: 1}
+  m_IndirectSpecularColor: {r: 0.18071443, g: 0.22622833, b: 0.30715147, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -149,12 +149,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7705294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bdb7f60da8bd1e46a92bc1794b8bb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency: 11
+  frequency: 2
   phase: 0
   cutSectionID: 0
   nbSlices: 24
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7705294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fa2dcfa69184014e90f9f6ee8d2f32a, type: 3}
   m_Name: 
@@ -190,6 +190,7 @@ MonoBehaviour:
   myTexture: {fileID: 0}
   reMergedTexture: {fileID: 0}
   rawImage: {fileID: 170103680}
+  timeScaleChange: 2
   cuttingPlane: {fileID: 0}
   numberToRun: 0
   lesgo: 0
@@ -201,11 +202,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7705294}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf9197bee32df524188dd43544644d46, type: 3}
+  m_Script: {fileID: 11500000, guid: e6ae6b215b1b8fb4dac7089e1462e2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberSlicesPerSweep: 5
+  planeToReplicate: {fileID: 1196881329}
+  tex: {fileID: 8400000, guid: 40ef55718b42184408a00ac49172fd1d, type: 2}
+  timeScaleChange: 5
+  allBitPlanes: []
+  newPatternUpload: 0
 --- !u!1 &131147353
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,13 +521,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239633117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f6271ba4815b30498f10cebf9018fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_MainTexture: 
   gameManager: {fileID: 7705297}
+  cutSections: {fileID: 0}
 --- !u!1 &474486709
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +895,7 @@ MonoBehaviour:
   apply_vx_on_load: 1
   editorCamera: {fileID: 0}
   fixedFrameRate: 1
-  TargetFrameRate: 150
+  TargetFrameRate: 60
   recordingPath: C:\Voxon\Media\MyCaptures\framedata
   recordOnLoad: 0
   recordingStyle: 1
@@ -1239,7 +1247,7 @@ MeshCollider:
   m_GameObject: {fileID: 1286026263}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
