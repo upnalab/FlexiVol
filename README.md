@@ -14,3 +14,8 @@ The same principle is applied in InstantiateAllCutSections; though here we first
 
 The generated image to show is RecontructedImage.bmp.
 The two previous scripts contain a boolean "Display on Unity Plane" - when activated, the plane showed on Display3 will show the resulting image (but it's way slower than what is actually computed from the scripts as per the Console debugs).
+
+
+## Projector
+
+In Projectors, there is a jupyter notebook to compute the variable exposure pattern for the projector. There are multiple parameters to fill: the required frequency, the color, whether you want triggers, if you want a full sinus or only half.
