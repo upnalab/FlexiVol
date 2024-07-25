@@ -149,7 +149,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7705294}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bdb7f60da8bd1e46a92bc1794b8bb0c, type: 3}
   m_Name: 
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7705294}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fa2dcfa69184014e90f9f6ee8d2f32a, type: 3}
   m_Name: 
@@ -195,6 +195,7 @@ MonoBehaviour:
   numberToRun: 0
   lesgo: 0
   newPatternUpload: 0
+  displayOnUnityPlane: 0
 --- !u!114 &7705298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7705294}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ae6b215b1b8fb4dac7089e1462e2eb, type: 3}
   m_Name: 
@@ -213,6 +214,7 @@ MonoBehaviour:
   timeScaleChange: 5
   allBitPlanes: []
   newPatternUpload: 0
+  displayOnUnityPlane: 0
 --- !u!1 &131147353
 GameObject:
   m_ObjectHideFlags: 0

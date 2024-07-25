@@ -35,6 +35,8 @@ public class GenerateBitPlanes : MonoBehaviour
 	public bool lesgo, newPatternUpload;
 
 	private float time0;
+	public bool displayOnUnityPlane;
+	private GameObject planeDisplay;
 
 
     // Start is called before the first frame update
@@ -43,6 +45,7 @@ public class GenerateBitPlanes : MonoBehaviour
         sizeImageH = this.tex.height;
     	sizeImageW = this.tex.width;
     	cuttingPlane = this.GetComponent<GenerateSlice>();
+    	planeDisplay = GameObject.Find("Plane (1)");
 
   //       bitplanes = new bitPlaneInfo[24];
   //   	bitPlaneTextures = new Texture2D[24];
@@ -91,6 +94,17 @@ public class GenerateBitPlanes : MonoBehaviour
         	// StartCoroutine(CalculateGrayScale());
         	// StartCoroutine(RunPythonRoutineFile());
         }
+
+        if(displayOnUnityPlane)
+        {
+        	planeDisplay.GetComponent<ChangeTexture>().enabled = true;
+        }
+        else
+        {
+        	planeDisplay.GetComponent<ChangeTexture>().enabled = false;
+
+        }
+
         // StartCoroutine(MeasureFrameRate());
         // if(lesgo && numberToRun < 24)
         // if(lesgo)

@@ -19,6 +19,9 @@ public class InstantiateAllCutSections : MonoBehaviour
 	private int sizeImageH, sizeImageW;
 	private float time0;
 	public bool newPatternUpload;
+
+	public bool displayOnUnityPlane;
+	private GameObject planeDisplay;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +41,7 @@ public class InstantiateAllCutSections : MonoBehaviour
 		StartCoroutine(SweepUp());
     	time0 = Time.unscaledTime;
 
-
+    	planeDisplay = GameObject.Find("Plane (1)");
     }
 
     // Update is called once per frame
@@ -51,6 +54,15 @@ public class InstantiateAllCutSections : MonoBehaviour
         {
 			StartCoroutine(SweepUp());
         }
+        if(displayOnUnityPlane)
+        {
+        	planeDisplay.GetComponent<ChangeTexture>().enabled = true;
+        }
+        else
+        {
+        	planeDisplay.GetComponent<ChangeTexture>().enabled = false;
+
+        }
 
 		// StartCoroutine(GetPlanes());
     }
@@ -58,6 +70,7 @@ public class InstantiateAllCutSections : MonoBehaviour
 
     IEnumerator SweepUp()
     {
+    	float time1 = Time.unscaledTime;
     	int countSlicesPerVol = 0;
     	for(int i = 0; i < allBitPlanes.Length; i++)
         {
@@ -85,12 +98,14 @@ public class InstantiateAllCutSections : MonoBehaviour
 
     	}
     	Debug.Log("Slices Sweep Up: " + countSlicesPerVol);
+    	Debug.Log("Sweep time: " + (Time.unscaledTime - time1));
     	StartCoroutine(SweepDown());
     }
 
 
 	IEnumerator SweepDown()
 	{
+    	float time1 = Time.unscaledTime;
     	int countSlicesPerVol = 0;
 
     	for(int i = allBitPlanes.Length-1; i > -1; i--)
@@ -119,8 +134,9 @@ public class InstantiateAllCutSections : MonoBehaviour
 
     	}
     	Debug.Log("Slices Sweep Down: " + countSlicesPerVol);
+    	Debug.Log("Sweep time: " + (Time.unscaledTime - time1));
+
     	StartCoroutine(SweepUp());
-    	
     }
 
     Texture2D toTexture2D(RenderTexture rTex)
@@ -144,8 +160,7 @@ public class InstantiateAllCutSections : MonoBehaviour
 	void CalculatePNG(int numberToRun)
 	{
     	Texture2D texture = toTexture2D(tex);
-		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-"+numberToRun+".png");
-		
+		SaveTextureAsPNG(texture, "./Assets/Shaders/Materials/BitPlanes/TextureAsPNG-"+numberToRun+".png");	
 	}
 
 	void RunPythonScript()

@@ -21,5 +21,7 @@ img = Image.fromarray(image_array)
 img.save('./Assets/Shaders/Materials/ReconstructedImage.bmp')
 img.close()
 # UnityEngine.Debug.Log("Image created")
-# UnityEngine.GameObject.Find("Plane (1)").GetComponent<UnityEngine.Renderer>().material.SetTexture(m_MainTexture, LoadImage("./Assets/Shaders/Materials/ReconstructedImage.bmp"));
+# UnityEngine.GameObject.Find("Plane (1)")
+# UnityEngine.Renderer().material.SetTexture(m_MainTexture, LoadImage("./Assets/Shaders/Materials/ReconstructedImage.bmp"))
+# UnityEngine.GameObject.Find("Plane (1)").GetComponent(UnityEngine.Renderer()).material.SetTexture(m_MainTexture, LoadImage("./Assets/Shaders/Materials/ReconstructedImage.bmp"));
 # img
