@@ -15,7 +15,7 @@ public class SpaceMouseGrow : MonoBehaviour
 	public float max_scale = 4;
 	public float min_scale = 0.0001f;
 	public float max_distance = 2;
-
+		public float scaleMe = 1;
 	VXCamera cam = null;
 	// Start is called before the first frame update
 	void Start()
@@ -32,19 +32,26 @@ public class SpaceMouseGrow : MonoBehaviour
 			if (cam == null) return;
 		}
 
-        if (Voxon.Input.GetSpaceNavButton("LeftButton") && transform.localScale.x < max_scale)
+        if (Voxon.Input.GetSpaceNavButton("LeftButton"))// && transform.localScale.x < max_scale)
         {
-            cam.BaseScale *= (1 + zoom_speed / 10);
+            // cam.BaseScale *= (1 + zoom_speed / 10);
+            scaleMe *= (1 + zoom_speed / 10);
+	        transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
+
 		}
         
-        if (Voxon.Input.GetSpaceNavButton("RightButton") && transform.localScale.x > min_scale)
+        if (Voxon.Input.GetSpaceNavButton("RightButton"))// && transform.localScale.x > min_scale)
         {
-			cam.BaseScale *= (1 - zoom_speed / 10);
+			// cam.BaseScale *= (1 - zoom_speed / 10);
+			scaleMe *= (1 - zoom_speed / 10);
+			transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
 		}
 
 		if (original_size == 0)
 		{
-			original_size = cam.BaseScale;
+			// original_size = cam.BaseScale;
+			original_size = 0.1f;
+
 		}
 
 		if (original_pos == Vector3.zero)
@@ -58,7 +65,7 @@ public class SpaceMouseGrow : MonoBehaviour
 		}
 
 		
-		/*
+		
 		var rotation = Voxon.VXProcess.Runtime.GetSpaceNavRotation();
 
 		if (rotation != null)
@@ -66,7 +73,7 @@ public class SpaceMouseGrow : MonoBehaviour
 			var v3rot = new Vector3(0, rotation[2] / 70, 0);
 			transform.Rotate(v3rot);
 		}
-		*/
+		
 
 		var position = Voxon.VXProcess.Runtime.GetSpaceNavPosition();
 		var v3pos = transform.position;
@@ -76,19 +83,21 @@ public class SpaceMouseGrow : MonoBehaviour
 			v3pos.y += movement_speed * (position[2] / 35.0f);
 			v3pos.z -= movement_speed * (position[1] / 35.0f);
 
-			float distance = Vector3.Distance(original_pos, v3pos);
-			if (distance > max_distance)
-			{
-				v3pos = Vector3.MoveTowards(v3pos, original_pos, distance - max_distance);
-			}
+			// float distance = Vector3.Distance(original_pos, v3pos);
+			// if (distance > max_distance)
+			// {
+			// 	v3pos = Vector3.MoveTowards(v3pos, original_pos, distance - max_distance);
+			// }
 			transform.position = v3pos;
 		}
+
 
 		if (Voxon.Input.GetSpaceNavButton("LeftButton") && Voxon.Input.GetSpaceNavButton("RightButton"))
 		{
 			transform.position = original_pos;
-			// transform.rotation = original_rot;
-			cam.BaseScale = original_size;
+			transform.rotation = original_rot;
+			// cam.BaseScale = original_size;
+			transform.localScale = new Vector3(original_size, original_size, original_size);
 		}
 	}
 }
