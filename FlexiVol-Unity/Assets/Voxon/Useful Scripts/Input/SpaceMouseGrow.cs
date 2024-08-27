@@ -17,10 +17,12 @@ public class SpaceMouseGrow : MonoBehaviour
 	public float max_distance = 2;
 		public float scaleMe = 1;
 	VXCamera cam = null;
+
+	private Vector3 viewFinderScale;
 	// Start is called before the first frame update
 	void Start()
     {
-		
+		viewFinderScale = GameObject.Find("view_finder").transform.localScale*10;
     }
 
     // Update is called once per frame
@@ -91,13 +93,14 @@ public class SpaceMouseGrow : MonoBehaviour
 			transform.position = v3pos;
 		}
 
+		this.transform.position = new Vector3(Mathf.Clamp(v3pos.x, -(float)viewFinderScale.x/2, (float)viewFinderScale.x/2), Mathf.Clamp(v3pos.y, -(float)viewFinderScale.y/2, (float)viewFinderScale.y/2), Mathf.Clamp(v3pos.z, -(float)viewFinderScale.z/2, (float)viewFinderScale.z/2));
 
 		if (Voxon.Input.GetSpaceNavButton("LeftButton") && Voxon.Input.GetSpaceNavButton("RightButton"))
 		{
 			transform.position = original_pos;
 			transform.rotation = original_rot;
 			// cam.BaseScale = original_size;
-			transform.localScale = new Vector3(original_size, original_size, original_size);
+			// transform.localScale = new Vector3(original_size, original_size, original_size);
 		}
 	}
 }
