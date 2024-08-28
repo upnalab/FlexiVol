@@ -16,9 +16,12 @@ public class CorrectionMesh : MonoBehaviour
     MeshFilter meshFilter;
 
     Vector3 previousPos;
+    public GameObject viewFinder;
+    public int baseScale = 10;
 
     private void Start()
     {
+        viewFinder = GameObject.Find("view_finder");
         meshFilter = GetComponent<MeshFilter>();
         mesh = meshFilter.mesh;
         vxComponent = GetComponent<VXDynamicComponent>();
@@ -101,7 +104,12 @@ public class CorrectionMesh : MonoBehaviour
                     // Asignar una altura aleatoria en el eje Y entre minHeight y maxHeight
                     Vector3 globalVertex = transform.TransformPoint(originalVertexPosition[i]);
                     float newHeight;
-                    newHeight = provissionalName(globalVertex.x, globalVertex.y);
+                    if (globalVertex.y <= (viewFinder.transform.parent.transform.position.y + viewFinder.transform.localScale.y*baseScale/2) && globalVertex.y >= (viewFinder.transform.parent.transform.position.y - viewFinder.transform.localScale.y*baseScale/2) && globalVertex.x >= (viewFinder.transform.parent.transform.position.x - viewFinder.transform.localScale.x*baseScale/2) && globalVertex.x <= (viewFinder.transform.parent.transform.position.x + viewFinder.transform.localScale.x*baseScale/2))
+                        newHeight = provissionalName(globalVertex.x, globalVertex.y);
+                    else
+                    {
+                        newHeight = globalVertex.y;
+                    }
 
                     // Now we transform from global to local
                     Vector3 localPoint = transform.InverseTransformPoint(globalVertex.x, newHeight, globalVertex.z);

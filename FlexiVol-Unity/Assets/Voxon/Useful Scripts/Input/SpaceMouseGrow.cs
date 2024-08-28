@@ -22,7 +22,7 @@ public class SpaceMouseGrow : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		viewFinderScale = GameObject.Find("view_finder").transform.localScale*10;
+		viewFinderScale = GameObject.Find("constrained_size").transform.localScale*10;
 		original_size = this.transform.localScale.x/10;
     }
 

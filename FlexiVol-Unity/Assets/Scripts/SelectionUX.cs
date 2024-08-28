@@ -75,7 +75,7 @@ public class SelectionUX : MonoBehaviour
 
         panelStart = GameObject.Find("PanelStart");
 
-        voxonSpace = GameObject.Find("view_finder");
+        voxonSpace = GameObject.Find("constrained_size");
         RecordPerformance();
         RecordSpherePosition();
         positionsSpheres = new Vector3[nbBlocMax*sizes.Length];
@@ -153,18 +153,18 @@ public class SelectionUX : MonoBehaviour
     			// LOAD CONDITIONS
     			objectToLoad = (GameObject)Instantiate(primitiveToInstantiate, voxonSpace.transform.parent.transform);
     			objectToLoad.transform.localScale = sizes[config];
-    			float randomPosX = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.x*10/2, (float)voxonSpace.transform.localScale.x*10/2);
-    			float randomPosY = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.y*10/2, (float)voxonSpace.transform.localScale.y*10/2);
-    			float randomPosZ = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.z*10/2, (float)voxonSpace.transform.localScale.z*10/2);
+    			float randomPosX = UnityEngine.Random.Range((float)(voxonSpace.transform.parent.transform.position.x - voxonSpace.transform.localScale.x*10/2), (float)(voxonSpace.transform.parent.transform.position.x + voxonSpace.transform.localScale.x*10/2));
+    			float randomPosY = UnityEngine.Random.Range((float)(voxonSpace.transform.parent.transform.position.y - voxonSpace.transform.localScale.y*10/2), (float)(voxonSpace.transform.parent.transform.position.y + voxonSpace.transform.localScale.y*10/2));
+    			float randomPosZ = UnityEngine.Random.Range((float)(voxonSpace.transform.parent.transform.position.z - voxonSpace.transform.localScale.z*10/2), (float)(voxonSpace.transform.parent.transform.position.z + voxonSpace.transform.localScale.z*10/2));
 
     			objectToLoad.transform.position = new Vector3(randomPosX, randomPosY, randomPosZ);
     			// Debug.Log(objectToLoad.transform.localScale.x*10 + interactiveObject.transform.localScale.x*10);
     			// Debug.Log("distance: " + Vector3.Distance(objectToLoad.transform.position, interactiveObject.transform.position));
     			while(Vector3.Distance(objectToLoad.transform.position, interactiveObject.transform.position) < 10*(objectToLoad.transform.localScale.x + interactiveObject.transform.localScale.x + 0.01f))
     			{
-    				randomPosX = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.x*10/2, (float)voxonSpace.transform.localScale.x*10/2);
-	    			randomPosY = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.y*10/2, (float)voxonSpace.transform.localScale.y*10/2);
-	    			randomPosZ = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.z*10/2, (float)voxonSpace.transform.localScale.z*10/2);
+					randomPosX = UnityEngine.Random.Range((float)(voxonSpace.transform.parent.transform.position.x - voxonSpace.transform.localScale.x*10/2), (float)(voxonSpace.transform.parent.transform.position.x + voxonSpace.transform.localScale.x*10/2));
+    				randomPosY = UnityEngine.Random.Range((float)(voxonSpace.transform.parent.transform.position.y - voxonSpace.transform.localScale.y*10/2), (float)(voxonSpace.transform.parent.transform.position.y + voxonSpace.transform.localScale.y*10/2));
+    				randomPosZ = UnityEngine.Random.Range((float)(voxonSpace.transform.parent.transform.position.z - voxonSpace.transform.localScale.z*10/2), (float)(voxonSpace.transform.parent.transform.position.z + voxonSpace.transform.localScale.z*10/2));
 	    			objectToLoad.transform.position = new Vector3(randomPosX, randomPosY, randomPosZ);
 	    			// Debug.Log("came here");
     			}
