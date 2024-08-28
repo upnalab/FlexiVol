@@ -23,6 +23,7 @@ public class SpaceMouseGrow : MonoBehaviour
 	void Start()
     {
 		viewFinderScale = GameObject.Find("view_finder").transform.localScale*10;
+		original_size = this.transform.localScale.x/10;
     }
 
     // Update is called once per frame
@@ -34,27 +35,27 @@ public class SpaceMouseGrow : MonoBehaviour
 			if (cam == null) return;
 		}
 
-        if (Voxon.Input.GetSpaceNavButton("LeftButton"))// && transform.localScale.x < max_scale)
-        {
-            // cam.BaseScale *= (1 + zoom_speed / 10);
-            scaleMe *= (1 + zoom_speed / 10);
-	        transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
+  //       if (Voxon.Input.GetSpaceNavButton("LeftButton"))// && transform.localScale.x < max_scale)
+  //       {
+  //           // cam.BaseScale *= (1 + zoom_speed / 10);
+  //           scaleMe *= (1 + zoom_speed / 10);
+	 //        transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
 
-		}
+		// }
         
-        if (Voxon.Input.GetSpaceNavButton("RightButton"))// && transform.localScale.x > min_scale)
-        {
-			// cam.BaseScale *= (1 - zoom_speed / 10);
-			scaleMe *= (1 - zoom_speed / 10);
-			transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
-		}
+  //       if (Voxon.Input.GetSpaceNavButton("RightButton"))// && transform.localScale.x > min_scale)
+  //       {
+		// 	// cam.BaseScale *= (1 - zoom_speed / 10);
+		// 	scaleMe *= (1 - zoom_speed / 10);
+		// 	transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
+		// }
 
-		if (original_size == 0)
-		{
-			// original_size = cam.BaseScale;
-			original_size = 0.1f;
+		// if (original_size == 0)
+		// {
+		// 	// original_size = cam.BaseScale;
+		// 	original_size = 0.1f;
 
-		}
+		// }
 
 		if (original_pos == Vector3.zero)
 		{

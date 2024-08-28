@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/InitialScene.unity
     guid: 262a0eb7929bd6d4b9560b77fdf8535f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SlicingScene.unity
     guid: 5abe286c24fadde4e94c8f796949c18c
+  - enabled: 1
+    path: Assets/Scenes/SelectionUX.unity
+    guid: 10df7adcaf34fa84599758526bfab015
   m_configObjects: {}

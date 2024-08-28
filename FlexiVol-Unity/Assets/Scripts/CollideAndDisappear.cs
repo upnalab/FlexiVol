@@ -14,10 +14,12 @@ public class CollideAndDisappear : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Voxon.Input.GetKeyDown("Space"))
         {
         	isTouched = true;
         }
+        
+
     }
 
 	void OnTriggerEnter(Collider other)

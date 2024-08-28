@@ -9,8 +9,10 @@ using Voxon;
 
 public class SelectionUX : MonoBehaviour
 {
+	public bool realGame;
 	public string userName;
 	public bool interactWithFinger;
+	public bool rightHanded;
 	public GameObject primitiveToInstantiate;
 	public bool randomizeConditions;
 	public int nbBlocMax,trialNumber;
@@ -46,22 +48,38 @@ public class SelectionUX : MonoBehaviour
         if(interactWithFinger)
         {
         	GameObject.Find("3DMousePosition").SetActive(false);
-        	interactiveObject = GameObject.Find("HandSphere");
-
+        	if(rightHanded)
+        	{
+	        	interactiveObject = GameObject.Find("RightIndex");
+	        	GameObject.Find("LeftIndex").SetActive(false);
+        	}
+        	else
+        	{
+	        	interactiveObject = GameObject.Find("LeftIndex");
+	        	GameObject.Find("RightIndex").SetActive(false);
+        	}
         }
         else
         {
-        	interactiveObject = GameObject.Find("3DMousePosition");
+        	GameObject.Find("HandsUpdate").SetActive(false);
+        	interactiveObject = GameObject.Find("3DMousePosition");        	
         }
 
         interactiveObject.tag = "InteractiveObject";
         interactiveObject.AddComponent<Rigidbody>();
         interactiveObject.GetComponent<Rigidbody>().isKinematic = false;
         interactiveObject.GetComponent<Rigidbody>().useGravity = false;
+
+        interactiveObject.AddComponent<VXDynamicComponent>();
+        interactiveObject.AddComponent<CorrectionMesh>();
+
         panelStart = GameObject.Find("PanelStart");
 
         voxonSpace = GameObject.Find("view_finder");
         RecordPerformance();
+        RecordSpherePosition();
+        positionsSpheres = new Vector3[nbBlocMax*sizes.Length];
+        // Debug.Log("dataPath : " + Application.dataPath);
 
     }
 
@@ -87,9 +105,17 @@ public class SelectionUX : MonoBehaviour
     	switch(state)
     	{
     		case -2:
+	    		if(interactiveObject.GetComponent<VXComponent>() != null)
+		    	{
+		        	Destroy(interactiveObject.GetComponent<VXComponent>());
+		    	}
     			// HERE PRESENTS PANEL START
     			for(int i = 0; i < panelStart.transform.childCount; i++)
     			{
+	    			if(panelStart.transform.GetChild(i).GetComponent<VXComponent>() != null)
+			    	{
+			        	Destroy(panelStart.transform.GetChild(i).GetComponent<VXComponent>());
+			    	}
     				if(panelStart.transform.GetChild(i).GetComponent<CollideAndDisappear>().isTouched)
     				{
     					panelStart.SetActive(false);
@@ -97,7 +123,7 @@ public class SelectionUX : MonoBehaviour
     				}
     			}
 
-    			if(UnityEngine.Input.GetKeyDown(KeyCode.Space))
+    			if(Voxon.Input.GetKeyDown("Space"))
     			{
 					panelStart.SetActive(false);
     				state = -1;
@@ -133,9 +159,17 @@ public class SelectionUX : MonoBehaviour
 
     			objectToLoad.transform.position = new Vector3(randomPosX, randomPosY, randomPosZ);
     			objectToLoad.transform.eulerAngles = new Vector3(0,0,0);
-    			objectToLoad.AddComponent<VXComponent>();
+    			objectToLoad.AddComponent<VXDynamicComponent>();
+    			if(interactiveObject.GetComponent<VXComponent>() != null)
+		    	{
+		        	Destroy(interactiveObject.GetComponent<VXComponent>());
+		    	}
+    	
     			objectToLoad.AddComponent<CollideAndDisappear>();
-    			// objectToLoad.AddComponent<CorrectionMesh>();
+    			// Debug.Log(Application.dataPath);
+    			// Debug.Log(voxonSpace.name);
+    			positionsSpheres[trialNumber] = objectToLoad.transform.position;
+    			objectToLoad.AddComponent<CorrectionMesh>();
     			startStopWatchTime = Time.time;
     			stopWatch = 0;
     			state = 1;
@@ -158,12 +192,14 @@ public class SelectionUX : MonoBehaviour
     		case 2:
 		    	Destroy(objectToLoad);
 		    	RecordPerformance(nbBloc, trialNumber, config, stopWatch);
+		    	RecordSpherePosition(nbBloc, trialNumber, config, positionsSpheres[trialNumber]);
 		    	trialNumber = trialNumber + 1;
     			if(configException.Count >= sizes.Length)
 				{
 					nbBloc = nbBloc + 1;
 					if(nbBloc >= nbBlocMax)
 					{
+						Application.Quit();
 						Debug.Break();
 					}
 					else
@@ -204,8 +240,29 @@ public class SelectionUX : MonoBehaviour
 
     void RecordPerformance(int blockID = 0, int trialID = 0, int configID = 0, float clock = 0)
     {
-    	path = "Assets/Resources/DataCollection/SelectionUX/" + userName + "-" + time0 + ".csv";
+    	if(interactWithFinger)
+    	{
+    		if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/SelectionUX/Fingers/" + userName + "-" + time0 + ".csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/Fingers/" + time0 + ".csv";
+    		}
 
+    	}
+    	else
+    	{
+	    	if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/SelectionUX/3DMouse/" + userName + "-" + time0 + ".csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/3DMouse/" + time0 + ".csv";
+    		}
+    	}
     	if(state == -2)
     	{
     		writer = new StreamWriter(path, true);
@@ -216,6 +273,46 @@ public class SelectionUX : MonoBehaviour
     	{
     		writer = new StreamWriter(path, true);
 			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + clock);
+			writer.Close();
+    	}
+    }
+
+	void RecordSpherePosition(int blockID = 0, int trialID = 0, int configID = 0, Vector3 position = new Vector3())
+    {
+    	if(interactWithFinger)
+    	{
+    		if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/SelectionUX/Fingers/" + userName + "-" + time0 + "-positionsSpheres.csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/Fingers/" + time0 + "-positionsSpheres.csv";
+    		}
+
+    	}
+    	else
+    	{
+	    	if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/SelectionUX/3DMouse/" + userName + "-" + time0 + "-positionsSpheres.csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/3DMouse/" + time0 + "-positionsSpheres.csv";
+    		}
+    	}
+
+    	if(state == -2)
+    	{
+    		writer = new StreamWriter(path, true);
+			writer.WriteLine("BlockID;TrialID;Config;Position");
+			writer.Close();
+    	}
+    	else
+    	{
+    		writer = new StreamWriter(path, true);
+			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + position.ToString());
 			writer.Close();
     	}
     }
