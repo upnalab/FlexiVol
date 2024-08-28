@@ -9,6 +9,7 @@ using Voxon;
 
 public class DockingUX : MonoBehaviour
 {
+	public bool realGame;
 	public string userName;
 	public bool interactWithFinger;
 	public GameObject primitiveToInstantiate, phantomToInstantiate;
@@ -27,10 +28,17 @@ public class DockingUX : MonoBehaviour
 	    XYZ
  	}
 
+ 	[Serializable]	
+ 	public enum task{
+	    TRANSLATION,
+	    ROTATION,
+	    TRANSLATIONROTATION
+ 	}
+
 	[Serializable]
 	public struct TasksStruct{
-		public string name;
-		public int numberTask;
+		public task name;
+		// public int numberTask;
 		public directionTask direction;
 	}
 
@@ -97,8 +105,29 @@ public class DockingUX : MonoBehaviour
 
     void RecordPerformance(int blockID = 0, int trialID = 0, int configID = 0, float clock = 0)
     {
-    	path = "Assets/Resources/DataCollection/DockingUX/" + userName + "-" + time0 + ".csv";
+		if(interactWithFinger)
+    	{
+    		if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/DockingUX/Fingers/" + userName + "-" + time0 + ".csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/Fingers/" + time0 + ".csv";
+    		}
 
+    	}
+    	else
+    	{
+	    	if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/DockingUX/3DMouse/" + userName + "-" + time0 + ".csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/3DMouse/" + time0 + ".csv";
+    		}
+    	}
     	if(state == -2)
     	{
     		writer = new StreamWriter(path, true);
@@ -115,7 +144,29 @@ public class DockingUX : MonoBehaviour
 
 	void RecordCubePositions(int blockID = 0, int trialID = 0, int configID = 0, Vector3 positionTarget = new Vector3(), Vector3 positionFinal = new Vector3())
     {
-    	path = "Assets/Resources/DataCollection/DockingUX/" + userName + "-" + time0 + "-positionsCubes.csv";
+    	if(interactWithFinger)
+    	{
+    		if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/DockingUX/Fingers/" + userName + "-" + time0 + "-positions.csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/Fingers/" + time0 + "-positions.csv";
+    		}
+
+    	}
+    	else
+    	{
+	    	if(!realGame)
+    		{
+		    	path = "Assets/Resources/DataCollection/DockingUX/3DMouse/" + userName + "-" + time0 + "-positions.csv";
+    		}
+    		else
+    		{
+		    	path = Application.dataPath + "/3DMouse/" + time0 + "-positions.csv";
+    		}
+    	}
 
     	if(state == -2)
     	{

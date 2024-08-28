@@ -158,6 +158,16 @@ public class SelectionUX : MonoBehaviour
     			float randomPosZ = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.z*10/2, (float)voxonSpace.transform.localScale.z*10/2);
 
     			objectToLoad.transform.position = new Vector3(randomPosX, randomPosY, randomPosZ);
+    			// Debug.Log(objectToLoad.transform.localScale.x*10 + interactiveObject.transform.localScale.x*10);
+    			// Debug.Log("distance: " + Vector3.Distance(objectToLoad.transform.position, interactiveObject.transform.position));
+    			while(Vector3.Distance(objectToLoad.transform.position, interactiveObject.transform.position) < 10*(objectToLoad.transform.localScale.x + interactiveObject.transform.localScale.x + 0.01f))
+    			{
+    				randomPosX = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.x*10/2, (float)voxonSpace.transform.localScale.x*10/2);
+	    			randomPosY = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.y*10/2, (float)voxonSpace.transform.localScale.y*10/2);
+	    			randomPosZ = UnityEngine.Random.Range(-(float)voxonSpace.transform.localScale.z*10/2, (float)voxonSpace.transform.localScale.z*10/2);
+	    			objectToLoad.transform.position = new Vector3(randomPosX, randomPosY, randomPosZ);
+	    			// Debug.Log("came here");
+    			}
     			objectToLoad.transform.eulerAngles = new Vector3(0,0,0);
     			objectToLoad.AddComponent<VXDynamicComponent>();
     			if(interactiveObject.GetComponent<VXComponent>() != null)
