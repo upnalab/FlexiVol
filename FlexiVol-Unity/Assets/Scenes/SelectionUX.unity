@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 345795073}
   - component: {fileID: 345795076}
   - component: {fileID: 345795075}
-  - component: {fileID: 345795074}
+  - component: {fileID: 345795077}
   m_Layer: 0
   m_Name: LeftIndex
   m_TagString: Untagged
@@ -308,19 +308,6 @@ Transform:
   m_Father: {fileID: 1063729987}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &345795074
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345795072}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.49999997
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &345795075
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -370,6 +357,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345795072}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &345795077
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345795072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &372857921 stripped
 GameObject:
@@ -936,7 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   realGame: 0
   userName: User0
-  interactWithFinger: 1
+  interactWithFinger: 0
   rightHanded: 0
   primitiveToInstantiate: {fileID: 504086622}
   randomizeConditions: 1
@@ -1111,7 +1112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30620e4d968c708438640cfcad83aba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeVisual: {fileID: 0}
   leftIndex: {fileID: 345795072}
   rightIndex: {fileID: 1994331383}
   leftThumb: {fileID: 0}
@@ -1135,9 +1135,6 @@ MonoBehaviour:
   rightPinch: 0
   pickedObjectLeft: {fileID: 0}
   pickedObjectRight: {fileID: 0}
-  calib0: {x: 0, y: 0, z: 0}
-  calib1: {x: 0, y: 0, z: 0}
-  calib2: {x: 0, y: 0, z: 0}
 --- !u!1 &1067461793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,7 +1799,7 @@ GameObject:
   - component: {fileID: 1994331384}
   - component: {fileID: 1994331387}
   - component: {fileID: 1994331386}
-  - component: {fileID: 1994331385}
+  - component: {fileID: 1994331388}
   m_Layer: 0
   m_Name: RightIndex
   m_TagString: Untagged
@@ -1825,19 +1822,6 @@ Transform:
   m_Father: {fileID: 1063729987}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1994331385
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1994331383}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.49999997
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1994331386
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1887,6 +1871,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994331383}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &1994331388
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994331383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2069577989
 GameObject:
@@ -2121,8 +2119,8 @@ GameObject:
   - component: {fileID: 2080944383}
   - component: {fileID: 2080944387}
   - component: {fileID: 2080944386}
-  - component: {fileID: 2080944385}
   - component: {fileID: 2080944384}
+  - component: {fileID: 2080944388}
   m_Layer: 0
   m_Name: 3DMousePosition
   m_TagString: Untagged
@@ -2164,19 +2162,6 @@ MonoBehaviour:
   min_scale: 0.0001
   max_distance: 2
   scaleMe: 1
---- !u!135 &2080944385
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2080944382}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2080944386
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2226,4 +2211,18 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080944382}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &2080944388
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080944382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}

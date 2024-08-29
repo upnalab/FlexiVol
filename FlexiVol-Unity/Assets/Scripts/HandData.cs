@@ -12,7 +12,7 @@ public class HandData : MonoBehaviour
 {
     // Start is called before the first frame update
     public Plane plane;
-    public GameObject planeVisual;
+    // public GameObject planeVisual;
     //Fingers
     [Header("Indexes")]
     public GameObject leftIndex;
@@ -42,12 +42,21 @@ public class HandData : MonoBehaviour
     public GameObject pickedObjectRight = null;
 
     private float x, y, z;
+    private bool rightHanded;
 
-    public Vector3 calib0, calib1, calib2;
+    // public Vector3 calib0, calib1, calib2;
 
     void Start()
     {
-        planeVisual = GameObject.Find("Plane");
+        if(GameObject.Find("GameManager").GetComponent<SelectionUX>() != null)
+        {
+            rightHanded = GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded;
+        }
+        else
+        {
+            rightHanded = GameObject.Find("GameManager").GetComponent<DockingUX>().rightHanded;
+        }
+        // planeVisual = GameObject.Find("Plane");
 
         StartUDPReceiver();
     }
@@ -151,77 +160,105 @@ public class HandData : MonoBehaviour
     void Update()
     {
 
-        if(Voxon.Input.GetKeyDown("Calib1"))
-        {
-            if(GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded)
-            {
-                calib0 = new Vector3(xRightIndex, yRightIndex, zRightIndex);
-            }
-            else
-            {
-                calib0 = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
-            }
-            // calib0 = GameObject.Find("Sphere").transform.position;
-        }
-        if(Voxon.Input.GetKeyDown("Calib2"))
-        {
-            if(GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded)
-            {
-                calib1 = new Vector3(xRightIndex, yRightIndex, zRightIndex);
-            }
-            else
-            {
-                calib1 = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
-            }
-            // calib1 = GameObject.Find("Sphere (1)").transform.position;
-        }
-        if(Voxon.Input.GetKeyDown("Calib3"))
-        {
-            if(GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded)
-            {
-                calib2 = new Vector3(xRightIndex, yRightIndex, zRightIndex);
-            }
-            else
-            {
-                calib2 = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
-            }
-            // calib2 = GameObject.Find("Sphere (2)").transform.position;
-        }
-        if(Voxon.Input.GetKeyDown("CalibFull"))
-        {
-            plane.Set3Points(calib0, calib1, calib2);
-            this.transform.parent.transform.up = -plane.normal;
-            this.transform.parent.transform.position = new Vector3(calib0.x + (calib1.x - calib0.x)/2, (calib0.y+calib1.y+calib2.y)/3 - 2, calib0.z - (calib0.z - calib2.z)/2);
-            // planeVisual.transform.up = -plane.normal;
-            // planeVisual.transform.position = new Vector3(calib0.x + (calib1.x - calib0.x)/2, (calib0.y+calib1.y+calib2.y)/3 - 4, calib0.z - (calib0.z - calib2.z)/2);
-        }
+        // if(Voxon.Input.GetKeyDown("Calib1"))
+        // {
+        //     if(!GameObject.Find("GameManager").GetComponent<SelectionUX>().realGame)
+        //     {
+        //         calib0 = GameObject.Find("Sphere").transform.position;
+        //     }
+        //     else
+        //     {
+        //          if(GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded)
+        //         {
+        //             calib0 = new Vector3(xRightIndex, yRightIndex, zRightIndex);
+        //         }
+        //         else
+        //         {
+        //             calib0 = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
+        //         }
+        //     }
+           
+        //     // calib0 = GameObject.Find("Sphere").transform.position;
+        // }
+        // if(Voxon.Input.GetKeyDown("Calib2"))
+        // {
+        //     if(!GameObject.Find("GameManager").GetComponent<SelectionUX>().realGame)
+        //     {
+        //         calib1 = GameObject.Find("Sphere (1)").transform.position;
+        //     }
+        //     else
+        //     {
+        //         if(GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded)
+        //         {
+        //             calib1 = new Vector3(xRightIndex, yRightIndex, zRightIndex);
+        //         }
+        //         else
+        //         {
+        //             calib1 = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
+        //         }
+        //     }
+        //     // calib1 = GameObject.Find("Sphere (1)").transform.position;
+        // }
+        // if(Voxon.Input.GetKeyDown("Calib3"))
+        // {
+        //     if(!GameObject.Find("GameManager").GetComponent<SelectionUX>().realGame)
+        //     {
+        //         calib2 = GameObject.Find("Sphere (2)").transform.position;
+        //     }
+        //     else
+        //     {
+        //         if(GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded)
+        //         {
+        //             calib2 = new Vector3(xRightIndex, yRightIndex, zRightIndex);
+        //         }
+        //         else
+        //         {
+        //             calib2 = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
+        //         }
+        //     }
+
+        //     // calib2 = GameObject.Find("Sphere (2)").transform.position;
+        // }
+        // if(Voxon.Input.GetKeyDown("CalibFull"))
+        // {
+        //     plane.Set3Points(calib0, calib1, calib2);
+        //     this.transform.parent.transform.up = -plane.normal;
+        //     this.transform.parent.transform.position = new Vector3(calib0.x + (calib1.x - calib0.x)/2, (calib0.y+calib1.y+calib2.y)/3 - 2, calib0.z - (calib0.z - calib2.z)/2);
+        //     // planeVisual.transform.up = -plane.normal;
+        //     // planeVisual.transform.position = new Vector3(calib0.x + (calib1.x - calib0.x)/2, (calib0.y+calib1.y+calib2.y)/3 - 4, calib0.z - (calib0.z - calib2.z)/2);
+        // }
 
         // Opcional: Aquí puedes hacer algo con los datos recibidos, como actualizar la UI o mover un objeto.
         leftIndex.transform.localPosition = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
         rightIndex.transform.localPosition = new Vector3(xRightIndex, yRightIndex, zRightIndex);
 
-        if (leftThumb != null && rightThumb != null) // OR?
+        if(rightHanded)
         {
-            leftThumb.transform.localPosition = new Vector3(xLeftThumb, yLeftThumb, zLeftThumb);
-            rightThumb.transform.localPosition = new Vector3(xRightThumb, yRightThumb, zRightThumb);
+            if(rightThumb != null)
+            {
+                rightThumb.transform.localPosition = new Vector3(xRightThumb, yRightThumb, zRightThumb);
 
-            //Check if left is pinching
-            if (AreSpheresColliding(leftIndex.GetComponent<SphereCollider>(), leftThumb.GetComponent<SphereCollider>())) leftPinch = true;
-            else leftPinch = false;
-
-                //Check if right is pinching
-            if (AreSpheresColliding(rightIndex.GetComponent<SphereCollider>(), rightThumb.GetComponent<SphereCollider>())) rightPinch = true;
-            else rightPinch = false;
-
+                     //Check if right is pinching
+                if (AreSpheresColliding(rightIndex.GetComponent<Collider>(), rightThumb.GetComponent<Collider>())) rightPinch = true;
+                else rightPinch = false;            
+            }
         }
         else
         {
+             if(leftThumb != null) // OR?
+            {
+                leftThumb.transform.localPosition = new Vector3(xLeftThumb, yLeftThumb, zLeftThumb);
+                rightThumb.transform.localPosition = new Vector3(xRightThumb, yRightThumb, zRightThumb);
 
+                //Check if left is pinching
+                if (AreSpheresColliding(leftIndex.GetComponent<Collider>(), leftThumb.GetComponent<Collider>())) leftPinch = true;
+                else leftPinch = false;
+            }
         }
-
+        
     }
 
-    bool AreSpheresColliding(SphereCollider collider1, SphereCollider collider2)
+    bool AreSpheresColliding(Collider collider1, Collider collider2)
     {
         // Calcula la distancia entre los centros de las esferas
         float distance = Vector3.Distance(collider1.transform.position, collider2.transform.position);

@@ -6,7 +6,7 @@ public class SpaceMouseGrow : MonoBehaviour
 {
     public float scale_factor = 0.000005f;
 
-	public float movement_speed = 1f;
+	public float movement_speed = 0.03f;
 	public float zoom_speed = 1f;
 	private float original_size = 0;
 	private Vector3 original_pos = Vector3.zero;
@@ -19,11 +19,14 @@ public class SpaceMouseGrow : MonoBehaviour
 	VXCamera cam = null;
 
 	private Vector3 viewFinderScale;
+	private VXCamera _camera;
 	// Start is called before the first frame update
 	void Start()
     {
-		viewFinderScale = GameObject.Find("constrained_size").transform.localScale*10;
-		original_size = this.transform.localScale.x/10;
+    	_camera = GameObject.FindObjectOfType<VXCamera>();
+		viewFinderScale = GameObject.Find("constrained_size").transform.localScale*_camera.BaseScale;
+		// Debug.Log(_camera.BaseScale);
+		original_size = this.transform.localScale.x/_camera.BaseScale;
     }
 
     // Update is called once per frame

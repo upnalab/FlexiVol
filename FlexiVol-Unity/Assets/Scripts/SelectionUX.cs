@@ -67,7 +67,7 @@ public class SelectionUX : MonoBehaviour
 
         interactiveObject.tag = "InteractiveObject";
         interactiveObject.AddComponent<Rigidbody>();
-        interactiveObject.GetComponent<Rigidbody>().isKinematic = false;
+        interactiveObject.GetComponent<Rigidbody>().isKinematic = true;
         interactiveObject.GetComponent<Rigidbody>().useGravity = false;
 
         interactiveObject.AddComponent<VXDynamicComponent>();
