@@ -6,6 +6,8 @@ TagManager:
   tags:
   - VoxieHide
   - InteractiveObject
+  - Index
+  - Thumb
   layers:
   - Default
   - TransparentFX
