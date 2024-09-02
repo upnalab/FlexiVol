@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 504086623}
   - component: {fileID: 504086626}
   - component: {fileID: 504086625}
-  - component: {fileID: 504086624}
+  - component: {fileID: 504086627}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -425,19 +425,6 @@ Transform:
   m_Father: {fileID: 1798457412}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &504086624
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504086622}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.49999997
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &504086625
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -487,6 +474,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 504086622}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!64 &504086627
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504086622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &587009052
 GameObject:
@@ -935,18 +936,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4b6d6d310dd5c4f8923c03579b4b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realGame: 0
+  realGame: 1
   userName: User0
-  interactWithFinger: 0
-  rightHanded: 0
+  interactWithFinger: 1
+  rightHanded: 1
   primitiveToInstantiate: {fileID: 504086622}
   randomizeConditions: 1
   nbBlocMax: 20
   trialNumber: 0
   sizes:
-  - {x: 0.099999994, y: 0.099999994, z: 0.099999994}
+  - {x: 0.15, y: 0.15, z: 0.15}
   - {x: 0.29999998, y: 0.29999998, z: 0.29999998}
-  - {x: 0.049999997, y: 0.049999997, z: 0.049999997}
+  - {x: 0.07, y: 0.07, z: 0.07}
   stopWatch: 0
   configException: 
 --- !u!1 &933677993
@@ -1231,7 +1232,7 @@ Transform:
   m_GameObject: {fileID: 1099704928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.35, z: 0.79999995}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1775602692}

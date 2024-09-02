@@ -86,7 +86,7 @@ public class SpaceMouseGrow : MonoBehaviour
 		if (position != null)
 		{
 			v3pos.x += movement_speed * (position[0] / 35.0f);
-			v3pos.y += movement_speed * (position[2] / 35.0f);
+			v3pos.y -= movement_speed * (position[2] / 35.0f);
 			v3pos.z -= movement_speed * (position[1] / 35.0f);
 
 			// float distance = Vector3.Distance(original_pos, v3pos);

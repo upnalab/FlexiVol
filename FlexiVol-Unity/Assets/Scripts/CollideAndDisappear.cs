@@ -8,7 +8,7 @@ public class CollideAndDisappear : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // this.GetComponent<Collider>().isTrigger = true;
+        this.GetComponent<Collider>().isTrigger = true;
     }
 
     // Update is called once per frame

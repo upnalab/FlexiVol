@@ -15,6 +15,7 @@ public class ChangeParentsAtCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	
         if(indexCollider && thumbCollider)
         {
         	this.transform.parent = GameObject.Find("PinchPosition").transform;
@@ -31,36 +32,13 @@ public class ChangeParentsAtCollision : MonoBehaviour
         		thumbCollider = !thumbCollider;
         	}
         }
+        else
+        {
+        	indexCollider = this.transform.GetChild(0).transform.GetComponent<CollisionWithFingers>().indexCollider;
+	    	thumbCollider = this.transform.GetChild(0).transform.GetComponent<CollisionWithFingers>().thumbCollider;
+	    	
+        }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-    	if(realGame)
-    	{
-	    	if(other.GetComponent<Collider>().tag == "Index")
-	    	{
-	    		this.indexCollider = true;
-	    	}
-	    	if(other.GetComponent<Collider>().tag == "Thumb")
-	    	{
-	    		this.thumbCollider = true;
-	    	}
-    	}
 
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-    	if(realGame)
-    	{
-	    	if(other.GetComponent<Collider>().tag == "Index")
-	    	{
-	    		this.indexCollider = false;
-	    	}
-	    	if(other.GetComponent<Collider>().tag == "Thumb")
-	    	{
-	    		this.thumbCollider = false;
-	    	}
-    	}
-    }
 }

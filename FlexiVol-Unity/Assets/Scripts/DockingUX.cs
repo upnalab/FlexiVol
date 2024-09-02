@@ -17,6 +17,8 @@ public class DockingUX : MonoBehaviour
 	public bool randomizeConditions;
 	public int nbBlocMax, trialNumber;
 
+	public float addAngle, addDistance;
+
 	[Serializable]	
  	public enum directionTask{
 	    X,
@@ -89,6 +91,14 @@ public class DockingUX : MonoBehaviour
 
 	        	GameObject.Find("RightIndex").tag = "Index";
 	        	GameObject.Find("RightThumb").tag = "Thumb";
+    	        
+    	        GameObject.Find("RightIndex").AddComponent<Rigidbody>();
+				GameObject.Find("RightIndex").GetComponent<Rigidbody>().isKinematic = true;
+				GameObject.Find("RightIndex").GetComponent<Rigidbody>().useGravity = false;
+
+				GameObject.Find("RightThumb").AddComponent<Rigidbody>();
+				GameObject.Find("RightThumb").GetComponent<Rigidbody>().isKinematic = true;
+				GameObject.Find("RightThumb").GetComponent<Rigidbody>().useGravity = false;
 
         	}
         	else
@@ -99,8 +109,22 @@ public class DockingUX : MonoBehaviour
 
 	        	GameObject.Find("LeftIndex").tag = "Index";
 	        	GameObject.Find("LeftThumb").tag = "Thumb";
+
+	        	GameObject.Find("LeftIndex").AddComponent<Rigidbody>();
+				GameObject.Find("LeftIndex").GetComponent<Rigidbody>().isKinematic = true;
+				GameObject.Find("LeftIndex").GetComponent<Rigidbody>().useGravity = false;
+
+				GameObject.Find("LeftThumb").AddComponent<Rigidbody>();
+				GameObject.Find("LeftThumb").GetComponent<Rigidbody>().isKinematic = true;
+				GameObject.Find("LeftThumb").GetComponent<Rigidbody>().useGravity = false;
         	}
         	GameObject.Find("PinchPosition").SetActive(true);
+
+        	GameObject.FindGameObjectWithTag("Index").AddComponent<VXDynamicComponent>();
+			GameObject.FindGameObjectWithTag("Index").AddComponent<CorrectionMesh>();
+
+			GameObject.FindGameObjectWithTag("Thumb").AddComponent<VXDynamicComponent>();
+		    GameObject.FindGameObjectWithTag("Thumb").AddComponent<CorrectionMesh>();
 
         }
         else
@@ -178,13 +202,41 @@ public class DockingUX : MonoBehaviour
 		    	{
 		        	Destroy(objectStart.GetComponent<VXComponent>());
 		    	}
-    			
+		    	for(int i = 0; i < objectStart.transform.childCount; i++)
+		    	{
+		    		if(objectStart.transform.GetChild(i).gameObject.GetComponent<VXComponent>() != null)
+			    	{
+			        	Destroy(objectStart.transform.GetChild(i).gameObject.GetComponent<VXComponent>());
+			        	objectStart.transform.GetChild(i).gameObject.AddComponent<VXDynamicComponent>();
+			        	objectStart.transform.GetChild(i).gameObject.AddComponent<CorrectionMesh>();
+			    	}
+			    	if(objectStart.transform.GetChild(i).gameObject.GetComponent<Rigidbody>() == null)
+			    	{
+			        	objectStart.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+			        	objectStart.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = true;
+			        	objectStart.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().useGravity = false;
+			    	}
+		    	}
+
+
     			if(interactWithFinger)
     			{
-    				if(objectStart.GetComponent<ChangeParentsAtCollision>() == null)
+					if(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>() != null)
     				{
+		    			Destroy(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>());
+		    			// GameObject.FindGameObjectWithTag("Index").AddComponent<VXDynamicComponent>();
+		    			// GameObject.FindGameObjectWithTag("Index").AddComponent<CorrectionMesh>();
 		    			objectStart.AddComponent<ChangeParentsAtCollision>();
+		    			objectStart.transform.GetChild(0).gameObject.AddComponent<CollisionWithFingers>();
+
     				}
+    				if(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>() != null)
+    				{
+		    			Destroy(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>());
+		    			// GameObject.FindGameObjectWithTag("Thumb").AddComponent<VXDynamicComponent>();
+		    			// GameObject.FindGameObjectWithTag("Thumb").AddComponent<CorrectionMesh>();
+    				}
+
     			}
     			else
     			{
@@ -379,6 +431,8 @@ public class DockingUX : MonoBehaviour
     			if(interactWithFinger)
     			{
 	    			objectToLoad.AddComponent<ChangeParentsAtCollision>();
+	    			objectToLoad.transform.GetChild(0).gameObject.AddComponent<CollisionWithFingers>();
+
     			}
     			else
     			{
@@ -395,6 +449,10 @@ public class DockingUX : MonoBehaviour
 			    	objectToLoad.transform.GetChild(i).gameObject.AddComponent<VXDynamicComponent>();
 			    	objectToLoad.transform.GetChild(i).gameObject.AddComponent<CorrectionMesh>();
 
+			    	objectToLoad.transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+			    	objectToLoad.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().isKinematic = true;
+			    	objectToLoad.transform.GetChild(i).gameObject.GetComponent<Rigidbody>().useGravity = false;
+
 			    	if(phantomObject.transform.GetChild(i).gameObject.GetComponent<VXComponent>() != null)
 			    	{
 			        	Destroy(phantomObject.transform.GetChild(i).gameObject.GetComponent<VXComponent>());
@@ -407,6 +465,8 @@ public class DockingUX : MonoBehaviour
     			targetRotationsCubes[trialNumber] = phantomObject.transform.eulerAngles.y;
 
     			startStopWatchTime = Time.time;
+    			addDistance = 0;
+    			addAngle = 0;
     			stopWatch = 0;
     			state = 8;
 
@@ -447,6 +507,7 @@ public class DockingUX : MonoBehaviour
     			finalPositionsCubes[trialNumber] = objectToLoad.transform.position;
     			finalRotationsCubes[trialNumber] = objectToLoad.transform.eulerAngles.y;
 
+    			StartCoroutine(ComputeAccumulatedDistances());
     			// StartCoroutine(WaitForCollision());
     			// in coroutine -> record time
     			break;
@@ -454,7 +515,7 @@ public class DockingUX : MonoBehaviour
     		case 2:
 		    	Destroy(objectToLoad);
 		    	Destroy(phantomObject);
-		    	RecordPerformance(nbBloc, trialNumber, config, stopWatch);
+		    	RecordPerformance(nbBloc, trialNumber, config, stopWatch, addDistance, addAngle);
 		    	RecordCubePositions(nbBloc, trialNumber, config, targetPositionsCubes[trialNumber], finalPositionsCubes[trialNumber], targetRotationsCubes[trialNumber], finalRotationsCubes[trialNumber]);
 		    	goodDistance = false;
 		    	goodOrientation = false;
@@ -491,7 +552,7 @@ public class DockingUX : MonoBehaviour
     
     }
 
-    void RecordPerformance(int blockID = 0, int trialID = 0, int configID = 0, float clock = 0)
+    void RecordPerformance(int blockID = 0, int trialID = 0, int configID = 0, float clock = 0, float addDistance = 0, float addAngle = 0)
     {
 		if(interactWithFinger)
     	{
@@ -519,13 +580,13 @@ public class DockingUX : MonoBehaviour
     	if(state == -2)
     	{
     		writer = new StreamWriter(path, true);
-			writer.WriteLine("BlockID;TrialID;Config;StopWatch");
+			writer.WriteLine("BlockID;TrialID;Config;StopWatch;AccDistance;AccAngle");
 			writer.Close();
     	}
     	else
     	{
     		writer = new StreamWriter(path, true);
-			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + clock);
+			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + clock + ";" + addDistance + ";" + addAngle);
 			writer.Close();
     	}
     }
@@ -665,5 +726,15 @@ public class DockingUX : MonoBehaviour
 
 		yield return new WaitUntil(() => goodOrientation);
 
+	}
+
+	IEnumerator ComputeAccumulatedDistances()
+	{
+		Vector3 oldPosition = objectToLoad.transform.position;
+		float oldAngle = objectToLoad.transform.eulerAngles.y;
+		Vector3 oldOrient = objectToLoad.transform.forward;
+		yield return new WaitForEndOfFrame();
+		addDistance = addDistance + Vector3.Distance(oldPosition, objectToLoad.transform.position)/10; // 10 represents basescale
+		addAngle = addAngle + Vector3.Angle(oldOrient, objectToLoad.transform.forward);//Mathf.Abs((Mathf.Abs(oldAngle) - Mathf.Abs(objectToLoad.transform.eulerAngles.y))%360);
 	}
 }

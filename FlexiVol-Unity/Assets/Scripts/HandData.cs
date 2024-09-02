@@ -56,7 +56,6 @@ public class HandData : MonoBehaviour
         {
             rightHanded = GameObject.Find("GameManager").GetComponent<DockingUX>().rightHanded;
         }
-        // planeVisual = GameObject.Find("Plane");
 
         StartUDPReceiver();
     }
@@ -134,6 +133,7 @@ public class HandData : MonoBehaviour
                     zLeftIndex = z;
                     break;
                 case "Thumb Right":
+                    Debug.Log("Thumb");
                     xRightThumb = x;
                     yRightThumb = y;
                     zRightThumb = z;
@@ -145,7 +145,7 @@ public class HandData : MonoBehaviour
                     break;
 
                 default:
-                    // Debug.Log("Shit");
+                    Debug.Log("Shit");
                     break;
 
             }
@@ -161,30 +161,31 @@ public class HandData : MonoBehaviour
     {
 
         // Opcional: Aquí puedes hacer algo con los datos recibidos, como actualizar la UI o mover un objeto.
-        leftIndex.transform.localPosition = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
-        rightIndex.transform.localPosition = new Vector3(xRightIndex, yRightIndex, zRightIndex);
 
         if(rightHanded)
         {
+            rightIndex.transform.localPosition = new Vector3(xRightIndex, yRightIndex, zRightIndex);
+
             if(rightThumb != null)
             {
                 rightThumb.transform.localPosition = new Vector3(xRightThumb, yRightThumb, zRightThumb);
 
-                     //Check if right is pinching
-                if (AreSpheresColliding(rightIndex.GetComponent<Collider>(), rightThumb.GetComponent<Collider>())) rightPinch = true;
-                else rightPinch = false;            
+                //Check if right is pinching
+                // if (AreSpheresColliding(rightIndex.GetComponent<Collider>(), rightThumb.GetComponent<Collider>())) rightPinch = true;
+                // else rightPinch = false;            
             }
         }
         else
         {
+            leftIndex.transform.localPosition = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
+
              if(leftThumb != null)
             {
                 leftThumb.transform.localPosition = new Vector3(xLeftThumb, yLeftThumb, zLeftThumb);
-                rightThumb.transform.localPosition = new Vector3(xRightThumb, yRightThumb, zRightThumb);
 
                 //Check if left is pinching
-                if (AreSpheresColliding(leftIndex.GetComponent<Collider>(), leftThumb.GetComponent<Collider>())) leftPinch = true;
-                else leftPinch = false;
+                // if (AreSpheresColliding(leftIndex.GetComponent<Collider>(), leftThumb.GetComponent<Collider>())) leftPinch = true;
+                // else leftPinch = false;
             }
         }
         
