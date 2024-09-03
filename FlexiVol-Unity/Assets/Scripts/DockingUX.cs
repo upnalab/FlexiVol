@@ -81,56 +81,67 @@ public class DockingUX : MonoBehaviour
     {
         time0 = System.DateTime.Now.ToString("ddMMyyyy-HHmm");
 		state = -2;
+
         if(interactWithFinger)
         {
         	if(rightHanded)
         	{
-	        	// interactiveObject = GameObject.Find("RightIndex");
-	        	GameObject.Find("LeftIndex").SetActive(false);
-	        	GameObject.Find("LeftThumb").SetActive(false);
-
-	        	GameObject.Find("RightIndex").tag = "Index";
+        		GameObject.Find("RightIndex").tag = "Index";
 	        	GameObject.Find("RightThumb").tag = "Thumb";
     	        
     	        GameObject.Find("RightIndex").AddComponent<Rigidbody>();
 				GameObject.Find("RightIndex").GetComponent<Rigidbody>().isKinematic = true;
 				GameObject.Find("RightIndex").GetComponent<Rigidbody>().useGravity = false;
 
+				GameObject.Find("RightIndex").AddComponent<VXDynamicComponent>();
+				GameObject.Find("RightIndex").AddComponent<CorrectionMesh>();
+
 				GameObject.Find("RightThumb").AddComponent<Rigidbody>();
 				GameObject.Find("RightThumb").GetComponent<Rigidbody>().isKinematic = true;
 				GameObject.Find("RightThumb").GetComponent<Rigidbody>().useGravity = false;
 
+				GameObject.Find("RightThumb").AddComponent<VXDynamicComponent>();
+				GameObject.Find("RightThumb").AddComponent<CorrectionMesh>();
+
+	        	GameObject.Find("LeftIndex").SetActive(false);
+	        	GameObject.Find("LeftThumb").SetActive(false);
         	}
         	else
         	{
-	        	// interactiveObject = GameObject.Find("LeftIndex");
-	        	GameObject.Find("RightIndex").SetActive(false);
-	        	GameObject.Find("RightThumb").SetActive(false);
-
 	        	GameObject.Find("LeftIndex").tag = "Index";
 	        	GameObject.Find("LeftThumb").tag = "Thumb";
-
-	        	GameObject.Find("LeftIndex").AddComponent<Rigidbody>();
+    	        
+    	        GameObject.Find("LeftIndex").AddComponent<Rigidbody>();
 				GameObject.Find("LeftIndex").GetComponent<Rigidbody>().isKinematic = true;
 				GameObject.Find("LeftIndex").GetComponent<Rigidbody>().useGravity = false;
+
+				GameObject.Find("LeftIndex").AddComponent<VXDynamicComponent>();
+				GameObject.Find("LeftIndex").AddComponent<CorrectionMesh>();
 
 				GameObject.Find("LeftThumb").AddComponent<Rigidbody>();
 				GameObject.Find("LeftThumb").GetComponent<Rigidbody>().isKinematic = true;
 				GameObject.Find("LeftThumb").GetComponent<Rigidbody>().useGravity = false;
+
+				GameObject.Find("LeftThumb").AddComponent<VXDynamicComponent>();
+				GameObject.Find("LeftThumb").AddComponent<CorrectionMesh>();
+
+	        	GameObject.Find("RightIndex").SetActive(false);
+	        	GameObject.Find("RightThumb").SetActive(false);
         	}
         	GameObject.Find("PinchPosition").SetActive(true);
 
-        	GameObject.FindGameObjectWithTag("Index").AddComponent<VXDynamicComponent>();
-			GameObject.FindGameObjectWithTag("Index").AddComponent<CorrectionMesh>();
+   //      	GameObject.FindGameObjectWithTag("Index").AddComponent<VXDynamicComponent>();
+			// GameObject.FindGameObjectWithTag("Index").AddComponent<CorrectionMesh>();
 
-			GameObject.FindGameObjectWithTag("Thumb").AddComponent<VXDynamicComponent>();
-		    GameObject.FindGameObjectWithTag("Thumb").AddComponent<CorrectionMesh>();
+			// GameObject.FindGameObjectWithTag("Thumb").AddComponent<VXDynamicComponent>();
+		 //    GameObject.FindGameObjectWithTag("Thumb").AddComponent<CorrectionMesh>();
 
         }
         else
         {
         	GameObject.Find("HandsUpdate").SetActive(false);
         }
+
 
         tasks = new TasksStruct[15];
         for(int i = 0; i < tasks.Length; i++)
@@ -218,32 +229,33 @@ public class DockingUX : MonoBehaviour
 			    	}
 		    	}
 
-
-    			if(interactWithFinger)
-    			{
-					if(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>() != null)
-    				{
-		    			Destroy(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>());
-		    			// GameObject.FindGameObjectWithTag("Index").AddComponent<VXDynamicComponent>();
-		    			// GameObject.FindGameObjectWithTag("Index").AddComponent<CorrectionMesh>();
-		    			objectStart.AddComponent<ChangeParentsAtCollision>();
-		    			objectStart.transform.GetChild(0).gameObject.AddComponent<CollisionWithFingers>();
-
-    				}
-    				if(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>() != null)
-    				{
-		    			Destroy(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>());
-		    			// GameObject.FindGameObjectWithTag("Thumb").AddComponent<VXDynamicComponent>();
-		    			// GameObject.FindGameObjectWithTag("Thumb").AddComponent<CorrectionMesh>();
-    				}
-
-    			}
-    			else
+    			if(!interactWithFinger)
     			{
     				if(objectStart.GetComponent<SpaceMouseGrow>() == null)
     				{
     					objectStart.AddComponent<SpaceMouseGrow>();
     				}
+    			}
+    			else
+    			{
+    				if(objectStart.GetComponent<ChangeParentsAtCollision>() == null)
+    				{
+	    				objectStart.AddComponent<ChangeParentsAtCollision>();
+
+    				}
+    				if(objectStart.transform.GetChild(0).gameObject.GetComponent<CollisionWithFingers>() == null)
+    				{
+		    			objectStart.transform.GetChild(0).gameObject.AddComponent<CollisionWithFingers>();
+    				}
+
+		    		if(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>() != null)
+		    		{
+		    			Destroy(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>());
+		    		}
+		    		if(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>() != null)
+		    		{
+		    			Destroy(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>());
+		    		}
     			}
 
     			if(Voxon.Input.GetKeyDown("Space"))

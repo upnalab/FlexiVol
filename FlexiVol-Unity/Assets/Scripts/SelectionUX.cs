@@ -141,7 +141,7 @@ public class SelectionUX : MonoBehaviour
 				}
 				else
 				{
-					config = configException.Count + 1;
+					config = configException.Count; // + 1;
 				}
 
 				state = 0;

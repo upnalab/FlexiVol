@@ -1132,10 +1132,6 @@ MonoBehaviour:
   xLeftThumb: 0
   yLeftThumb: 0
   zLeftThumb: 0
-  leftPinch: 0
-  rightPinch: 0
-  pickedObjectLeft: {fileID: 0}
-  pickedObjectRight: {fileID: 0}
 --- !u!1 &1067461793
 GameObject:
   m_ObjectHideFlags: 0

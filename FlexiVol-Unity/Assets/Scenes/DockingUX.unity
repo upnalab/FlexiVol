@@ -1307,7 +1307,7 @@ MonoBehaviour:
   realGame: 1
   userName: rd
   interactWithFinger: 1
-  rightHanded: 1
+  rightHanded: 0
   primitiveToInstantiate: {fileID: 1672634230}
   phantomToInstantiate: {fileID: 910576684}
   randomizeConditions: 1
@@ -1354,7 +1354,7 @@ Transform:
   - {fileID: 352554490}
   - {fileID: 649308815}
   m_Father: {fileID: 1775602692}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -2174,7 +2174,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115112175}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2226,7 +2226,7 @@ MeshCollider:
   m_GameObject: {fileID: 2115112175}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
@@ -2266,7 +2266,7 @@ Transform:
   - {fileID: 2115112176}
   - {fileID: 986082411}
   m_Father: {fileID: 1775602692}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2135557364
 MonoBehaviour:
@@ -2282,8 +2282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftIndex: {fileID: 290522947}
   rightIndex: {fileID: 261115820}
-  leftThumb: {fileID: 0}
-  rightThumb: {fileID: 0}
+  leftThumb: {fileID: 270097084}
+  rightThumb: {fileID: 2115112175}
   port: 12345
   receivedMessage: 
   palabraInicial: 
@@ -2299,7 +2299,3 @@ MonoBehaviour:
   xLeftThumb: 0
   yLeftThumb: 0
   zLeftThumb: 0
-  leftPinch: 0
-  rightPinch: 0
-  pickedObjectLeft: {fileID: 0}
-  pickedObjectRight: {fileID: 0}

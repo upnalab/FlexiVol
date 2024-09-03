@@ -11,7 +11,7 @@ using Voxon;
 public class HandData : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Plane plane;
+    // public Plane plane;
     // public GameObject planeVisual;
     //Fingers
     [Header("Indexes")]
@@ -35,11 +35,11 @@ public class HandData : MonoBehaviour
     public float xLeftIndex, yLeftIndex, zLeftIndex = 0;
     public float xLeftThumb, yLeftThumb, zLeftThumb = 0;
 
-    public bool leftPinch = false;
-    public bool rightPinch = false;
+    // public bool leftPinch = false;
+    // public bool rightPinch = false;
 
-    public GameObject pickedObjectLeft = null;
-    public GameObject pickedObjectRight = null;
+    // public GameObject pickedObjectLeft = null;
+    // public GameObject pickedObjectRight = null;
 
     private float x, y, z;
     private bool rightHanded;
@@ -48,14 +48,14 @@ public class HandData : MonoBehaviour
 
     void Start()
     {
-        if(GameObject.Find("GameManager").GetComponent<SelectionUX>() != null)
-        {
-            rightHanded = GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded;
-        }
-        else
-        {
-            rightHanded = GameObject.Find("GameManager").GetComponent<DockingUX>().rightHanded;
-        }
+        // if(GameObject.Find("GameManager").GetComponent<SelectionUX>() != null)
+        // {
+        //     rightHanded = GameObject.Find("GameManager").GetComponent<SelectionUX>().rightHanded;
+        // }
+        // else
+        // {
+        //     rightHanded = GameObject.Find("GameManager").GetComponent<DockingUX>().rightHanded;
+        // }
 
         StartUDPReceiver();
     }
@@ -133,7 +133,6 @@ public class HandData : MonoBehaviour
                     zLeftIndex = z;
                     break;
                 case "Thumb Right":
-                    Debug.Log("Thumb");
                     xRightThumb = x;
                     yRightThumb = y;
                     zRightThumb = z;
@@ -145,7 +144,7 @@ public class HandData : MonoBehaviour
                     break;
 
                 default:
-                    Debug.Log("Shit");
+                    // Debug.Log("Shit");
                     break;
 
             }
@@ -161,10 +160,13 @@ public class HandData : MonoBehaviour
     {
 
         // Opcional: Aquí puedes hacer algo con los datos recibidos, como actualizar la UI o mover un objeto.
+        rightIndex.transform.localPosition = new Vector3(xRightIndex, yRightIndex, zRightIndex);
+        leftIndex.transform.localPosition = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
 
-        if(rightHanded)
-        {
-            rightIndex.transform.localPosition = new Vector3(xRightIndex, yRightIndex, zRightIndex);
+
+        // if(rightHanded)
+        // {
+            
 
             if(rightThumb != null)
             {
@@ -174,12 +176,10 @@ public class HandData : MonoBehaviour
                 // if (AreSpheresColliding(rightIndex.GetComponent<Collider>(), rightThumb.GetComponent<Collider>())) rightPinch = true;
                 // else rightPinch = false;            
             }
-        }
-        else
-        {
-            leftIndex.transform.localPosition = new Vector3(xLeftIndex, yLeftIndex, zLeftIndex);
-
-             if(leftThumb != null)
+        // }
+        // else
+        // {
+            if(leftThumb != null)
             {
                 leftThumb.transform.localPosition = new Vector3(xLeftThumb, yLeftThumb, zLeftThumb);
 
@@ -187,20 +187,20 @@ public class HandData : MonoBehaviour
                 // if (AreSpheresColliding(leftIndex.GetComponent<Collider>(), leftThumb.GetComponent<Collider>())) leftPinch = true;
                 // else leftPinch = false;
             }
-        }
+    }
         
-    }
+    // }
 
-    bool AreSpheresColliding(Collider collider1, Collider collider2)
-    {
-        // Calcula la distancia entre los centros de las esferas
-        float distance = Vector3.Distance(collider1.transform.position, collider2.transform.position);
+    // bool AreSpheresColliding(Collider collider1, Collider collider2)
+    // {
+    //     // Calcula la distancia entre los centros de las esferas
+    //     float distance = Vector3.Distance(collider1.transform.position, collider2.transform.position);
 
-        // Calcula la suma de los radios de las esferas
-        float sumOfRadii = collider1.transform.lossyScale.x/2 + collider2.transform.lossyScale.x/2;
+    //     // Calcula la suma de los radios de las esferas
+    //     float sumOfRadii = collider1.transform.lossyScale.x/2 + collider2.transform.lossyScale.x/2;
 
-        // Si la distancia entre los centros es menor o igual a la suma de los radios, las esferas están colisionando
-        return distance <= sumOfRadii;
-    }
+    //     // Si la distancia entre los centros es menor o igual a la suma de los radios, las esferas están colisionando
+    //     return distance <= sumOfRadii;
+    // }
 
 }
