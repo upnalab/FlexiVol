@@ -1305,11 +1305,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   realGame: 1
-  sticky: 0
+  sticky: 1
   rotationActivated: 0
   userName: 
-  interactWithFinger: 0
-  rightHanded: 0
+  interactWithFinger: 1
+  rightHanded: 1
   primitiveToInstantiate: {fileID: 1672634230}
   phantomToInstantiate: {fileID: 910576684}
   randomizeConditions: 1
@@ -1318,7 +1318,7 @@ MonoBehaviour:
   addAngle: 0
   addDistance: 0
   sizes:
-  - {x: 0.14999999, y: 0.14999999, z: 0.14999999}
+  - {x: 0.13, y: 0.13, z: 0.13}
   taskToDo:
     nameTask: 
     direction: 
@@ -1326,6 +1326,7 @@ MonoBehaviour:
   stopWatch: 0
   state: 0
   configException: 
+  allConfigs: 
 --- !u!1 &955747509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,15 +1966,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filename: default.json
   keyboard:
-    buckets: 0d000000ffffffffffffffff010000000500000009000000ffffffffffffffffffffffff03000000ffffffff0c000000080000000b000000ffffffff0a00000006000000
-    hashCodes: 92ab9755d18ba0277377124cf86f8906f919075ceab07d513234eb46f963bb071692154e045bdc62d807a91f2ff8b166f6d75c35fcd75c35000000000000000000000000
-    next: ffffffffffffffffffffffff00000000ffffffffffffffff04000000ffffffffffffffff0200000007000000ffffffffffffffffffffffff000000000000000000000000
-    count: 14
-    version: 14
+    buckets: 0d000000ffffffffffffffff010000000500000009000000ffffffffffffffffffffffff00000000ffffffff0c0000000e0000000b000000ffffffff0a00000006000000
+    hashCodes: 803a3d44d18ba0277377124cf86f8906f919075ceab07d513234eb46f963bb071692154e045bdc62d807a91f2ff8b166f6d75c35fcd75c3523293a0e0000000000000000
+    next: 03000000ffffffffffffffffffffffffffffffffffffffff04000000ffffffffffffffff0200000007000000ffffffffffffffffffffffff080000000000000000000000
+    count: 15
+    version: 38
     freeList: -1
     freeCount: 0
     keys:
-    - ColorSwap
+    - Space
     - Quit
     - Left
     - Right
@@ -1987,10 +1988,10 @@ MonoBehaviour:
     - RotateDown
     - RotateSideL
     - RotateSideR
+    - GoBack
     - 
     - 
-    - 
-    values: 3900000001000000cb000000cd000000c8000000d000000010000000120000002300000014000000110000001f0000001e00000020000000000000000000000000000000
+    values: 3900000001000000cb000000cd000000c8000000d000000010000000120000002300000014000000110000001f0000001e000000200000002c0000000000000000000000
   mouse:
     buckets: ffffffff01000000ffffffff
     hashCodes: 7377124cf86f890600000000

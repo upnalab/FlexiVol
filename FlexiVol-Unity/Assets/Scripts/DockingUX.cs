@@ -66,7 +66,7 @@ public class DockingUX : MonoBehaviour
 	private GameObject objectStart;
 
 	[Tooltip("List of Past Configurations")]
-	public List<int> configException;
+	public List<int> configException, allConfigs;
 
 	private GameObject voxonSpace;
 	private GameObject objectToLoad, phantomObject;
@@ -312,6 +312,7 @@ public class DockingUX : MonoBehaviour
 
 			case 0:
 				configException.Add(config);
+				allConfigs.Add(config);
     			// LOAD OBJECT TO MOVE
     			objectToLoad = (GameObject)Instantiate(primitiveToInstantiate, voxonSpace.transform.parent.transform);
     			objectToLoad.transform.localScale = sizeObject;
@@ -540,10 +541,30 @@ public class DockingUX : MonoBehaviour
     			finalPositionsCubes[trialNumber] = objectToLoad.transform.position;
     			finalRotationsCubes[trialNumber] = objectToLoad.transform.eulerAngles.y;
 
+
+    	// 		if(Voxon.Input.GetKeyDown("GoBack"))
+    	// 		{
+
+					// state = -5;
+    	// 		}
+
     			StartCoroutine(ComputeAccumulatedDistances());
     			// StartCoroutine(WaitForCollision());
     			// in coroutine -> record time
     			break;
+
+    		case -5:
+    			configException.Remove(config);
+				// allConfigs.Remove(allConfigs[allConfigs.Count-1]);
+				// allConfigs.Remove(allConfigs[allConfigs.Count-1]);
+
+				config = allConfigs[allConfigs.Count-2];
+				goodDistance = false;
+	    		goodOrientation = false;
+				Destroy(objectToLoad);
+	    		Destroy(phantomObject);
+    			state = 0;
+				break;
 
     		case 2:
 		    	Destroy(objectToLoad);
