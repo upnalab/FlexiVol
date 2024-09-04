@@ -19,7 +19,7 @@ public class CollisionWithFingers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.thumbCollider = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,10 +30,10 @@ public class CollisionWithFingers : MonoBehaviour
 	    	{
 	    		this.indexCollider = true;
 	    	}
-	    	if(other.GetComponent<Collider>().tag == "Thumb")
-	    	{
-	    		this.thumbCollider = true;
-	    	}
+	    	// if(other.GetComponent<Collider>().tag == "Thumb")
+	    	// {
+	    	// 	this.thumbCollider = true;
+	    	// }
     	}
 
     }
@@ -48,7 +48,7 @@ public class CollisionWithFingers : MonoBehaviour
 	    	}
 	    	if(other.GetComponent<Collider>().tag == "Thumb")
 	    	{
-	    		this.thumbCollider = false;
+	    		this.thumbCollider = true;
 	    	}
     	}
     }

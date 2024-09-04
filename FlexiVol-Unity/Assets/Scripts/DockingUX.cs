@@ -10,6 +10,8 @@ using Voxon;
 public class DockingUX : MonoBehaviour
 {
 	public bool realGame;
+	public bool sticky;
+	public bool rotationActivated;
 	public string userName;
 	public bool interactWithFinger;
 	public bool rightHanded;
@@ -59,7 +61,8 @@ public class DockingUX : MonoBehaviour
 	public List<(int, float)> results;
 
 	private string time0;
-	private int state;
+	[HideInInspector]
+	public int state;
 	private GameObject objectStart;
 
 	[Tooltip("List of Past Configurations")]
@@ -103,6 +106,10 @@ public class DockingUX : MonoBehaviour
 				GameObject.Find("RightThumb").AddComponent<VXDynamicComponent>();
 				GameObject.Find("RightThumb").AddComponent<CorrectionMesh>();
 
+				if(sticky)
+				{
+					GameObject.Find("RightThumb").SetActive(false);
+				}
 	        	GameObject.Find("LeftIndex").SetActive(false);
 	        	GameObject.Find("LeftThumb").SetActive(false);
         	}
@@ -125,10 +132,15 @@ public class DockingUX : MonoBehaviour
 				GameObject.Find("LeftThumb").AddComponent<VXDynamicComponent>();
 				GameObject.Find("LeftThumb").AddComponent<CorrectionMesh>();
 
+				if(sticky)
+				{
+					GameObject.Find("LeftThumb").SetActive(false);
+				}
+
 	        	GameObject.Find("RightIndex").SetActive(false);
 	        	GameObject.Find("RightThumb").SetActive(false);
         	}
-        	GameObject.Find("PinchPosition").SetActive(true);
+        	// GameObject.Find("PinchPosition").SetActive(true);
 
    //      	GameObject.FindGameObjectWithTag("Index").AddComponent<VXDynamicComponent>();
 			// GameObject.FindGameObjectWithTag("Index").AddComponent<CorrectionMesh>();
@@ -142,8 +154,15 @@ public class DockingUX : MonoBehaviour
         	GameObject.Find("HandsUpdate").SetActive(false);
         }
 
-
-        tasks = new TasksStruct[15];
+        if(rotationActivated)
+        {
+        	tasks = new TasksStruct[15];
+        }
+        else
+        {
+        	tasks = new TasksStruct[7];
+        }
+        
         for(int i = 0; i < tasks.Length; i++)
         {
         	if(i < Enum.GetNames(typeof(directionTask)).Length)
@@ -151,17 +170,19 @@ public class DockingUX : MonoBehaviour
         		tasks[i].nameTask = Enum.GetName(typeof(task), 0);
         		tasks[i].direction = Enum.GetName(typeof(directionTask), i);
         	}
-        	if(i == Enum.GetNames(typeof(directionTask)).Length)
+        	if(rotationActivated)
         	{
-        		tasks[i].nameTask = Enum.GetName(typeof(task), 1);
-        		tasks[i].direction = Enum.GetName(typeof(directionTask), 0);
+        		if(i == Enum.GetNames(typeof(directionTask)).Length)
+	        	{
+	        		tasks[i].nameTask = Enum.GetName(typeof(task), 1);
+	        		tasks[i].direction = Enum.GetName(typeof(directionTask), 0);
+	        	}
+	        	if(i > Enum.GetNames(typeof(directionTask)).Length)
+	        	{
+	        		tasks[i].nameTask = Enum.GetName(typeof(task), 2);
+	        		tasks[i].direction = Enum.GetName(typeof(directionTask), (i-1)%(Enum.GetNames(typeof(directionTask)).Length));
+	        	}
         	}
-        	if(i > Enum.GetNames(typeof(directionTask)).Length)
-        	{
-        		tasks[i].nameTask = Enum.GetName(typeof(task), 2);
-        		tasks[i].direction = Enum.GetName(typeof(directionTask), (i-1)%(Enum.GetNames(typeof(directionTask)).Length));
-        	}
-        	
         }
 
         objectStart = GameObject.Find("ObjectStart");
@@ -252,7 +273,7 @@ public class DockingUX : MonoBehaviour
 		    		{
 		    			Destroy(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>());
 		    		}
-		    		if(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>() != null)
+		    		if((GameObject.FindGameObjectWithTag("Thumb") != null) && (GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>() != null))
 		    		{
 		    			Destroy(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>());
 		    		}
@@ -632,13 +653,13 @@ public class DockingUX : MonoBehaviour
     	if(state == -2)
     	{
     		writer = new StreamWriter(path, true);
-			writer.WriteLine("BlockID;TrialID;Config;PositionTarget;PositionFinal;RotationTarget;RotationFinal");
+			writer.WriteLine("BlockID;TrialID;Config;DistanceFinal;PositionTargetX;PositionTargetY;PositionTargetZ;PositionFinalX;PositionFinalY;PositionFinalZ;RotationTarget;RotationFinal");
 			writer.Close();
     	}
     	else
     	{
     		writer = new StreamWriter(path, true);
-			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + positionTarget + ";" + positionFinal + ";" + (rotTarget%360) + ";" + (rotFinal%360));
+			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + Vector3.Distance(positionTarget, positionFinal).ToString("F4") + ";" + positionTarget.x.ToString("F4") + ";" + positionTarget.y.ToString("F4") + ";" + positionTarget.z.ToString("F4") + ";" + positionFinal.x.ToString("F4") + ";" + positionFinal.y.ToString("F4") + ";" + positionFinal.z.ToString("F4") + ";" + (rotTarget%360) + ";" + (rotFinal%360));
 			writer.Close();
     	}
     }

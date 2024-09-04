@@ -26,7 +26,8 @@ public class SelectionUX : MonoBehaviour
 	public List<(int, float)> results;
 
 	private string time0;
-	private int state;
+	[HideInInspector]
+	public int state;
 	private GameObject panelStart, interactiveObject;
 
 	[Tooltip("List of Past Configurations")]

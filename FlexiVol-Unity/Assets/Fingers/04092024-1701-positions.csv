@@ -1,0 +1,4 @@
+BlockID;TrialID;Config;DistanceFinal;PositionTargetX;PositionTargetY;PositionTargetZ;PositionFinalX;PositionFinalY;PositionFinalZ;RotationTarget;RotationFinal
+0;0;0;4,9369;-2,8382;-0,7468;2,0851;2,0986;-0,7468;2,0851;234,8426;234,8426
+0;1;2;4,6538;1,9832;-1,2190;-2,3634;1,9832;-1,2190;2,2904;339,0377;339,0378
+0;2;3;4,5052;1,6251;0,8336;3,2783;-2,8141;0,0648;3,2783;339,1972;339,1973

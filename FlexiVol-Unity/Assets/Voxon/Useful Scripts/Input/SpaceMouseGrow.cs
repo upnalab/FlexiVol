@@ -20,6 +20,7 @@ public class SpaceMouseGrow : MonoBehaviour
 
 	private Vector3 viewFinderScale;
 	private VXCamera _camera;
+	private int state;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -27,6 +28,8 @@ public class SpaceMouseGrow : MonoBehaviour
 		viewFinderScale = GameObject.Find("constrained_size").transform.localScale*_camera.BaseScale;
 		// Debug.Log(_camera.BaseScale);
 		original_size = this.transform.localScale.x/_camera.BaseScale;
+
+
     }
 
     // Update is called once per frame
@@ -37,6 +40,19 @@ public class SpaceMouseGrow : MonoBehaviour
 			cam = Voxon.VXProcess.Instance.Camera;
 			if (cam == null) return;
 		}
+
+		// if(GameObject.FindObjectOfType<SelectionUX>() != null)
+		// {
+		// 	state = GameObject.FindObjectOfType<SelectionUX>().state;
+		// }
+		// if(GameObject.FindObjectOfType<DockingUX>() != null)
+		// {
+		// 	state = GameObject.FindObjectOfType<DockingUX>().state;
+		// }
+		// if(GameObject.FindObjectOfType<TracingUX>() != null)
+		// {
+		// 	state = GameObject.FindObjectOfType<TracingUX>().state;
+		// }
 
   //       if (Voxon.Input.GetSpaceNavButton("LeftButton"))// && transform.localScale.x < max_scale)
   //       {
@@ -72,13 +88,13 @@ public class SpaceMouseGrow : MonoBehaviour
 
 		
 		
-		var rotation = Voxon.VXProcess.Runtime.GetSpaceNavRotation();
+		// var rotation = Voxon.VXProcess.Runtime.GetSpaceNavRotation();
 
-		if (rotation != null)
-		{
-			var v3rot = new Vector3(0, rotation[2] / 70, 0);
-			transform.Rotate(v3rot);
-		}
+		// if (rotation != null)
+		// {
+		// 	var v3rot = new Vector3(0, rotation[2] / 70, 0);
+		// 	transform.Rotate(v3rot);
+		// }
 		
 
 		var position = Voxon.VXProcess.Runtime.GetSpaceNavPosition();
@@ -106,5 +122,21 @@ public class SpaceMouseGrow : MonoBehaviour
 			// cam.BaseScale = original_size;
 			// transform.localScale = new Vector3(original_size, original_size, original_size);
 		}
+
+		// if(state == -2)
+		// {
+		if (Voxon.Input.GetKeyDown("Down"))
+		{
+			movement_speed -= 0.005f;
+			if(movement_speed <= 0.005f)
+			{
+				movement_speed = 0.005f;
+			}
+		}
+		if (Voxon.Input.GetKeyDown("Up"))
+		{
+			movement_speed += 0.005f;
+		}
+		// }
 	}
 }

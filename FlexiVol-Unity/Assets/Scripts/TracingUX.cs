@@ -10,6 +10,7 @@ using Voxon;
 public class TracingUX : MonoBehaviour
 {
 	public bool realGame;
+	public bool sticky;
 	public string userName;
 	public bool interactWithFinger;
 	public bool rightHanded;
@@ -27,8 +28,8 @@ public class TracingUX : MonoBehaviour
 	private float startStopWatchTime;
 
 	private string time0;
-	private int state;
-
+	[HideInInspector]
+	public int state;
 	[Tooltip("List of Past Configurations")]
 	public List<int> configException;
 
@@ -66,6 +67,12 @@ public class TracingUX : MonoBehaviour
 				GameObject.Find("RightThumb").AddComponent<VXDynamicComponent>();
 				GameObject.Find("RightThumb").AddComponent<CorrectionMesh>();
 
+				if(sticky)
+				{
+					GameObject.Find("RightThumb").SetActive(false);
+
+				}
+
 	        	GameObject.Find("LeftIndex").SetActive(false);
 	        	GameObject.Find("LeftThumb").SetActive(false);
         	}
@@ -88,10 +95,16 @@ public class TracingUX : MonoBehaviour
 				GameObject.Find("LeftThumb").AddComponent<VXDynamicComponent>();
 				GameObject.Find("LeftThumb").AddComponent<CorrectionMesh>();
 
+				if(sticky)
+				{
+					GameObject.Find("LeftThumb").SetActive(false);
+
+				}
+
 	        	GameObject.Find("RightIndex").SetActive(false);
 	        	GameObject.Find("RightThumb").SetActive(false);
         	}
-        	GameObject.Find("PinchPosition").SetActive(true);
+        	// GameObject.Find("PinchPosition").SetActive(true);
         }
         else
         {
@@ -161,7 +174,8 @@ public class TracingUX : MonoBehaviour
 		    		{
 		    			Destroy(GameObject.FindGameObjectWithTag("Index").GetComponent<VXComponent>());
 		    		}
-		    		if(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>() != null)
+		    		
+		    		if((GameObject.FindGameObjectWithTag("Thumb") != null) && (GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>() != null))
 		    		{
 		    			Destroy(GameObject.FindGameObjectWithTag("Thumb").GetComponent<VXComponent>());
 		    		}
@@ -255,6 +269,7 @@ public class TracingUX : MonoBehaviour
 		    	RecordPerformance(nbBloc, config, stopWatch, addDistance, addAngle);
 				circuits[config].SetActive(false);
 				interactiveObject.GetComponent<MeshRenderer>().enabled = false;
+				interactiveObject.GetComponent<CollideAndChangeParents>().indexCollider = false;
 		    	trialNumber = trialNumber + 1;
     			if(configException.Count >= circuits.Length)
 				{

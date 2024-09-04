@@ -12,25 +12,34 @@ public class PositionPinch : MonoBehaviour
     {
 		viewFinderScale = GameObject.Find("constrained_size").transform.localScale*10;
 
-    	if(GameObject.FindObjectOfType<DockingUX>().interactWithFinger)
+		if(GameObject.FindObjectOfType<DockingUX>() != null)
+		{
+			if(GameObject.FindObjectOfType<DockingUX>().interactWithFinger)
+	    	{
+	    		thumb = GameObject.FindGameObjectWithTag("Thumb").transform;
+		        index = GameObject.FindGameObjectWithTag("Index").transform;
+	    	}
+		}
+    	if(GameObject.FindObjectOfType<TracingUX>() != null)
     	{
-    		thumb = GameObject.FindGameObjectWithTag("Thumb").transform;
-	        index = GameObject.FindGameObjectWithTag("Index").transform;
-    	}
-    	if(GameObject.FindObjectOfType<TracingUX>().interactWithFinger)
-    	{
-    		thumb = GameObject.FindGameObjectWithTag("Thumb").transform;
-	        index = GameObject.FindGameObjectWithTag("Index").transform;
-    	}
+	    	if(GameObject.FindObjectOfType<TracingUX>().interactWithFinger)
+	    	{
+	    		thumb = GameObject.FindGameObjectWithTag("Thumb").transform;
+		        index = GameObject.FindGameObjectWithTag("Index").transform;
+	    	}
+	    }
     }
 
     // Update is called once per frame
     void Update()
     {
-    	if(thumb == null)
+    	if((thumb == null) && (GameObject.FindGameObjectWithTag("Thumb") != null))
     	{
     		thumb = GameObject.FindGameObjectWithTag("Thumb").transform;
-        	index = GameObject.FindGameObjectWithTag("Index").transform;
+    	}
+    	if(index == null)
+    	{
+    		index = GameObject.FindGameObjectWithTag("Index").transform;
     	}
         this.transform.position = (thumb.position + index.position)/2;
 		this.transform.forward = (thumb.position - index.position);
