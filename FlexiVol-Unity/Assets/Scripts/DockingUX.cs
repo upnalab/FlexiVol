@@ -509,6 +509,7 @@ public class DockingUX : MonoBehaviour
     		case 8:
     			if(taskToDo.nameTask == "TRANSLATION")
     			{
+
     				if(goodDistance)
 	    			{
 	    				state = 1;
@@ -686,6 +687,8 @@ public class DockingUX : MonoBehaviour
     }
     IEnumerator TryAgain()
 	{
+		// objectToLoad.GetComponentInChildren<MeshRenderer>().enabled = false;
+		// phantomObject.GetComponentInChildren<MeshRenderer>().enabled = false;
 		if(taskToDo.direction == "X")
 		{
 			float randomPosX = UnityEngine.Random.Range((float)(voxonSpace.transform.parent.transform.position.x - voxonSpace.transform.localScale.x*10/2), (float)(voxonSpace.transform.parent.transform.position.x + voxonSpace.transform.localScale.x*10/2));
@@ -751,9 +754,9 @@ public class DockingUX : MonoBehaviour
 			phantomObject.transform.position = new Vector3(randomPosX, randomPosY, randomPosZ);
 		}
 
-
 		if(Vector3.Distance(objectToLoad.transform.position, phantomObject.transform.position) < 10*(objectToLoad.transform.localScale.x + phantomObject.transform.localScale.x + 0.01f))
 		{
+			yield return new WaitForEndOfFrame();
 			StartCoroutine(TryAgain());
 		}
 		else
@@ -761,7 +764,9 @@ public class DockingUX : MonoBehaviour
 			goodDistance = true;
 		}
 		yield return new WaitUntil(() => goodDistance);
-
+		// objectToLoad.GetComponentInChildren<MeshRenderer>().enabled = true;
+		// phantomObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+		stopWatch = 0;
 	}
 
 
