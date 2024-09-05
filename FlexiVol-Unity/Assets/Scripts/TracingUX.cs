@@ -312,7 +312,7 @@ public class TracingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/Fingers/" + time0 + ".csv";
+		    	path = Application.dataPath + "/Fingers/Hand-PathTracing-Countdown" + time0 + ".csv";
     		}
 
     	}
@@ -324,7 +324,7 @@ public class TracingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/3DMouse/" + time0 + ".csv";
+		    	path = Application.dataPath + "/3DMouse/3DMouse-PathTracing-Countdown" + time0 + ".csv";
     		}
     	}
     	if(state == -2)
@@ -351,7 +351,7 @@ public class TracingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/Fingers/Circuit" + config + "-" + time0 + ".csv";
+		    	path = Application.dataPath + "/Fingers/Hand-PathTracing-Circuit" + config + "-" + time0 + ".csv";
     		}
 
     	}
@@ -363,7 +363,7 @@ public class TracingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/3DMouse/Circuit" + config + time0 + ".csv";
+		    	path = Application.dataPath + "/3DMouse/3DMouse-PathTracing-Circuit" + config + time0 + ".csv";
     		}
     	}
     	if(state == -2)

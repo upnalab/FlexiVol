@@ -259,7 +259,7 @@ public class SelectionUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/Fingers/" + time0 + ".csv";
+		    	path = Application.dataPath + "/Fingers/Hand-Selection-Countdown" + time0 + ".csv";
     		}
 
     	}
@@ -271,7 +271,7 @@ public class SelectionUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/3DMouse/" + time0 + ".csv";
+		    	path = Application.dataPath + "/3DMouse/3DMouse-Selection-Countdown" + time0 + ".csv";
     		}
     	}
     	if(state == -2)
@@ -298,7 +298,7 @@ public class SelectionUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/Fingers/" + time0 + "-positionsSpheres.csv";
+		    	path = Application.dataPath + "/Fingers/Hand-Selection-Position-" + time0 + ".csv";
     		}
 
     	}
@@ -310,7 +310,7 @@ public class SelectionUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/3DMouse/" + time0 + "-positionsSpheres.csv";
+		    	path = Application.dataPath + "/3DMouse/3DMouse-Selection-Position-" + time0 + ".csv";
     		}
     	}
 

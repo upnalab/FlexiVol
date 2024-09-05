@@ -1161,10 +1161,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   realGame: 1
-  sticky: 1
+  sticky: 0
   userName: 
-  interactWithFinger: 1
-  rightHanded: 1
+  interactWithFinger: 0
+  rightHanded: 0
   nbBlocMax: 1
   trialNumber: 0
   addAngle: 0

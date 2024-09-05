@@ -617,7 +617,7 @@ public class DockingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/Fingers/" + time0 + ".csv";
+		    	path = Application.dataPath + "/Fingers/Hand-Docking-Countdown" + time0 + ".csv";
     		}
 
     	}
@@ -629,7 +629,7 @@ public class DockingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/3DMouse/" + time0 + ".csv";
+		    	path = Application.dataPath + "/3DMouse/3DMouse-Docking-Countdown" + time0 + ".csv";
     		}
     	}
     	if(state == -2)
@@ -656,7 +656,7 @@ public class DockingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/Fingers/" + time0 + "-positions.csv";
+		    	path = Application.dataPath + "/Fingers/Hand-Docking-Position-" + time0 + ".csv";
     		}
 
     	}
@@ -668,7 +668,7 @@ public class DockingUX : MonoBehaviour
     		}
     		else
     		{
-		    	path = Application.dataPath + "/3DMouse/" + time0 + "-positions.csv";
+		    	path = Application.dataPath + "/3DMouse/3DMouse-Docking-Position-" + time0 + ".csv";
     		}
     	}
 
