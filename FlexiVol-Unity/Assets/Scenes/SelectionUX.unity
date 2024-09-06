@@ -937,9 +937,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   realGame: 1
-  userName: User0
-  interactWithFinger: 0
-  rightHanded: 0
+  userName: 
+  interactWithFinger: 1
+  rightHanded: 1
   primitiveToInstantiate: {fileID: 504086622}
   randomizeConditions: 1
   nbBlocMax: 20

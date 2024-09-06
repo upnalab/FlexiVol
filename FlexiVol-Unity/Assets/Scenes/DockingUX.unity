@@ -1305,11 +1305,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   realGame: 1
-  sticky: 1
+  sticky: 0
   rotationActivated: 0
   userName: 
-  interactWithFinger: 1
-  rightHanded: 1
+  interactWithFinger: 0
+  rightHanded: 0
   primitiveToInstantiate: {fileID: 1672634230}
   phantomToInstantiate: {fileID: 910576684}
   randomizeConditions: 1

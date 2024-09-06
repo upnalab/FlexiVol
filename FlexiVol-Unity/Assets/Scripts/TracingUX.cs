@@ -269,7 +269,10 @@ public class TracingUX : MonoBehaviour
 		    	RecordPerformance(nbBloc, config, stopWatch, addDistance, addAngle);
 				circuits[config].SetActive(false);
 				interactiveObject.GetComponent<MeshRenderer>().enabled = false;
-				interactiveObject.GetComponent<CollideAndChangeParents>().indexCollider = false;
+				if(interactWithFinger)
+				{
+					interactiveObject.GetComponent<CollideAndChangeParents>().indexCollider = false;
+				}
 		    	trialNumber = trialNumber + 1;
     			if(configException.Count >= circuits.Length)
 				{
@@ -336,7 +339,7 @@ public class TracingUX : MonoBehaviour
     	else
     	{
     		writer = new StreamWriter(path, true);
-			writer.WriteLine(blockID + ";" + configID + ";" + clock + ";" + addDistance + ";" + addAngle);
+			writer.WriteLine(blockID + ";" + configID + ";" + clock.ToString() + ";" + addDistance + ";" + addAngle);
 			writer.Close();
     	}
     }

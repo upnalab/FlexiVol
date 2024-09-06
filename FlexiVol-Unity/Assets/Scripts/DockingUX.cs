@@ -641,7 +641,7 @@ public class DockingUX : MonoBehaviour
     	else
     	{
     		writer = new StreamWriter(path, true);
-			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + clock + ";" + addDistance + ";" + addAngle);
+			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + clock.ToString() + ";" + addDistance + ";" + addAngle);
 			writer.Close();
     	}
     }

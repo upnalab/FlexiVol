@@ -283,7 +283,7 @@ public class SelectionUX : MonoBehaviour
     	else
     	{
     		writer = new StreamWriter(path, true);
-			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + clock);
+			writer.WriteLine(blockID + ";" + trialID + ";" + configID + ";" + clock.ToString());
 			writer.Close();
     	}
     }
