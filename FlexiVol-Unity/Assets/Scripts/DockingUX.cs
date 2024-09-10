@@ -279,7 +279,7 @@ public class DockingUX : MonoBehaviour
 		    		}
     			}
 
-    			if(Voxon.Input.GetKeyDown("Space"))
+    			if(UnityEngine.Input.GetKeyDown(KeyCode.Space))
 				{
 					objectStart.SetActive(false);
 					state = -1;
@@ -534,14 +534,14 @@ public class DockingUX : MonoBehaviour
 
     		case 1:
     			stopWatch = Time.time - startStopWatchTime;
-    			if(Voxon.Input.GetKeyDown("Space"))
+    			if(UnityEngine.Input.GetKeyDown(KeyCode.Space))
     			{
     				state = 2;
     			}
+    			Debug.Log(Vector3.Distance(objectToLoad.transform.position, phantomObject.transform.position));
 
     			finalPositionsCubes[trialNumber] = objectToLoad.transform.position;
     			finalRotationsCubes[trialNumber] = objectToLoad.transform.eulerAngles.y;
-
 
     	// 		if(Voxon.Input.GetKeyDown("GoBack"))
     	// 		{

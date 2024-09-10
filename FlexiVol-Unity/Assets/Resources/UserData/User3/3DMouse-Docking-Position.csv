@@ -1,6 +1,4 @@
 BlockID;TrialID;Config;DistanceFinal;PositionTargetX;PositionTargetY;PositionTargetZ;PositionFinalX;PositionFinalY;PositionFinalZ;RotationTarget;RotationFinal
-BlockID;TrialID;Config;DistanceFinal;PositionTargetX;PositionTargetY;PositionTargetZ;PositionFinalX;PositionFinalY;PositionFinalZ;RotationTarget;RotationFinal
-BlockID;TrialID;Config;DistanceFinal;PositionTargetX;PositionTargetY;PositionTargetZ;PositionFinalX;PositionFinalY;PositionFinalZ;RotationTarget;RotationFinal
 0;0;3;0.3422;1.0689;1.1853;-2.5391;1.3347;1.4000;-2.5203;76.90915;76.90915
 0;1;6;0.2292;-1.3266;-0.1908;0.3954;-1.2690;0.0083;0.4932;285.8159;285.8159
 0;2;0;0.2324;2.7242;-1.0220;2.4384;2.7712;-0.8094;2.5198;335.757;335.757
