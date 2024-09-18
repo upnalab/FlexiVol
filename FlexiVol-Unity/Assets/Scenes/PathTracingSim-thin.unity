@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   writeBool: 1
   sphere: {fileID: 1242788936}
-  condition: Hand
+  condition: 3DMouse
   interactiveObject: {fileID: 442219729}
   circuits: []
   startingPositions: []

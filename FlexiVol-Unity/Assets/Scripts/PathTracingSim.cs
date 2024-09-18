@@ -88,7 +88,7 @@ public class PathTracingSim : MonoBehaviour
         {
             case -1:
 
-                pathRead = "Assets/Resources/CleanedCircuits_"+ config + "-" + condition + ".csv";
+                pathRead = "Assets/Resources/AllCircuits_"+ config + "-" + condition + ".csv";
                 StreamReader sr = new StreamReader(pathRead, true);
                 if (sr.Peek() > -1) 
                 {
@@ -181,7 +181,7 @@ public class PathTracingSim : MonoBehaviour
 
     void RecordDistancesToCircuit(int frameID = 0, string clock = "", string user = "", string cond = "", int config = 0, float distance = 0)
     {
-        path = "Assets/Resources/DataCollection/CleanedCircuitsDistances-" + condition + ".csv";
+        path = "Assets/Resources/DataCollection/AllCircuits_Distances-" + condition + ".csv";
 
         if(state == -2)
         {
