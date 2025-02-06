@@ -61,5 +61,43 @@
 ## Device is ready!
 
 
+# ESP32 Setting up
+* Pin 13: Connect trigger from projector
+* Pin 25: Connect to amplifier input (one on ground, one on left or right)
+
+# Using  generate3volts_squareSignal.ino:
+* In the Serial (115200):
+** Enter (int) frequency wanted (e.g., “10” or “11”)
+
+* Using  generateSineWaveESP.ino:
+** In the Serial (115200): 
+*** Enter (int) command (float) frequency (e.g, “1 11.5” to enter an 11.5 freq)
+
+# Mechanical Displacement
+* Connect the speaker to the audio amplifier output using crocodile clamps (the red/black order will define whether the pyramid is facing down or up for instance).
+* Once the 10 Hz applied (I suggest 10Hz with square signal ino), turn on the audio amplifier. The volume will tune the amplitude of the displacement - don’t put it too strong, but show how big the displacement can be when demoing.
+
+# Setting up the projector sequence
+* Open LightCrafter 4500.
+* Connect the HMDI, and USB between the projector and the computer.
+* In the window, it will show a green light “connected”.
+* Click Pattern Sequence.
+* Click Sequence Settings.
+* Click Apply Solution (see next Figure) and select the sequence with the chosen frequency (it needs to contain the frequency, “externalTrigger” and “linear” in its name (e.g. Blue Sinusoid 11Hz-Trigger external - Linear). I suggest using the Blue 11Hz Linear Trigger external thingy.
+* The operating mode will update to “pattern sequence” on its own.
+* Send to the projector. Another window opens.
+* Validate sequence.
+* Send
+
+* Note: if the ESP isn’t plugged in, the projector won’t turn on -> as it is waiting for a trigger 🙃
+
+* Now you can select one of the image - alone in their folders (e.g., Imagenes/Pyramid; or Documentos/FlexiVol/Projectors/SingleImage/PyramidThingy; or Documentos/FlexiVol/Projectors/binaryImage).
+Press F11 to put in full screen.
+* Apply a tape to hide the bottom of the projection (white).
+
+# Demo is ready!
+
+
+
 
 
