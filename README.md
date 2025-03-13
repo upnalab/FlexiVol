@@ -1,3 +1,8 @@
+## Designing FlexiVol
+
+**Please go into the Branch "DesignFlexiVol" and the instructions will be on the Readme.md, along with all the STL parts to print!**
+
+
 ## Unity
 
 Open the Scene "SlicingScene.unity"
