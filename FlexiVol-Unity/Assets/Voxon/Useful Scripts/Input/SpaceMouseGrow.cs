@@ -21,15 +21,22 @@ public class SpaceMouseGrow : MonoBehaviour
 	private Vector3 viewFinderScale;
 	private VXCamera _camera;
 	private int state;
+
+	private float orX, orY, orZ;
+
 	// Start is called before the first frame update
 	void Start()
     {
     	_camera = GameObject.FindObjectOfType<VXCamera>();
 		viewFinderScale = GameObject.Find("constrained_size").transform.localScale*_camera.BaseScale;
 		// Debug.Log(_camera.BaseScale);
-		original_size = this.transform.localScale.x/_camera.BaseScale;
-
-
+		original_size = this.transform.localScale.x;
+		original_rot = this.transform.rotation;
+		original_pos = this.transform.localPosition;
+		scaleMe = 1;
+		orX = this.transform.localScale.x;
+		orY = this.transform.localScale.y;
+		orZ = this.transform.localScale.z;
     }
 
     // Update is called once per frame
@@ -54,27 +61,27 @@ public class SpaceMouseGrow : MonoBehaviour
 		// 	state = GameObject.FindObjectOfType<TracingUX>().state;
 		// }
 
-  //       if (Voxon.Input.GetSpaceNavButton("LeftButton"))// && transform.localScale.x < max_scale)
-  //       {
-  //           // cam.BaseScale *= (1 + zoom_speed / 10);
-  //           scaleMe *= (1 + zoom_speed / 10);
-	 //        transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
+        if (Voxon.Input.GetSpaceNavButton("LeftButton"))// && transform.localScale.x < max_scale)
+        {
+            // cam.BaseScale *= (1 + zoom_speed / 10);
+            scaleMe *= (1 + zoom_speed / 10);
+	        transform.localScale = new Vector3(orX*scaleMe, orY*scaleMe, orZ*scaleMe);
 
-		// }
+		}
         
-  //       if (Voxon.Input.GetSpaceNavButton("RightButton"))// && transform.localScale.x > min_scale)
-  //       {
-		// 	// cam.BaseScale *= (1 - zoom_speed / 10);
-		// 	scaleMe *= (1 - zoom_speed / 10);
-		// 	transform.localScale = new Vector3(scaleMe, scaleMe, scaleMe);
-		// }
+        if (Voxon.Input.GetSpaceNavButton("RightButton"))// && transform.localScale.x > min_scale)
+        {
+			// cam.BaseScale *= (1 - zoom_speed / 10);
+			scaleMe *= (1 - zoom_speed / 10);
+	        transform.localScale = new Vector3(orX*scaleMe, orY*scaleMe, orZ*scaleMe);
+		}
 
-		// if (original_size == 0)
-		// {
-		// 	// original_size = cam.BaseScale;
-		// 	original_size = 0.1f;
+		if (original_size == 0)
+		{
+			// original_size = cam.BaseScale;
+			original_size = 0.1f;
 
-		// }
+		}
 
 		if (original_pos == Vector3.zero)
 		{
@@ -88,13 +95,22 @@ public class SpaceMouseGrow : MonoBehaviour
 
 		
 		
-		// var rotation = Voxon.VXProcess.Runtime.GetSpaceNavRotation();
+		var rotation = Voxon.VXProcess.Runtime.GetSpaceNavRotation();
 
-		// if (rotation != null)
-		// {
-		// 	var v3rot = new Vector3(0, rotation[2] / 70, 0);
-		// 	transform.Rotate(v3rot);
-		// }
+		if (rotation != null)
+		{
+			var v3rot = new Vector3(rotation[2] / 70, 0, 0);
+			transform.Rotate(v3rot);
+		}
+
+		if (Voxon.Input.GetKey("RotateSideL"))
+		{
+			transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 1, transform.eulerAngles.z);
+		}
+		if (Voxon.Input.GetKey("RotateSideR"))
+		{
+			transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 1, transform.eulerAngles.z);
+		}
 		
 
 		var position = Voxon.VXProcess.Runtime.GetSpaceNavPosition();
@@ -113,15 +129,16 @@ public class SpaceMouseGrow : MonoBehaviour
 			transform.position = v3pos;
 		}
 
-		this.transform.position = new Vector3(Mathf.Clamp(v3pos.x, -(float)viewFinderScale.x/2, (float)viewFinderScale.x/2), Mathf.Clamp(v3pos.y, -(float)viewFinderScale.y/2, (float)viewFinderScale.y/2), Mathf.Clamp(v3pos.z, -(float)viewFinderScale.z/2, (float)viewFinderScale.z/2));
+		// this.transform.position = new Vector3(Mathf.Clamp(v3pos.x, -(float)viewFinderScale.x/2, (float)viewFinderScale.x/2), Mathf.Clamp(v3pos.y, -(float)viewFinderScale.y/2, (float)viewFinderScale.y/2), Mathf.Clamp(v3pos.z, -(float)viewFinderScale.z/2, (float)viewFinderScale.z/2));
 
 		if (Voxon.Input.GetSpaceNavButton("LeftButton") && Voxon.Input.GetSpaceNavButton("RightButton"))
 		{
 			transform.position = original_pos;
 			transform.rotation = original_rot;
-			// cam.BaseScale = original_size;
-			// transform.localScale = new Vector3(original_size, original_size, original_size);
+			// transform.localScale = original_size;
+			transform.localScale = new Vector3(original_size, original_size, original_size);
 		}
+
 
 		// if(state == -2)
 		// {

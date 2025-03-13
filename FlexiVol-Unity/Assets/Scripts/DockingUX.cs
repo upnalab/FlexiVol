@@ -279,7 +279,7 @@ public class DockingUX : MonoBehaviour
 		    		}
     			}
 
-    			if(UnityEngine.Input.GetKeyDown(KeyCode.Space))
+    			if(Voxon.Input.GetKeyDown("Space"))
 				{
 					objectStart.SetActive(false);
 					state = -1;
@@ -534,14 +534,14 @@ public class DockingUX : MonoBehaviour
 
     		case 1:
     			stopWatch = Time.time - startStopWatchTime;
-    			if(UnityEngine.Input.GetKeyDown(KeyCode.Space))
+    			if(Voxon.Input.GetKeyDown("Space"))
     			{
     				state = 2;
     			}
-    			Debug.Log(Vector3.Distance(objectToLoad.transform.position, phantomObject.transform.position));
 
     			finalPositionsCubes[trialNumber] = objectToLoad.transform.position;
     			finalRotationsCubes[trialNumber] = objectToLoad.transform.eulerAngles.y;
+
 
     	// 		if(Voxon.Input.GetKeyDown("GoBack"))
     	// 		{
@@ -804,13 +804,10 @@ public class DockingUX : MonoBehaviour
 
 	IEnumerator ComputeAccumulatedDistances()
 	{
-		// Debug.Log("yep");
 		Vector3 oldPosition = objectToLoad.transform.position;
 		float oldAngle = objectToLoad.transform.eulerAngles.y;
 		Vector3 oldOrient = objectToLoad.transform.forward;
 		yield return new WaitForEndOfFrame();
-		// Debug.Log("yep1");
-		Debug.Log(Vector3.Distance(oldPosition, objectToLoad.transform.position));
 		addDistance = addDistance + Vector3.Distance(oldPosition, objectToLoad.transform.position)/10; // 10 represents basescale
 		addAngle = addAngle + Vector3.Angle(oldOrient, objectToLoad.transform.forward);//Mathf.Abs((Mathf.Abs(oldAngle) - Mathf.Abs(objectToLoad.transform.eulerAngles.y))%360);
 	}
