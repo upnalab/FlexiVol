@@ -1,0 +1,11 @@
+Python 3.8 (IMPORTANT !!) : conda install python=3.8.20 for instance
+
+
+opencv-python (4.11.0.86)
+scipy (1.13.1)
+pyYAML (6.0.1)
+
+Versions do update accordingly with Python version, install python 3.8.20 to make it easier.
+
+
+

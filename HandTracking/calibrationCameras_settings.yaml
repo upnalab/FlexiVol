@@ -1,0 +1,11 @@
+c0: 0 #camera0 ID
+c1: 2 #camera1 ID
+frame_width: 1920
+frame_height: 1080
+mono_calibration_frames: 10 #how many frames to record
+stereo_calibration_frames: 10 #how many frames to record
+view_resize: 1
+checkerboard_box_size_scale : 2.5 #cm size of one checkboard square
+checkerboard_rows: 6 #needs to be len - 1 ; my checkboard is 7x10; thus I need 6x9
+checkerboard_columns: 9 #needs to be len-1
+cooldown: 50 #how much delay between frame recording
