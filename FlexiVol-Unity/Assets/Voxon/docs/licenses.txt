@@ -1,3 +1,0 @@
-Licenses:
-	Gizmo Icons (Assets/Gizmos/) created by Paul Downey and used under Creative Commons 2.0 License (see CC2.0.txt) as per https://www.flickr.com/photos/psd/4189630215
-	Gizmos include (Backward, Box, Cross, Exclaim, Forward, Info, Negative, Positive, Question, Skull, Snowman, Star, Tick, Waves and Wheel)
