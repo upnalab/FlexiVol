@@ -1,0 +1,30 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel LightClear
+
+struct DEPTH
+{
+	float value;         // Depth value at this point
+	int index;      // Data index where depth related value is stored
+};
+
+uniform RWStructuredBuffer<DEPTH> _Depth : register(u2);
+RWStructuredBuffer<uint> _Index : register(u3);
+uint _Resolution : register(u5);
+
+
+[numthreads(8, 8, 1)]
+void LightClear(in uint3 id : SV_DispatchThreadID)
+{
+	int idx = (id.y * _Resolution) + id.x;
+
+	// Clear Index value (once)
+	if (idx == 0) {
+		int oldValue;
+		InterlockedExchange(_Index[0], 0, oldValue);
+	}
+
+	if (idx >= 0 && idx < (_Resolution * _Resolution)) {
+		_Depth[idx].value = 2;
+		_Depth[idx].index = -1;
+	}
+}

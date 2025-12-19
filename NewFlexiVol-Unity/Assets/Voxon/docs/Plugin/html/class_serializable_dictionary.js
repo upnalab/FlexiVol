@@ -1,0 +1,27 @@
+var class_serializable_dictionary =
+[
+    [ "Enumerator", "struct_serializable_dictionary_1_1_enumerator.html", "struct_serializable_dictionary_1_1_enumerator" ],
+    [ "SerializableDictionary", "class_serializable_dictionary.html#a017e3434d172dc63f5701ccc6e8152f6", null ],
+    [ "SerializableDictionary", "class_serializable_dictionary.html#a3f15a6c46857f985aa05c36b5a3184c0", null ],
+    [ "SerializableDictionary", "class_serializable_dictionary.html#a26857cfa4b58191117fc3d198a526559", null ],
+    [ "SerializableDictionary", "class_serializable_dictionary.html#a629eafd762dc25f3d27bc2a248449681", null ],
+    [ "SerializableDictionary", "class_serializable_dictionary.html#ac1cba75dac3ee0ddd8c92bc412bb823f", null ],
+    [ "Add", "class_serializable_dictionary.html#a410b87ed40e0aba58ffe6742d0ee3981", null ],
+    [ "Add", "class_serializable_dictionary.html#acba6f9abb062401c82f0db0b6375388a", null ],
+    [ "Clear", "class_serializable_dictionary.html#a3c803fb1a4687e1017bcb46c7b601418", null ],
+    [ "Contains", "class_serializable_dictionary.html#a02837a6ad229db000ab464027cb01dd8", null ],
+    [ "ContainsKey", "class_serializable_dictionary.html#a09450f3c7706310523f8521de352c763", null ],
+    [ "ContainsValue", "class_serializable_dictionary.html#a6177c0821cb15102720c66a480598e10", null ],
+    [ "CopyTo", "class_serializable_dictionary.html#a751f068f61a1fd5a44a191355128eacc", null ],
+    [ "GetEnumerator", "class_serializable_dictionary.html#ace0c6e4a403758404ee953fcbd36b7e8", null ],
+    [ "Remove", "class_serializable_dictionary.html#a25b5c77a344bec665e6a237e1969284e", null ],
+    [ "Remove", "class_serializable_dictionary.html#aba4d57c71e51060c22d1f33a2c0e0714", null ],
+    [ "TryGetValue", "class_serializable_dictionary.html#af7ebdc24fdda4a27086e7abb0b891ecd", null ],
+    [ "AsDictionary", "class_serializable_dictionary.html#ae42159a109bcf59934d1008be8fd2664", null ],
+    [ "Count", "class_serializable_dictionary.html#ab52264e68299b050752a050e7acf439c", null ],
+    [ "IsReadOnly", "class_serializable_dictionary.html#ae32c91953d3e4741b7b2b703b2f88d09", null ],
+    [ "Keys", "class_serializable_dictionary.html#a2e6f3c3f3f9cca281e20ebecd6bbc9dd", null ],
+    [ "Values", "class_serializable_dictionary.html#a66b3af338ff68456c5f5d786de11b1a2", null ],
+    [ "this[TKey key, TValue defaultValue]", "class_serializable_dictionary.html#ab2ed097e72c5f6853f30e86b33102a2f", null ],
+    [ "this[TKey key]", "class_serializable_dictionary.html#ae439a2e72e69cdbfe74ee0ef326022b7", null ]
+];

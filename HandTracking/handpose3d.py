@@ -93,10 +93,9 @@ def run_mp(input_stream1, input_stream2, P0, P1):
     # print(tips)
 
     # print the normalized sizes as they're needed in unity world when coordinate system is normalized
-    print(magnitud1)
-    print(magnitud2)
-    print(magnitud3)
-
+    print("Enter X: " + str(magnitud1))
+    print("Enter Y: " + str(magnitud3))
+    print("Enter Z : " + str(magnitud2))
 
     base_matrix = np.vstack([vector1/magnitud1, vector3/magnitud3, vector2/magnitud2]).T 
     #normalize coordinate system; calculate new base; CAREFUL: we switch Y and Z as in unity, Z is Y (height) // this switches from right hand system to left hand system with y going up
