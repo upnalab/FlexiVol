@@ -32,13 +32,13 @@ public class CollideAndMove : MonoBehaviour
         this.GetComponent<MeshCollider>().isTrigger = true;
         availableToCollide = true;
 
-        if(this.gameObject.GetComponent<Rigidbody>() == null)
-    	{
-        	this.gameObject.AddComponent<Rigidbody>();
-        	this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        	this.gameObject.GetComponent<Rigidbody>().useGravity = false;
-            this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-    	}
+     //    if(this.gameObject.GetComponent<Rigidbody>() == null)
+    	// {
+     //    	this.gameObject.AddComponent<Rigidbody>();
+     //    	this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+     //    	this.gameObject.GetComponent<Rigidbody>().useGravity = false;
+     //        this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
+    	// }
         gettingToLimitZ = true;
         gettingToLimitX = true;
         state = 1;
