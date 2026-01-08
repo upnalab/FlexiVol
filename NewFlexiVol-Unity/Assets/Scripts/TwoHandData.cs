@@ -31,7 +31,7 @@ public class TwoHandData : MonoBehaviour
     [Header("The rest")]
     private Thread receiveThread;
     private UdpClient udpClient;
-    public int port = 12345;
+    public int port = 19992;
     public string receivedMessage;
 
     private float x, y, z;

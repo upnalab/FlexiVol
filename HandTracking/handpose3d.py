@@ -34,7 +34,7 @@ def run_mp(input_stream1, input_stream2, P0, P1):
 
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
-    direccion_broadcast = ('<broadcast>', 12345)  # Cambia el puerto si es necesario
+    direccion_broadcast = ('<broadcast>', 19992)  # indicate port
 
     """Apply coordinate rotations to point z axis as up"""
     Rz = np.array(([[0., -1., 0.],

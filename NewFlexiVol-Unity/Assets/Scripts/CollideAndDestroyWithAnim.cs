@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class CollideAndDisappear : MonoBehaviour
+using Voxon;
+public class CollideAndDestroyWithAnim : MonoBehaviour
 {
+
 	public bool isTouched = false;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,11 @@ public class CollideAndDisappear : MonoBehaviour
         {
         	isTouched = true;
         }
+        
+        if(isTouched)
+        {
+            StartCoroutine(AnimAndDestroy());
+        }
     }
 
 	void OnTriggerEnter(Collider other)
@@ -27,6 +33,16 @@ public class CollideAndDisappear : MonoBehaviour
     		this.isTouched = true;
     	}
 
+    }
+
+    IEnumerator AnimAndDestroy()
+    {
+    	this.transform.localScale = this.transform.localScale*0.9f;
+    	yield return new WaitForSeconds(0.8f);
+    	this.GetComponent<VXDynamicComponent>().enabled = false;
+    	this.transform.GetChild(0).gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        Destroy(this.gameObject);
     }
 
 }

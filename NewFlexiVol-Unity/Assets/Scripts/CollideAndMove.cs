@@ -20,7 +20,9 @@ public class CollideAndMove : MonoBehaviour
     private int newCountSwitch;
 
     private GameObject indexObject, middleObject, palmObject, thumbObject, middleTip, indexTip;
+    private Vector3 originPosition;
     private int state;
+    public bool gettingToLimitX, gettingToLimitZ;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,8 @@ public class CollideAndMove : MonoBehaviour
         	this.gameObject.GetComponent<Rigidbody>().useGravity = false;
             this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
     	}
+        gettingToLimitZ = true;
+        gettingToLimitX = true;
         state = 1;
 
     }
@@ -58,6 +62,49 @@ public class CollideAndMove : MonoBehaviour
                 case 2:
 
                     RunTheRest();
+
+                    if(Mathf.Abs(this.transform.position.x) >= 94.9f)
+                    {
+                        if(!gettingToLimitX)
+                        {
+                            Vector3 originPlane = new Vector3(this.transform.position.x*(-1), -1.5f, this.transform.position.z);
+                            Instantiate(this.gameObject, originPlane, Quaternion.identity);
+                            gettingToLimitX = true;
+                        }
+                        else
+                        {
+                            if(Mathf.Abs(this.transform.position.x) > 99f)
+                            {
+                                Destroy(this.gameObject);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        gettingToLimitX = false;
+                    }
+
+                    if(Mathf.Abs(this.transform.position.z) >= 94.9f)
+                    {
+                        if(!gettingToLimitZ)
+                        {
+                            Vector3 originPlane = new Vector3(this.transform.position.x, -1.5f, this.transform.position.z*(-1));
+                            Instantiate(this.gameObject, originPlane, Quaternion.identity);
+                            gettingToLimitZ = true;
+                        }
+                        else
+                        {
+                            if(Mathf.Abs(this.transform.position.z) > 99f)
+                            {
+                                Destroy(this.gameObject);
+                            }
+                        }
+                       
+                    }
+                    else
+                    {
+                        gettingToLimitZ = false;
+                    }
                     break;
         }
         
