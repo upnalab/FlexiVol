@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This is the script to enable the alternate swiping, making the floor move below the fingers indefinitely */
+
 public class CollideAndMove : MonoBehaviour
 {
 	public bool availableToCollide;
@@ -183,7 +185,7 @@ public class CollideAndMove : MonoBehaviour
         if(!availableToCollide && (countSwitch > 3))
         {
             float orientation = -1; //Mathf.Sign(Vector3.Dot((originalFingerPos - objectOfInterest.transform.localPosition), bisector));
-            Debug.Log(orientation);
+            // Debug.Log(orientation);
             Vector3 movement = bisector*orientation*scale;
             
             if(Mathf.Sqrt(Mathf.Pow(objectOfInterest.transform.localPosition.x - originalFingerPos.x, 2) + Mathf.Pow(objectOfInterest.transform.localPosition.z - originalFingerPos.z, 2)) > threshold)
