@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This is the mushroom script, that scales down and spwans objects
+The object should be centered Y-wise around the ground! (to make disappear on the ground, otherwise it's at its center)
+ */ 
+
 public class CollideAndChangeScaleThenSpawn : MonoBehaviour
 {
 	public bool isTouched = false;
@@ -53,12 +57,14 @@ public class CollideAndChangeScaleThenSpawn : MonoBehaviour
 		}
     }
 
+
     void OnTriggerExit(Collider other)
     {
 		if(other.GetComponent<Collider>().name == touchingObject.name)
     	{
     		this.isTouched = false;
     		availableToTouch = true;
+    		this.transform.localScale = originalScale;
     	}
     }
 
