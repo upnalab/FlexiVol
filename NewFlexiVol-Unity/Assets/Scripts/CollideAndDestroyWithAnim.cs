@@ -4,6 +4,9 @@ using UnityEngine;
 using Voxon;
 
 /* This is the script that makes an object go into flame (child of this object needs to contain particles) */
+[RequireComponent(typeof(VXDynamicComponent))]
+[RequireComponent(typeof(CorrectionMesh))]
+[RequireComponent(typeof(RemoveVXComponent))]
 public class CollideAndDestroyWithAnim : MonoBehaviour
 {
 	public bool isTouched = false;

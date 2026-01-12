@@ -4,6 +4,10 @@ using UnityEngine;
 using Voxon;
 
 /* This is the script to enable the popping of a gameObject */
+[RequireComponent(typeof(VXDynamicComponent))]
+[RequireComponent(typeof(CorrectionMesh))]
+[RequireComponent(typeof(RemoveVXComponent))]
+
 [RequireComponent(typeof(AudioSource))]
 public class CollideAndDestroyWithSound : MonoBehaviour
 {

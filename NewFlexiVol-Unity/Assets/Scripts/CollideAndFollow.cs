@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Voxon;
 
 /* This is the grasping and rotating script */ 
+[RequireComponent(typeof(VXDynamicComponent))]
+[RequireComponent(typeof(CorrectionMesh))]
+[RequireComponent(typeof(RemoveVXComponent))]
 public class CollideAndFollow : MonoBehaviour
 {
 	public bool caught;

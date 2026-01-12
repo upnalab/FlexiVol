@@ -206,57 +206,49 @@ public class TwoHandData : MonoBehaviour
 
     }
 
-    void OnDrawGizmos()
-    {
-    	if(palmObject != null)
-    	{
-    		Gizmos.DrawLine(palmObject[0].transform.position, insideFingers[0*4].transform.position);
-	        // Gizmos.DrawLine(palmObject.transform.position, insideFingers[1*4].transform.position);
-	        Gizmos.DrawLine(palmObject[0].transform.position, insideFingers[4*4].transform.position);
-	        for(int i = 0; i < 5; i++)
-	        {
-	            if(i < 4)
-	            {
-	                Gizmos.DrawLine(insideFingers[i*4].transform.position, insideFingers[(i+1)*4].transform.position);
-	            }
-	            for(int j = 1; j < 4; j++)
-	            {
-	                Gizmos.DrawLine(insideFingers[i*4+j-1].transform.position, insideFingers[i*4+j].transform.position);
-
-	            }
-	        }
-    	}
-
-    	if(twoHands)
-    	{
-    		Gizmos.DrawLine(palmObject[1].transform.position, insideFingers[0*4+20].transform.position);
-	        // Gizmos.DrawLine(palmObject.transform.position, insideFingers[1*4].transform.position);
-	        Gizmos.DrawLine(palmObject[1].transform.position, insideFingers[4*4+20].transform.position);
-	        for(int i = 0; i < 5; i++)
-	        {
-	            if(i < 4)
-	            {
-	                Gizmos.DrawLine(insideFingers[i*4+20].transform.position, insideFingers[(i+1)*4+20].transform.position);
-	            }
-	            for(int j = 1; j < 4; j++)
-	            {
-	                Gizmos.DrawLine(insideFingers[i*4+j-1+20].transform.position, insideFingers[i*4+j+20].transform.position);
-
-	            }
-	        }
-    	}
-       
-    }
-    // void OnSceneGUI()
+    // void OnDrawGizmos()
     // {
-    // 	for(int i = 0; i < 42; i++)
+    // 	if(palmObject != null)
     // 	{
-    // 		GUIStyle style = new();
-    // 		style.fontSize = 5;
-	   //  	Handles.Label(fullCoords[i], "Num: " + i.ToString(), style);
+    // 		Gizmos.DrawLine(palmObject[0].transform.position, insideFingers[0*4].transform.position);
+	   //      // Gizmos.DrawLine(palmObject.transform.position, insideFingers[1*4].transform.position);
+	   //      Gizmos.DrawLine(palmObject[0].transform.position, insideFingers[4*4].transform.position);
+	   //      for(int i = 0; i < 5; i++)
+	   //      {
+	   //          if(i < 4)
+	   //          {
+	   //              Gizmos.DrawLine(insideFingers[i*4].transform.position, insideFingers[(i+1)*4].transform.position);
+	   //          }
+	   //          for(int j = 1; j < 4; j++)
+	   //          {
+	   //              Gizmos.DrawLine(insideFingers[i*4+j-1].transform.position, insideFingers[i*4+j].transform.position);
 
+	   //          }
+	   //      }
+
+    //         if(twoHands)
+    //         {
+    //             Gizmos.DrawLine(palmObject[1].transform.position, insideFingers[0*4+20].transform.position);
+    //             // Gizmos.DrawLine(palmObject.transform.position, insideFingers[1*4].transform.position);
+    //             Gizmos.DrawLine(palmObject[1].transform.position, insideFingers[4*4+20].transform.position);
+    //             for(int i = 0; i < 5; i++)
+    //             {
+    //                 if(i < 4)
+    //                 {
+    //                     Gizmos.DrawLine(insideFingers[i*4+20].transform.position, insideFingers[(i+1)*4+20].transform.position);
+    //                 }
+    //                 for(int j = 1; j < 4; j++)
+    //                 {
+    //                     Gizmos.DrawLine(insideFingers[i*4+j-1+20].transform.position, insideFingers[i*4+j+20].transform.position);
+
+    //                 }
+    //             }
+    //         }
     // 	}
+
+    	
+       
     // }
-        
+    
    
 }

@@ -21,7 +21,7 @@ public class CollideAndMove : MonoBehaviour
     public int countSwitch;
     private int newCountSwitch;
 
-    private GameObject indexObject, middleObject, palmObject, thumbObject, middleTip, indexTip;
+    private GameObject indexObject, middleObject, palmObject, thumbObject, middleTip, indexTip, indexSnd;
     private Vector3 originPosition;
     private int state;
     public bool gettingToLimitX, gettingToLimitZ;
@@ -32,13 +32,7 @@ public class CollideAndMove : MonoBehaviour
         this.GetComponent<MeshCollider>().isTrigger = true;
         availableToCollide = true;
 
-     //    if(this.gameObject.GetComponent<Rigidbody>() == null)
-    	// {
-     //    	this.gameObject.AddComponent<Rigidbody>();
-     //    	this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-     //    	this.gameObject.GetComponent<Rigidbody>().useGravity = false;
-     //        this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY;
-    	// }
+    
         gettingToLimitZ = true;
         gettingToLimitX = true;
         state = 1;
@@ -56,6 +50,7 @@ public class CollideAndMove : MonoBehaviour
                     thumbObject = GameObject.Find("1_thumb_first");
                     palmObject = GameObject.Find("1_palm_base");
                     indexTip = GameObject.Find("1_index_tip");
+                    indexSnd = GameObject.Find("1_index_third");
                     middleTip = GameObject.Find("1_middle_tip");
                     state = 2;
                     StartCoroutine(CountSwitches());
@@ -131,13 +126,16 @@ public class CollideAndMove : MonoBehaviour
 
             // By debugging values, we find that a dot of 2 in a good threshold to detect switches
         // Debug.Log(Vector3.Dot(Vector3.ProjectOnPlane(indexTip.transform.position, this.gameObject.transform.up) - Vector3.ProjectOnPlane(middleTip.transform.position, this.gameObject.transform.up), bisector));
-        if(Vector3.Dot(Vector3.ProjectOnPlane(indexTip.transform.position, this.gameObject.transform.up) - Vector3.ProjectOnPlane(middleTip.transform.position, this.gameObject.transform.up), bisector) > 2)
+        if(Vector3.SignedAngle(this.transform.up, indexTip.transform.position - indexSnd.transform.position, Vector3.up) > 140)
         {
-            countSwitch = newCountSwitch + 1;
-        }
-        else
-        {
-            newCountSwitch = countSwitch + 1;
+            if(Vector3.Dot(Vector3.ProjectOnPlane(indexTip.transform.position, this.gameObject.transform.up) - Vector3.ProjectOnPlane(middleTip.transform.position, this.gameObject.transform.up), bisector) > 2)
+            {
+                countSwitch = newCountSwitch + 1;
+            }
+            else
+            {
+                newCountSwitch = countSwitch + 1;
+            }
         }
 
     }
@@ -182,7 +180,7 @@ public class CollideAndMove : MonoBehaviour
 	    	objectOfInterest = middleTip;
 
     	}
-        if(!availableToCollide && (countSwitch > 3))
+        if(!availableToCollide && (countSwitch > 4))
         {
             float orientation = -1; //Mathf.Sign(Vector3.Dot((originalFingerPos - objectOfInterest.transform.localPosition), bisector));
             // Debug.Log(orientation);
@@ -250,21 +248,20 @@ public class CollideAndMove : MonoBehaviour
         StartCoroutine(CountSwitches());
     }
 
-    void OnDrawGizmos()
-    {
-        if(palmObject != null)
-        {
-
-            // Vector3 normA = (indexObject.transform.position - thumbObject.transform.position).normalized;
-            // Vector3 normB = (middleObject.transform.position - GameObject.Find("palm_base").transform.position).normalized;
-
-            // Vector3 midPoint = indexObject.transform.position - (indexObject.transform.position - middleObject.transform.position)/2;
-            // Vector3 bisector = (normA + normB).normalized;
-            Gizmos.color = Color.blue;
-            Gizmos.DrawLine(midPoint, midPoint + bisector*5);
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(Vector3.ProjectOnPlane(midPoint, this.gameObject.transform.up), Vector3.ProjectOnPlane(midPoint, this.gameObject.transform.up) + bisector*5);
-            // Debug.DrawRay(indexObject.transform.position, normalToPhalange, Color.blue);
-        }
-    }
+    // void OnDrawGizmos()
+    // {
+    //     if(palmObject != null)
+    //     {
+    //         Gizmos.color = Color.blue;
+    //         Gizmos.DrawLine(midPoint, midPoint + bisector*5);
+    //         Gizmos.color = Color.red;
+    //         Gizmos.DrawLine(Vector3.ProjectOnPlane(midPoint, this.gameObject.transform.up), Vector3.ProjectOnPlane(midPoint, this.gameObject.transform.up) + bisector*5);
+        
+    //         // Gizmos.color = Color.red;
+    //         // Gizmos.DrawLine(indexObject.transform.position, thumbObject.transform.position);
+    //         // Gizmos.color = Color.blue;
+    //         // Gizmos.DrawLine(indexTip.transform.position, indexSnd.transform.position);
+    //         // Debug.Log(Vector3.SignedAngle(this.transform.up, indexTip.transform.position - indexSnd.transform.position, Vector3.up));
+    //     }
+    // }
 }
