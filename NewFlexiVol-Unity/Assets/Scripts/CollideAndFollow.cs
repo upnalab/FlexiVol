@@ -4,9 +4,9 @@ using UnityEngine;
 using Voxon;
 
 /* This is the grasping and rotating script */ 
-[RequireComponent(typeof(VXDynamicComponent))]
-[RequireComponent(typeof(CorrectionMesh))]
-[RequireComponent(typeof(RemoveVXComponent))]
+// [RequireComponent(typeof(VXDynamicComponent))]
+// [RequireComponent(typeof(CorrectionMesh))]
+// [RequireComponent(typeof(RemoveVXComponent))]
 public class CollideAndFollow : MonoBehaviour
 {
 	public bool caught;
@@ -25,6 +25,8 @@ public class CollideAndFollow : MonoBehaviour
         // I made the collider * 1.1 in the inspector window.
         caught = true;
         state = 1;
+        // this.gameObject.AddComponent<VXDynamicComponent>();
+		
 
     }
 
@@ -37,7 +39,7 @@ public class CollideAndFollow : MonoBehaviour
                     
                     indexObject = GameObject.Find("1_index_first");
                     thumbObject = GameObject.Find("1_thumb_first");
-                    state = 2;
+					state = 2;
                     break;
 
                 case 2:

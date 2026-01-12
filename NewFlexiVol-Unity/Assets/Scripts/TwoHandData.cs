@@ -44,12 +44,12 @@ public class TwoHandData : MonoBehaviour
 
     void Start()
     {
-        objToInstantiate.AddComponent<VXDynamicComponent>();
-        objToInstantiate.AddComponent<CorrectionMesh>();
-        if(objToInstantiate.GetComponent<VXComponent>() != null)
-        {
-            Destroy(objToInstantiate.GetComponent<VXComponent>());
-        }
+        // objToInstantiate.AddComponent<VXDynamicComponent>();
+        // objToInstantiate.AddComponent<CorrectionMesh>();
+        // if(objToInstantiate.GetComponent<VXComponent>() != null)
+        // {
+        //     Destroy(objToInstantiate.GetComponent<VXComponent>());
+        // }
         fingerNames = new string[]{"thumb", "index", "middle", "ring", "pinky"};
         insideNames = new string[]{"first", "second", "third", "tip"};
         prefix = new string[]{"1", "2"};

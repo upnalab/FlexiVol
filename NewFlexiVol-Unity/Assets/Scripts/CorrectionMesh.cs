@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using Voxon;
+using System;
 
 public class CorrectionMesh : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class CorrectionMesh : MonoBehaviour
     Vector3[] originalVertexPosition;
     Vector3[] vertices;
 
-    private VXDynamicComponent vxComponent;
+    private VXComponent vxComponent;
     public Mesh mesh;
     MeshFilter meshFilter;
 
@@ -24,7 +25,9 @@ public class CorrectionMesh : MonoBehaviour
         viewFinder = GameObject.Find("view_finder");
         meshFilter = GetComponent<MeshFilter>();
         mesh = meshFilter.mesh;
-        vxComponent = GetComponent<VXDynamicComponent>();
+        vxComponent = GetComponent<VXComponent>();
+        vxComponent.MeshPath = meshFilter.mesh.name;
+        
         originalVertexPosition = mesh.vertices;
         vertices = mesh.vertices;
 
@@ -66,16 +69,6 @@ public class CorrectionMesh : MonoBehaviour
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
 
-            // if (vxComponent == null)
-            // {
-            //     vxComponent = gameObject.AddComponent<Voxon.VXComponent>();
-            //     vxComponent.CanExpire = true;
-            //     vxComponent.automaticallyExpire = true;
-            //     vxComponent.TimeToExpire = 0.1f;
-
-            //     Debug.Log("EXPIRE");
-
-            // }
 
         }
         else
@@ -87,6 +80,7 @@ public class CorrectionMesh : MonoBehaviour
     void Update()
     {
         // Obtener el componente MeshFilter del objeto
+        // vxComponent.enabled = true;
         meshFilter = GetComponent<MeshFilter>();
         mesh.vertices = originalVertexPosition;
 
@@ -138,17 +132,18 @@ public class CorrectionMesh : MonoBehaviour
                 mesh.name = "" + transform.TransformPoint(mesh.vertices[0]).y;
             }
 
-            // if (vxComponent == null)
-            // {
-            //     vxComponent = gameObject.AddComponent<Voxon.VXComponent>();
-            //     vxComponent.CanExpire = true;
-            //     vxComponent.automaticallyExpire = true;
-            //     vxComponent.TimeToExpire = 0.1f;
-            //     vxComponent.MeshPath = meshFilter.mesh.name;
 
-            // }
             vxComponent.MeshPath = meshFilter.mesh.name;
+
             previousPos = transform.position;
+
+            if(Voxon.Input.GetKeyDown("Space"))
+            {
+                this.GetComponent<Voxon.VXDynamicComponent>().enabled = !this.GetComponent<Voxon.VXDynamicComponent>().enabled;
+            }
+            
+
+             // ComputeBuffer.Dispose() ;
 
         }
         else

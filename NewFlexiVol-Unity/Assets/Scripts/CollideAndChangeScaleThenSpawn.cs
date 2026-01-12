@@ -24,7 +24,7 @@ public class CollideAndChangeScaleThenSpawn : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {                
         if(isTouched)
         {
         	availableToTouch = false;

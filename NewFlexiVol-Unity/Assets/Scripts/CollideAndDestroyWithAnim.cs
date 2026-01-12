@@ -4,9 +4,9 @@ using UnityEngine;
 using Voxon;
 
 /* This is the script that makes an object go into flame (child of this object needs to contain particles) */
-[RequireComponent(typeof(VXDynamicComponent))]
-[RequireComponent(typeof(CorrectionMesh))]
-[RequireComponent(typeof(RemoveVXComponent))]
+// [RequireComponent(typeof(VXDynamicComponent))]
+// [RequireComponent(typeof(CorrectionMesh))]
+// [RequireComponent(typeof(RemoveVXComponent))]
 public class CollideAndDestroyWithAnim : MonoBehaviour
 {
 	public bool isTouched = false;
@@ -14,6 +14,13 @@ public class CollideAndDestroyWithAnim : MonoBehaviour
     void Start()
     {
         this.GetComponent<Collider>().isTrigger = true;
+        
+        // this.gameObject.AddComponent<VXDynamicComponent>();
+        // if(this.GetComponent<VXComponent>() != null)
+        // {
+        //     Destroy(this.GetComponent<VXComponent>());
+        // }
+        // this.gameObject.AddComponent<CorrectionMesh>();
     }
 
     // Update is called once per frame

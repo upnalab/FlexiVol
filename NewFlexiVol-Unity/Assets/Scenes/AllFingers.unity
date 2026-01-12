@@ -245,9 +245,6 @@ GameObject:
   - component: {fileID: 181405813}
   - component: {fileID: 181405812}
   - component: {fileID: 181405811}
-  - component: {fileID: 181405810}
-  - component: {fileID: 181405809}
-  - component: {fileID: 181405808}
   - component: {fileID: 181405807}
   m_Layer: 0
   m_Name: CylinderToEdit
@@ -271,51 +268,6 @@ MonoBehaviour:
   isTouched: 0
   availableToTouch: 0
   touchingObject: {fileID: 0}
---- !u!114 &181405808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181405806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9414d97417ff02b4dacc68730bb47a43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &181405809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181405806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50a06efd4a0c7b44997612b1d7865ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MeshPath: 
-  flags: 2
-  CanExpire: 0
-  TimeToLive: 2
-  lit: 0
---- !u!114 &181405810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181405806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ffaa56b10d278c4cade68e3ff4bcb0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needsDeformation: 1
-  mesh: {fileID: 0}
-  viewFinder: {fileID: 0}
-  baseScale: 10
 --- !u!136 &181405811
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -388,7 +340,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181405806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1199999, y: 1.4799999, z: -1.9100001}
+  m_LocalPosition: {x: 1.1199999, y: 2.11, z: -1.9100001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -408,9 +360,6 @@ GameObject:
   - component: {fileID: 264496063}
   - component: {fileID: 264496062}
   - component: {fileID: 264496061}
-  - component: {fileID: 264496068}
-  - component: {fileID: 264496067}
-  - component: {fileID: 264496066}
   m_Layer: 0
   m_Name: CubeToDisappear
   m_TagString: Untagged
@@ -510,51 +459,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &264496066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264496060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9414d97417ff02b4dacc68730bb47a43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &264496067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264496060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ffaa56b10d278c4cade68e3ff4bcb0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needsDeformation: 1
-  mesh: {fileID: 0}
-  viewFinder: {fileID: 0}
-  baseScale: 10
---- !u!114 &264496068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264496060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50a06efd4a0c7b44997612b1d7865ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MeshPath: 
-  flags: 2
-  CanExpire: 0
-  TimeToLive: 2
-  lit: 0
 --- !u!1 &275413509
 GameObject:
   m_ObjectHideFlags: 1
@@ -5616,9 +5520,6 @@ GameObject:
   - component: {fileID: 617401852}
   - component: {fileID: 617401851}
   - component: {fileID: 617401850}
-  - component: {fileID: 617401849}
-  - component: {fileID: 617401848}
-  - component: {fileID: 617401847}
   - component: {fileID: 617401846}
   m_Layer: 0
   m_Name: CubeToPop
@@ -5723,51 +5624,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &617401847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617401845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9414d97417ff02b4dacc68730bb47a43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &617401848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617401845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ffaa56b10d278c4cade68e3ff4bcb0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needsDeformation: 1
-  mesh: {fileID: 0}
-  viewFinder: {fileID: 0}
-  baseScale: 10
---- !u!114 &617401849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617401845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50a06efd4a0c7b44997612b1d7865ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MeshPath: 
-  flags: 2
-  CanExpire: 0
-  TimeToLive: 2
-  lit: 0
 --- !u!114 &617401850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11114,7 +10970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063729986}
   m_LocalRotation: {x: -0.0031944816, y: -0.0032150226, z: -0.0032150229, w: 0.99998474}
-  m_LocalPosition: {x: -0.5, y: -0.2, z: -0.5}
+  m_LocalPosition: {x: -0.5, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11152,7 +11008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c495769f4b5a4024c85154886250cd4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normOrigin: {x: 1.83, y: 1.88, z: 1.78}
+  normOrigin: {x: 4.5, y: 5.3, z: 4.7}
   coordPhysical: {x: 0.05, y: 0.05, z: 0.05}
   realEnv: {x: 0.2, y: 0.08, z: 0.2}
   objToInstantiate: {fileID: 1994331383}
@@ -16221,9 +16077,6 @@ GameObject:
   - component: {fileID: 1725430047}
   - component: {fileID: 1725430046}
   - component: {fileID: 1725430045}
-  - component: {fileID: 1725430044}
-  - component: {fileID: 1725430043}
-  - component: {fileID: 1725430042}
   - component: {fileID: 1725430041}
   m_Layer: 0
   m_Name: CubeToGrab
@@ -16249,51 +16102,6 @@ MonoBehaviour:
   middle: 0
   thumb: 0
   recordPos: 0
---- !u!114 &1725430042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725430040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9414d97417ff02b4dacc68730bb47a43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1725430043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725430040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ffaa56b10d278c4cade68e3ff4bcb0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needsDeformation: 1
-  mesh: {fileID: 0}
-  viewFinder: {fileID: 0}
-  baseScale: 10
---- !u!114 &1725430044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725430040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b50a06efd4a0c7b44997612b1d7865ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MeshPath: 
-  flags: 2
-  CanExpire: 0
-  TimeToLive: 2
-  lit: 0
 --- !u!65 &1725430045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16401,6 +16209,7 @@ GameObject:
   - component: {fileID: 1801129663}
   - component: {fileID: 1801129662}
   - component: {fileID: 1801129666}
+  - component: {fileID: 1801129667}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -16508,6 +16317,26 @@ MonoBehaviour:
   countSwitch: 0
   gettingToLimitX: 0
   gettingToLimitZ: 0
+--- !u!114 &1801129667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801129661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14207d7c7ba3eaa4fa69802bddfdfe86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enable: 1
+  MeshPath: 
+  VoxonRenderStyle: 2
+  enableLit: 0
+  enableOverSaturate: 0
+  CanExpire: 0
+  automaticallyExpire: 0
+  TimeToExpire: 2
 --- !u!1 &1923898640
 GameObject:
   m_ObjectHideFlags: 0
@@ -16618,6 +16447,7 @@ GameObject:
   - component: {fileID: 1994331387}
   - component: {fileID: 1994331386}
   - component: {fileID: 1994331388}
+  - component: {fileID: 1994331389}
   m_Layer: 0
   m_Name: LittleBall
   m_TagString: InteractiveObject
@@ -16704,6 +16534,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1994331389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994331383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9414d97417ff02b4dacc68730bb47a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2069577989
 GameObject:
   m_ObjectHideFlags: 1
