@@ -63,6 +63,7 @@ public class TwoHandData : MonoBehaviour
             palmObject[k].AddComponent<Rigidbody>();
             palmObject[k].GetComponent<Rigidbody>().isKinematic = true;
             palmObject[k].GetComponent<Rigidbody>().useGravity = false;
+            palmObject[k].gameObject.tag = "VoxieHide";
 
             for(int i = 0; i < 5; i++)
             {
@@ -73,6 +74,18 @@ public class TwoHandData : MonoBehaviour
                     insideFingers[j + i*4 + k*5*4].AddComponent<Rigidbody>();
     				insideFingers[j + i*4 + k*5*4].GetComponent<Rigidbody>().isKinematic = true;
     				insideFingers[j + i*4 + k*5*4].GetComponent<Rigidbody>().useGravity = false;
+
+                    if(!insideFingers[j + i*4 + k*5*4].name.Contains("index_tip") && !insideFingers[j + i*4 + k*5*4].name.Contains("middle_tip"))
+                    {
+                        // if((!name.Contains("thumb")) || (!name.Contains("index")) || (!name.Contains("middle")))
+                        // {
+                        // insideFingers[j + i*4 + k*5*4].GetComponent<MeshRenderer>().enabled = false;
+                        insideFingers[j + i*4 + k*5*4].gameObject.tag = "VoxieHide";
+                    }
+                    else
+                    {
+                        insideFingers[j + i*4 + k*5*4].gameObject.tag = "InteractiveObject";
+                    }
                 }
             }
         }

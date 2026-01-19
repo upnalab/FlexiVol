@@ -131,10 +131,12 @@ public class CollideAndMove : MonoBehaviour
             if(Vector3.Dot(Vector3.ProjectOnPlane(indexTip.transform.position, this.gameObject.transform.up) - Vector3.ProjectOnPlane(middleTip.transform.position, this.gameObject.transform.up), bisector) > 2)
             {
                 countSwitch = newCountSwitch + 1;
+                this.GetComponent<Renderer>().material.color = Color.red;
             }
             else
             {
                 newCountSwitch = countSwitch + 1;
+                this.GetComponent<Renderer>().material.color = Color.green;
             }
         }
 

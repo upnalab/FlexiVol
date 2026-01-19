@@ -29,9 +29,9 @@ public class CollideAndChangeScaleThenSpawn : MonoBehaviour
         {
         	availableToTouch = false;
         	Vector3 pushingDownFrom = touchingObject.transform.localPosition - originPosition;
-        	this.transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y + pushingDownFrom.y, this.transform.localScale.z);
+        	this.transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y - pushingDownFrom.y, this.transform.localScale.z);
 
-        	if(this.transform.localScale.y < 0.01f)
+        	if(this.transform.localScale.y < originalScale.y*0.5f)
         	{
         		for(int i = 0; i < 3; i++)
         		{
