@@ -136,11 +136,20 @@ public class CorrectionMesh : MonoBehaviour
             vxComponent.MeshPath = meshFilter.mesh.name;
 
             previousPos = transform.position;
-
-            if(Voxon.Input.GetKeyDown("Space"))
+            if (vxComponent == null)
             {
-                this.GetComponent<Voxon.VXDynamicComponent>().enabled = !this.GetComponent<Voxon.VXDynamicComponent>().enabled;
+                vxComponent = gameObject.AddComponent<Voxon.VXComponent>();
+                vxComponent.CanExpire = true;
+                vxComponent.automaticallyExpire = true;
+                vxComponent.TimeToExpire = 0.1f;
+
+                Debug.Log("EXPIRE");
+
             }
+            // if(Voxon.Input.GetKeyDown("Space"))
+            // {
+            //     this.GetComponent<Voxon.VXDynamicComponent>().enabled = !this.GetComponent<Voxon.VXDynamicComponent>().enabled;
+            // }
             
 
              // ComputeBuffer.Dispose() ;

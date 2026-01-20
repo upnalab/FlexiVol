@@ -16,6 +16,7 @@ public class CollideAndFollow : MonoBehaviour
 	private GameObject indexObject, thumbObject;
     private Vector3 vectorToFollow;
     private int state;
+    private Vector3 originalPos;
 
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class CollideAndFollow : MonoBehaviour
     {
         this.GetComponent<Collider>().isTrigger = true;
         // I made the collider * 1.1 in the inspector window.
+        originalPos = this.transform.position;
         caught = true;
         state = 1;
         // this.gameObject.AddComponent<VXDynamicComponent>();
@@ -44,14 +46,17 @@ public class CollideAndFollow : MonoBehaviour
 
                 case 2:
                 
-	                if(index && middle && thumb)
+	                if(index && thumb)
 			        {
 			            caught = true;
+                        this.gameObject.GetComponent<Renderer>().material.color = Color.green;
 			        }
 			        else
 			        {
 			            caught = false;
 			            recordPos = false;
+                        this.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                        // this.transform.position = originalPos;
 			        }
 
 			        if(caught)
@@ -59,20 +64,20 @@ public class CollideAndFollow : MonoBehaviour
 			        	if(!recordPos)
 			        	{
 			        		vectorToFollow = (indexObject.transform.position - thumbObject.transform.position).normalized;
-				        	this.transform.parent = indexObject.transform;
+				        	// this.transform.parent = indexObject.transform;
 				        	recordPos = true;
 			        	}
 			        	else
 			        	{
 			        		this.transform.eulerAngles = new Vector3(this.transform.eulerAngles.x, this.transform.eulerAngles.y + Vector3.SignedAngle(vectorToFollow, (indexObject.transform.position - thumbObject.transform.position), Vector3.up), this.transform.eulerAngles.z);
 		          			vectorToFollow = (indexObject.transform.position - thumbObject.transform.position);
-			          	
+			          	    // this.transform.position = originalPos;
 			        	}
 			        	
 			        }
 			        else
 			        {
-			        	this.transform.parent = null;
+			        	// this.transform.parent = GameObject.FindObjectOfType<CollideAndMove>().transform;
 			        }
                 	break;
 
@@ -86,10 +91,10 @@ public class CollideAndFollow : MonoBehaviour
     		index = true;
     	}
 
-        if(other.GetComponent<Collider>().name.Contains("1_middle_tip") || other.GetComponent<Collider>().name.Contains("1_middle_third"))
-    	{
-    		middle = true;
-    	}
+     //    if(other.GetComponent<Collider>().name.Contains("1_middle_tip") || other.GetComponent<Collider>().name.Contains("1_middle_third"))
+    	// {
+    	// 	middle = true;
+    	// }
 
         if(other.GetComponent<Collider>().name.Contains("1_thumb_tip") || other.GetComponent<Collider>().name.Contains("1_thumb_third"))
     	{
@@ -105,10 +110,10 @@ public class CollideAndFollow : MonoBehaviour
     		index = false;
     	}
 
-        if(other.GetComponent<Collider>().name.Contains("1_middle_tip") || other.GetComponent<Collider>().name.Contains("1_middle_third"))
-    	{
-    		middle = false;
-    	}
+     //    if(other.GetComponent<Collider>().name.Contains("1_middle_tip") || other.GetComponent<Collider>().name.Contains("1_middle_third"))
+    	// {
+    	// 	middle = false;
+    	// }
 
         if(other.GetComponent<Collider>().name.Contains("1_thumb_tip") || other.GetComponent<Collider>().name.Contains("1_thumb_third"))
     	{
