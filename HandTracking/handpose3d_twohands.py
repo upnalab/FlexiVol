@@ -212,7 +212,7 @@ def run_mp(input_stream1, input_stream2, P0, P1):
             P_prime = P - origin
             rebasedHand = np.linalg.solve(base_matrix, P_prime)
             #calculate coordinate 3D in the new coordinate system
-            message = message + str(rebasedHand[0]) + ", " + str(rebasedHand[1]) + ", " + str(rebasedHand[2]) + ", "
+            message = message + str(rebasedHand[0]/magnitud1) + ", " + str(rebasedHand[1]/magnitud3) + ", " + str(rebasedHand[2]/magnitud2) + ", "
             #send all fingers x,y,z
         
         sock.sendto(message.encode("utf-8"), direccion_broadcast)
