@@ -152,16 +152,16 @@ public class TwoHandData : MonoBehaviour
             {
             	for(int i = 0; i < 21; i++)
 	            {
-	                x = float.Parse(parts[i*3], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.x;
-	                y = float.Parse(parts[i*3+1], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.y;
-	                z = float.Parse(parts[i*3+2], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.z;
+	                x = float.Parse(parts[i*3], System.Globalization.CultureInfo.InvariantCulture); ///normOrigin.x;
+	                y = float.Parse(parts[i*3+1], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.y;
+	                z = float.Parse(parts[i*3+2], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.z;
 	            
 	                fullCoords[i] = new Vector3(x*coordPhysical.x/realEnv.x, y*coordPhysical.y/realEnv.y, z*coordPhysical.z/realEnv.z);
 
 	                
-	                x = float.Parse(parts[i*3+63], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.x;
-	                y = float.Parse(parts[i*3+63+1], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.y;
-	                z = float.Parse(parts[i*3+63+2], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.z;
+	                x = float.Parse(parts[i*3+63], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.x;
+	                y = float.Parse(parts[i*3+63+1], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.y;
+	                z = float.Parse(parts[i*3+63+2], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.z;
 	            
 	                fullCoords[i+21] = new Vector3(x*coordPhysical.x/realEnv.x, y*coordPhysical.y/realEnv.y, z*coordPhysical.z/realEnv.z);
 
@@ -171,9 +171,9 @@ public class TwoHandData : MonoBehaviour
             {
             	for(int i = 0; i < 21; i++)
 	            {
-	                x = float.Parse(parts[i*3], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.x;
-	                y = float.Parse(parts[i*3+1], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.y;
-	                z = float.Parse(parts[i*3+2], System.Globalization.CultureInfo.InvariantCulture)/normOrigin.z;
+	                x = float.Parse(parts[i*3], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.x;
+	                y = float.Parse(parts[i*3+1], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.y;
+	                z = float.Parse(parts[i*3+2], System.Globalization.CultureInfo.InvariantCulture);///normOrigin.z;
 	            
 	                fullCoords[i] = new Vector3(x*coordPhysical.x/realEnv.x, y*coordPhysical.y/realEnv.y, z*coordPhysical.z/realEnv.z);
 	            }
