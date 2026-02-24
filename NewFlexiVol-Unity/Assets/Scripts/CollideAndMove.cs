@@ -14,7 +14,7 @@ public class CollideAndMove : MonoBehaviour
 	public bool index, middle;
     public string previous;
     public float scale = 0.005f;
-    public float threshold = 0.005f;
+    public float threshold = 0.01f;
     private string nextOne;
 
     private Vector3 normA, normB, bisector, midPoint;
@@ -25,14 +25,15 @@ public class CollideAndMove : MonoBehaviour
     private Vector3 originPosition;
     private int state;
     public bool gettingToLimitX, gettingToLimitZ;
+    private float originY;
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<MeshCollider>().convex = true;
-        this.GetComponent<MeshCollider>().isTrigger = true;
+        // this.GetComponent<MeshCollider>().convex = true;
+        this.GetComponent<Collider>().isTrigger = true;
         availableToCollide = true;
 
-    
+        originY = this.transform.position.y;
         gettingToLimitZ = true;
         gettingToLimitX = true;
         state = 1;
@@ -45,64 +46,64 @@ public class CollideAndMove : MonoBehaviour
         switch(state)
         {
             case 1:
-                    indexObject = GameObject.Find("1_index_first");
-                    middleObject = GameObject.Find("1_middle_first");
-                    thumbObject = GameObject.Find("1_thumb_first");
-                    palmObject = GameObject.Find("1_palm_base");
-                    indexTip = GameObject.Find("1_index_tip");
-                    indexSnd = GameObject.Find("1_index_third");
-                    middleTip = GameObject.Find("1_middle_tip");
-                    state = 2;
-                    StartCoroutine(CountSwitches());
-                    break;
+                indexObject = GameObject.Find("1_index_first");
+                middleObject = GameObject.Find("1_middle_first");
+                thumbObject = GameObject.Find("1_thumb_first");
+                palmObject = GameObject.Find("1_palm_base");
+                indexTip = GameObject.Find("1_index_tip");
+                indexSnd = GameObject.Find("1_index_third");
+                middleTip = GameObject.Find("1_middle_tip");
+                state = 2;
+                StartCoroutine(CountSwitches());
+                break;
 
-                case 2:
+            case 2:
 
-                    RunTheRest();
+                RunTheRest();
 
-                    if(Mathf.Abs(this.transform.position.x) >= 94.9f)
+                if(Mathf.Abs(this.transform.position.x) >= (this.transform.localScale.x/4 - 0.15f))
+                {
+                    if(!gettingToLimitX)
                     {
-                        if(!gettingToLimitX)
-                        {
-                            Vector3 originPlane = new Vector3(this.transform.position.x*(-1), -1.5f, this.transform.position.z);
-                            Instantiate(this.gameObject, originPlane, Quaternion.identity);
-                            gettingToLimitX = true;
-                        }
-                        else
-                        {
-                            if(Mathf.Abs(this.transform.position.x) > 99f)
-                            {
-                                Destroy(this.gameObject);
-                            }
-                        }
+                        Vector3 originPlane = new Vector3(this.transform.position.x*(-1) + Mathf.Sign(this.transform.position.x+0.15f), originY, this.transform.position.z);
+                        Instantiate(this.gameObject, originPlane, Quaternion.identity);
+                        gettingToLimitX = true;
                     }
                     else
                     {
-                        gettingToLimitX = false;
+                        if(Mathf.Abs(this.transform.position.x) > this.transform.localScale.x/4)
+                        {
+                            Destroy(this.gameObject);
+                        }
                     }
+                }
+                else
+                {
+                    gettingToLimitX = false;
+                }
 
-                    if(Mathf.Abs(this.transform.position.z) >= 94.9f)
+                if(Mathf.Abs(this.transform.position.z) >= (this.transform.localScale.z/4 - 0.15f))
+                {
+                    if(!gettingToLimitZ)
                     {
-                        if(!gettingToLimitZ)
-                        {
-                            Vector3 originPlane = new Vector3(this.transform.position.x, -1.5f, this.transform.position.z*(-1));
-                            Instantiate(this.gameObject, originPlane, Quaternion.identity);
-                            gettingToLimitZ = true;
-                        }
-                        else
-                        {
-                            if(Mathf.Abs(this.transform.position.z) > 99f)
-                            {
-                                Destroy(this.gameObject);
-                            }
-                        }
-                       
+                        Vector3 originPlane = new Vector3(this.transform.position.x, originY, this.transform.position.z*(-1) + Mathf.Sign(this.transform.position.z+0.15f));
+                        Instantiate(this.gameObject, originPlane, Quaternion.identity);
+                        gettingToLimitZ = true;
                     }
                     else
                     {
-                        gettingToLimitZ = false;
+                        if(Mathf.Abs(this.transform.position.z) > this.transform.localScale.z/4)
+                        {
+                            Destroy(this.gameObject);
+                        }
                     }
-                    break;
+                   
+                }
+                else
+                {
+                    gettingToLimitZ = false;
+                }
+                break;
         }
         
     }
@@ -126,17 +127,20 @@ public class CollideAndMove : MonoBehaviour
 
             // By debugging values, we find that a dot of 2 in a good threshold to detect switches
         // Debug.Log(Vector3.Dot(Vector3.ProjectOnPlane(indexTip.transform.position, this.gameObject.transform.up) - Vector3.ProjectOnPlane(middleTip.transform.position, this.gameObject.transform.up), bisector));
-        if(Vector3.SignedAngle(this.transform.up, indexTip.transform.position - indexSnd.transform.position, Vector3.up) > 140)
-        {
-            if(Vector3.Dot(Vector3.ProjectOnPlane(indexTip.transform.position, this.gameObject.transform.up) - Vector3.ProjectOnPlane(middleTip.transform.position, this.gameObject.transform.up), bisector) > 2)
+        
+        // if(Vector3.SignedAngle(this.transform.up, indexTip.transform.position - indexSnd.transform.position, Vector3.up) > 140)
+        // WORKED PRETTY WELL WITH 1 FOR BISECTORS
+            if(Vector3.Dot(Vector3.ProjectOnPlane(indexTip.transform.position, this.gameObject.transform.up) - Vector3.ProjectOnPlane(middleTip.transform.position, this.gameObject.transform.up), bisector) > 0.5f)
             {
                 countSwitch = newCountSwitch + 1;
+                // this.GetComponent<Renderer>().material.color = Color.red;
             }
             else
             {
                 newCountSwitch = countSwitch + 1;
+                // this.GetComponent<Renderer>().material.color = Color.green;
             }
-        }
+        // }
 
     }
 
@@ -151,7 +155,11 @@ public class CollideAndMove : MonoBehaviour
                 originalFingerPos = other.transform.gameObject.transform.localPosition;
                 previous = "1_index_tip";
                 StartCoroutine("SwitchFinger", other.transform.gameObject);
+
+
             }
+
+            // this.gameObject.GetComponent<Renderer>().material.color = Color.blue;
             
     	}
 
@@ -185,7 +193,7 @@ public class CollideAndMove : MonoBehaviour
             float orientation = -1; //Mathf.Sign(Vector3.Dot((originalFingerPos - objectOfInterest.transform.localPosition), bisector));
             // Debug.Log(orientation);
             Vector3 movement = bisector*orientation*scale;
-            
+            indexTip.transform.gameObject.tag = "Untagged";
             if(Mathf.Sqrt(Mathf.Pow(objectOfInterest.transform.localPosition.x - originalFingerPos.x, 2) + Mathf.Pow(objectOfInterest.transform.localPosition.z - originalFingerPos.z, 2)) > threshold)
             {
                 this.transform.position = new Vector3(this.transform.position.x + movement.x, this.transform.position.y, this.transform.position.z + movement.z);
@@ -205,6 +213,7 @@ public class CollideAndMove : MonoBehaviour
     	if((other.GetComponent<Collider>().name == "1_index_tip") && (index == true))
     	{
     		index = false;
+    		indexTip.transform.gameObject.tag = "InteractiveObject";
     	}
     	
     }
@@ -212,7 +221,7 @@ public class CollideAndMove : MonoBehaviour
     IEnumerator SwitchFinger(GameObject collidingObject)
     {
     	// Limit the time it can slide with the one finger
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         if(!availableToCollide)
         {
             if(previous == "1_index_tip")
@@ -242,7 +251,7 @@ public class CollideAndMove : MonoBehaviour
     {
         
         yield return new WaitForSeconds(1.5f);
-        scale = threshold*countSwitch;
+        scale = threshold*countSwitch/10;
         countSwitch = 0;
 
         StartCoroutine(CountSwitches());

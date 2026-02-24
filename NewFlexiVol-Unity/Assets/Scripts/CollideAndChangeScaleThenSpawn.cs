@@ -24,19 +24,19 @@ public class CollideAndChangeScaleThenSpawn : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {                
         if(isTouched)
         {
         	availableToTouch = false;
         	Vector3 pushingDownFrom = touchingObject.transform.localPosition - originPosition;
-        	this.transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y + pushingDownFrom.y, this.transform.localScale.z);
+        	this.transform.localScale = new Vector3(this.transform.localScale.x, this.transform.localScale.y - pushingDownFrom.y, this.transform.localScale.z);
 
-        	if(this.transform.localScale.y < 0.01f)
+        	if(this.transform.localScale.y < originalScale.y*0.5f)
         	{
         		for(int i = 0; i < 3; i++)
         		{
-        			Vector3 newPosition = new Vector3(this.transform.localPosition.x + Random.Range(-2.0f, 2.0f), this.transform.localPosition.y, this.transform.localPosition.z + Random.Range(-2.0f, 2.0f));
-        			GameObject newObject = (GameObject)Instantiate(this.gameObject, newPosition, Quaternion.identity);
+        			Vector3 newPosition = new Vector3(this.transform.position.x + Random.Range(-2.0f, 2.0f), this.transform.position.y, this.transform.position.z + Random.Range(-2.0f, 2.0f));
+        			GameObject newObject = (GameObject)Instantiate(this.gameObject, newPosition, Quaternion.identity, this.transform.parent.gameObject.transform);
         			newObject.transform.localScale = originalScale;
         		}
         		Destroy(this.gameObject);
@@ -51,9 +51,10 @@ public class CollideAndChangeScaleThenSpawn : MonoBehaviour
     		if(other.GetComponent<Collider>().tag == "InteractiveObject")
 	    	{
 	    		this.isTouched = true;
+                touchingObject = GameObject.Find(other.GetComponent<Collider>().name);
+                originPosition = touchingObject.transform.localPosition;
 	    	}
-	    	touchingObject = GameObject.Find(other.GetComponent<Collider>().name);
-	    	originPosition = touchingObject.transform.localPosition;
+	    	
 		}
     }
 

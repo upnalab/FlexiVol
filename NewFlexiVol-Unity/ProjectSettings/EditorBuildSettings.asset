@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Voxon.Examples/3_Particles.unity
     guid: 0085ba01242d6bc4ca6c80b86b343567
-  - enabled: 1
-    path: Assets/Scenes/SphereSpawners.unity
-    guid: 262a0eb7929bd6d4b9560b77fdf8535f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/RectangleOnly.unity
     guid: 394550fc99753d94ca535d32ebb55c35
+  - enabled: 1
+    path: Assets/Scenes/AllFingers.unity
+    guid: d7386aa3ffec9d640ba2f62e8142cdbf
   m_configObjects: {}

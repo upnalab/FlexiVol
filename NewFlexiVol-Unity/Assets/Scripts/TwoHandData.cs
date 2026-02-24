@@ -44,12 +44,7 @@ public class TwoHandData : MonoBehaviour
 
     void Start()
     {
-        objToInstantiate.AddComponent<VXDynamicComponent>();
-        objToInstantiate.AddComponent<CorrectionMesh>();
-        if(objToInstantiate.GetComponent<VXComponent>() != null)
-        {
-            Destroy(objToInstantiate.GetComponent<VXComponent>());
-        }
+        
         fingerNames = new string[]{"thumb", "index", "middle", "ring", "pinky"};
         insideNames = new string[]{"first", "second", "third", "tip"};
         prefix = new string[]{"1", "2"};
@@ -63,6 +58,7 @@ public class TwoHandData : MonoBehaviour
             palmObject[k].AddComponent<Rigidbody>();
             palmObject[k].GetComponent<Rigidbody>().isKinematic = true;
             palmObject[k].GetComponent<Rigidbody>().useGravity = false;
+            palmObject[k].gameObject.tag = "VoxieHide";
 
             for(int i = 0; i < 5; i++)
             {
@@ -73,6 +69,15 @@ public class TwoHandData : MonoBehaviour
                     insideFingers[j + i*4 + k*5*4].AddComponent<Rigidbody>();
     				insideFingers[j + i*4 + k*5*4].GetComponent<Rigidbody>().isKinematic = true;
     				insideFingers[j + i*4 + k*5*4].GetComponent<Rigidbody>().useGravity = false;
+
+                    if(!insideFingers[j + i*4 + k*5*4].name.Contains("index_tip"))
+                    {
+                        insideFingers[j + i*4 + k*5*4].gameObject.tag = "VoxieHide";
+                    }
+                    else
+                    {
+                        insideFingers[j + i*4 + k*5*4].gameObject.tag = "InteractiveObject";
+                    }
                 }
             }
         }
